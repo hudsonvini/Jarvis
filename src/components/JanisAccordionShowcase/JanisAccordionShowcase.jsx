@@ -170,27 +170,25 @@ export default function JanisAccordionShowcase() {
 
 					{activeItem && (
 						<aside className={styles.visualColumn}>
-							<div className={styles.visualSticky}>
-								<div className={styles.visualCard}>
-									<div
-										className={`${styles.visualGlow} ${styles[activeItem.color]}`}
-									/>
+							<div className={styles.visualCard}>
+								<div
+									className={`${styles.visualGlow} ${styles[activeItem.color]}`}
+								/>
 
-									<div className={styles.visualInner}>
-										<span className={styles.visualLabel}>Destaque atual</span>
-										<h2>{activeItem.title}</h2>
-										<p>{activeItem.description}</p>
+								<div className={styles.visualInner}>
+									<span className={styles.visualLabel}>Destaque atual</span>
+									<h2>{activeItem.title}</h2>
+									<p>{activeItem.description}</p>
 
-										<div className={styles.visualTags}>
-											{activeItem.tags.map((tag) => (
-												<span key={tag}>{tag}</span>
-											))}
-										</div>
+									<div className={styles.visualTags}>
+										{activeItem.tags.map((tag) => (
+											<span key={tag}>{tag}</span>
+										))}
+									</div>
 
-										<div className={styles.visualFooter}>
-											<span>{activeItem.duration}</span>
-											<button type="button">{activeItem.buttonLabel}</button>
-										</div>
+									<div className={styles.visualFooter}>
+										<span>{activeItem.duration}</span>
+										<button type="button">{activeItem.buttonLabel}</button>
 									</div>
 								</div>
 							</div>
