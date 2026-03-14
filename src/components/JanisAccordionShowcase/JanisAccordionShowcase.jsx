@@ -58,20 +58,26 @@ const items = [
 ];
 
 export default function JanisAccordionShowcase() {
-	const [activeIndex, setActiveIndex] = useState(0);
+	const [activeIndex, setActiveIndex] = useState(null);
 	const [autoPlay, setAutoPlay] = useState(true);
 
 	const intervalRef = useRef(null);
 	const cardRefs = useRef([]);
 	const userInteractedRef = useRef(false);
 
-	const activeItem = useMemo(() => items[activeIndex], [activeIndex]);
+	const activeItem = useMemo(() => {
+		if (activeIndex === null) return null;
+		return items[activeIndex];
+	}, [activeIndex]);
 
 	useEffect(() => {
 		if (!autoPlay) return;
 
 		intervalRef.current = setInterval(() => {
-			setActiveIndex((prev) => (prev + 1) % items.length);
+			setActiveIndex((prev) => {
+				if (prev === null) return 0;
+				return (prev + 1) % items.length;
+			});
 		}, 25000);
 
 		return () => {
@@ -81,6 +87,7 @@ export default function JanisAccordionShowcase() {
 
 	useEffect(() => {
 		if (!userInteractedRef.current) return;
+		if (activeIndex === null) return;
 
 		const activeCard = cardRefs.current[activeIndex];
 		if (!activeCard) return;
@@ -102,12 +109,13 @@ export default function JanisAccordionShowcase() {
 
 	const handleOpen = (index) => {
 		userInteractedRef.current = true;
-		setActiveIndex(index);
 		setAutoPlay(false);
 
 		if (intervalRef.current) {
 			clearInterval(intervalRef.current);
 		}
+
+		setActiveIndex((prev) => (prev === index ? null : index));
 	};
 
 	return (
@@ -115,7 +123,7 @@ export default function JanisAccordionShowcase() {
 			<div className={styles.wrapper}>
 				<div className={styles.header}>
 					<div className={styles.brandArea}>
-                        <img src="/images/logo.png" alt="" />
+						<img src="/images/logo.png" alt="" />
 					</div>
 
 					<div className={styles.headerText}>
@@ -157,9 +165,9 @@ export default function JanisAccordionShowcase() {
 
 										<span className={styles.icon}>
 											<span
-												className={`${styles.chevron} ${
-													isActive ? styles.chevronOpen : ""
-												}`}
+												className={
+													isActive ? styles.closeIcon : styles.chevron
+												}
 											/>
 										</span>
 									</div>
@@ -183,32 +191,34 @@ export default function JanisAccordionShowcase() {
 						})}
 					</div>
 
-					<aside className={styles.visualColumn}>
-						<div className={styles.visualSticky}>
-							<div className={styles.visualCard}>
-								<div
-									className={`${styles.visualGlow} ${styles[activeItem.color]}`}
-								/>
+					{activeItem && (
+						<aside className={styles.visualColumn}>
+							<div className={styles.visualSticky}>
+								<div className={styles.visualCard}>
+									<div
+										className={`${styles.visualGlow} ${styles[activeItem.color]}`}
+									/>
 
-								<div className={styles.visualInner}>
-									<span className={styles.visualLabel}>Destaque atual</span>
-									<h2>{activeItem.title}</h2>
-									<p>{activeItem.description}</p>
+									<div className={styles.visualInner}>
+										<span className={styles.visualLabel}>Destaque atual</span>
+										<h2>{activeItem.title}</h2>
+										<p>{activeItem.description}</p>
 
-									<div className={styles.visualTags}>
-										{activeItem.tags.map((tag) => (
-											<span key={tag}>{tag}</span>
-										))}
-									</div>
+										<div className={styles.visualTags}>
+											{activeItem.tags.map((tag) => (
+												<span key={tag}>{tag}</span>
+											))}
+										</div>
 
-									<div className={styles.visualFooter}>
-										<span>{activeItem.duration}</span>
-										<button type="button">{activeItem.buttonLabel}</button>
+										<div className={styles.visualFooter}>
+											<span>{activeItem.duration}</span>
+											<button type="button">{activeItem.buttonLabel}</button>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</aside>
+						</aside>
+					)}
 				</div>
 			</div>
 		</section>
