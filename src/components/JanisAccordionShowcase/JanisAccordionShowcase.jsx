@@ -58,10 +58,8 @@ const items = [
 ];
 
 export default function JanisAccordionShowcase() {
-	const [activeIndex, setActiveIndex] = useState(null);
-	const [autoPlay, setAutoPlay] = useState(true);
+	const [activeIndex, setActiveIndex] = useState(items.length - 1);
 
-	const intervalRef = useRef(null);
 	const cardRefs = useRef([]);
 	const userInteractedRef = useRef(false);
 
@@ -69,21 +67,6 @@ export default function JanisAccordionShowcase() {
 		if (activeIndex === null) return null;
 		return items[activeIndex];
 	}, [activeIndex]);
-
-	useEffect(() => {
-		if (!autoPlay) return;
-
-		intervalRef.current = setInterval(() => {
-			setActiveIndex((prev) => {
-				if (prev === null) return 0;
-				return (prev + 1) % items.length;
-			});
-		}, 25000);
-
-		return () => {
-			if (intervalRef.current) clearInterval(intervalRef.current);
-		};
-	}, [autoPlay]);
 
 	useEffect(() => {
 		if (!userInteractedRef.current) return;
@@ -109,12 +92,6 @@ export default function JanisAccordionShowcase() {
 
 	const handleOpen = (index) => {
 		userInteractedRef.current = true;
-		setAutoPlay(false);
-
-		if (intervalRef.current) {
-			clearInterval(intervalRef.current);
-		}
-
 		setActiveIndex((prev) => (prev === index ? null : index));
 	};
 

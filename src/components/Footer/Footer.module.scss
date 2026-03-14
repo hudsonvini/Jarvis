@@ -1,17 +1,23 @@
 @use "../../styles/abstracts" as *;
 
 .container {
+	position: fixed;
     background-color: #21012a;
     margin-top: 40px;
+	width: 100%;
+	z-index: -1;
+	bottom: 0px;
+	z-index: 99;
     
     @include desktop-lg {
-        margin-top: 100px;
+		position: fixed;
+		bottom: 0px;
+        z-index: -1;
     }
 }
 .bottomBar {
 	width: 100%;
 	height: 10px;
-	margin-top: 18px;
 	background: linear-gradient(
 		90deg,
 		#00ff84 0%,
@@ -20,6 +26,10 @@
 		#ff2b2b 100%
 	);
 
+	@include desktop-lg {
+		margin-top: 0px;
+	}
+
 	@include tv {
 		height: 12px;
 	}
@@ -27,17 +37,17 @@
 
 .footerMark {
 	position: relative;
-	height: 120px;
-	overflow: hidden;
+	height: 90px;
+	// overflow: hidden;
 	display: grid;
 	place-items: center;
 
 	@include desktop-lg {
-		height: 160px;
+		height: 120px;
 	}
 
 	@include tv {
-		height: 240px;
+		height: 120px;
 	}
 }
 
@@ -52,26 +62,30 @@
 .footerLogo {
 	position: relative;
 	z-index: 2;
-	width: 90px;
-	height: 90px;
+	width:70px;
+	height: 70px;
 	display: grid;
 	place-items: center;
 	font-size: 2rem;
 	font-weight: 900;
 	border-radius: 50%;
 	backdrop-filter: blur(10px);
-
-    img {
-        height: 70px;
-        
-        @include desktop-lg {
-            height: 100px;
-        }
-    }
-
+	
 	@include desktop-lg {
+		position: absolute;
+		background-color: #24022e;
+		top: -30px;
+		right: 25%;
 		width: 120px;
 		height: 120px;
 		font-size: 2.5rem;
 	}
+
+    img {
+        height: 50px;
+        
+        @include desktop-lg {
+            height: 70px;
+        }
+    }
 }

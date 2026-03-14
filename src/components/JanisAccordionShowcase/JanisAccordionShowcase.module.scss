@@ -7,6 +7,10 @@
 	justify-content: center;
 	overflow: hidden;
 	color: $color-white;
+
+	@include desktop-lg {
+		padding-bottom: 200px;
+	}
 }
 
 .wrapper {
@@ -183,6 +187,7 @@
 		padding: 22px 22px 18px;
 		padding-bottom: 60px;
 		scroll-margin-top: 32px;
+		margin-top: -30px;
 	}
 
 	@include desktop-lg {
@@ -190,6 +195,8 @@
 		padding-bottom: 60px;
 		border-radius: $radius-xl $radius-xl 0 0;
 		scroll-margin-top: 40px;
+		margin-top: -30px;
+		padding-bottom: 60px !important;
 
 		&:last-child {
 			border-radius: $radius-xl $radius-xl $radius-xl $radius-xl;
@@ -197,8 +204,9 @@
 	}
 
 	@include tv {
-		padding: 30px 30px 24px;
-		scroll-margin-top: 48px;
+		scroll-margin-top: 40px;
+		margin-top: -30px;
+		padding-bottom: 60px !important;
 	}
 }
 
@@ -422,8 +430,10 @@
 	display: none;
 	align-self: start;
 	min-width: 0;
-
+	
 	@include notebook {
+		height: 100%;
+		position: relative;
 		display: block;
 	}
 }
@@ -435,16 +445,17 @@
 	}
 
 	@include desktop-lg {
+		position: sticky;
 		top: clamp(32px, 10vh, 96px);
 	}
 
 	@include tv {
+		position: sticky;
 		top: clamp(40px, 12vh, 140px);
 	}
 }
 
 .visualCard {
-	min-height: 620px;
 	overflow: hidden;
 	border-radius: $radius-xl;
 	border: 1px solid $border-soft;
