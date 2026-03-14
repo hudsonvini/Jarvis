@@ -1,0 +1,66 @@
+@use "sass:map";
+@use "breakpoints" as *;
+
+@mixin respond($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (min-width: map.get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint `#{$breakpoint}` não encontrado em $breakpoints.";
+  }
+}
+
+@mixin mobile-sm {
+  @include respond(mobile-sm) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @include respond(mobile) {
+    @content;
+  }
+}
+
+@mixin mobile-lg {
+  @include respond(mobile-lg) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @include respond(tablet) {
+    @content;
+  }
+}
+
+@mixin notebook {
+  @include respond(notebook) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @include respond(desktop) {
+    @content;
+  }
+}
+
+@mixin desktop-lg {
+  @include respond(desktop-lg) {
+    @content;
+  }
+}
+
+@mixin tv {
+  @include respond(tv) {
+    @content;
+  }
+}
+
+@mixin tv-lg {
+  @include respond(tv-lg) {
+    @content;
+  }
+}
