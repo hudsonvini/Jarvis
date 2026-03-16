@@ -11,9 +11,9 @@ const items = [
 		tags: ["Metodologia", "Nossa missão"],
 		color: "blue",
 		buttonLabel: "Saiba mais",
-		duration: "Carga Horária: 20h",
+		// duration: "Carga Horária: 20h",
 		description:
-			"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+			"A Javis é um espaço que une tecnologia, educação e cultura gamer para criar experiências de aprendizado e entretenimento. Oferecemos cursos como Robótica e Atleta Digital, que desenvolvem habilidades como lógica, estratégia, disciplina e criatividade. Com uma infraestrutura moderna e máquinas de alta performance, também proporcionamos experiências gamer como Corujões, Aniversários e Pacotes de Horas, reunindo amigos e famílias em um ambiente seguro, imersivo e inovador. Na Javis, aprendizado, tecnologia e diversão caminham juntos, formando jovens e criando experiências marcantes para quem vive o universo gamer.",
 	},
 	{
 		id: 2,
@@ -21,9 +21,9 @@ const items = [
 		tags: ["Entretenimento", "Festa de Aniversário"],
 		color: "sky",
 		buttonLabel: "Saiba mais",
-		duration: "Carga Horária: 20h",
+		// duration: "Carga Horária: 20h",
 		description:
-			"Oferecemos experiências criativas, educativas e interativas para crianças, famílias e escolas em um ambiente acolhedor e inspirador.",
+			"Na Javis, oferecemos experiências gamer imersivas e memoráveis, com estrutura moderna, tecnologia e máquinas de alta performance. Seja para jogar com amigos, comemorar uma ocasião especial ou aproveitar momentos de lazer, criamos um ambiente confortável, seguro e preparado para quem ama a cultura gamer. Aqui, o entretenimento vai além do jogo: é experiência, comunidade e diversão levada a sério.",
 	},
 	{
 		id: 3,
@@ -31,9 +31,9 @@ const items = [
 		tags: ["Fotos", "Shopping Rio Poty"],
 		color: "green",
 		buttonLabel: "Saiba mais",
-		duration: "Carga Horária: 20h",
+		duration: "Estrutura de Ponta",
 		description:
-			"Espaços planejados para estimular o desenvolvimento, a curiosidade e o aprendizado prático, com estrutura pensada para diferentes atividades.",
+			"A Javis oferece uma infraestrutura moderna e tecnológica, com máquinas de última geração, ambiente climatizado e setup de alta performance, pensados para garantir conforto, foco e qualidade nas atividades. O espaço foi criado para unir educação, tecnologia e entretenimento, com ambientes preparados para aulas, práticas, desafios em equipe e experiências imersivas no universo gamer. Além da formação, a estrutura também recebe momentos de lazer e eventos, como aluguel de máquinas, aniversários gamer e corujões, proporcionando experiências divertidas e marcantes em um ambiente seguro e inovador.",
 	},
 	{
 		id: 4,
@@ -43,7 +43,7 @@ const items = [
 		buttonLabel: "Saiba mais",
 		duration: "Carga Horária: 20h",
 		description:
-			"Curso focado em lógica, criatividade e construção prática, incentivando a resolução de problemas de maneira divertida e tecnológica.",
+			"No curso de Robótica da Javis, os alunos transformam tecnologia em criação prática. Em vez de aprender apenas conceitos isolados, eles passam por uma jornada completa: identificar problemas reais, desenvolver ideias, construir protótipos e integrar soluções funcionais. Durante o curso, desenvolvem pensamento lógico, autonomia, visão de projeto e capacidade de testar e melhorar suas próprias criações. A aprendizagem acontece por meio de projetos que integram Design Thinking, eletrônica, Arduino, sensores, atuadores e modelagem 3D, estimulando investigação, experimentação e resolução de problemas. Mais do que ensinar robótica, o curso forma jovens capazes de pensar, criar, testar e evoluir soluções, preparando-os para um mundo cada vez mais conectado à inovação.",
 	},
 	{
 		id: 5,
@@ -53,7 +53,7 @@ const items = [
 		buttonLabel: "Saiba mais",
 		duration: "Carga Horária: 20h",
 		description:
-			"Um programa multidisciplinar para desenvolver habilidades digitais, criativas e comportamentais em uma jornada moderna e envolvente.",
+			"O curso Atleta Digital transforma a paixão por games em disciplina, estratégia e desenvolvimento pessoal. Em vez de apenas jogar, os alunos aprendem a usar o universo gamer para fortalecer foco, comunicação, responsabilidade e inteligência emocional. Com uma metodologia que une formação comportamental e visão estratégica dos e-sports, os jovens desenvolvem melhor desempenho dentro e fora do jogo. Mais do que formar jogadores, o curso prepara jovens mais conscientes, disciplinados e preparados para os desafios do presente e do futuro.",
 	},
 ];
 
