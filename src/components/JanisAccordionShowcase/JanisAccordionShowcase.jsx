@@ -11,7 +11,7 @@ const items = [
 		tags: ["Metodologia", "Nossa missão"],
 		color: "blue",
 		buttonLabel: "Saiba mais",
-		// duration: "Carga Horária: 20h",
+		images: ["/images/javis/quem-somos-1.jpg", "/images/javis/quem-somos-2.jpg"],
 		description:
 			"A Javis é um espaço que une tecnologia, educação e cultura gamer para criar experiências de aprendizado e entretenimento. Oferecemos cursos como Robótica e Atleta Digital, que desenvolvem habilidades como lógica, estratégia, disciplina e criatividade. Com uma infraestrutura moderna e máquinas de alta performance, também proporcionamos experiências gamer como Corujões, Aniversários e Pacotes de Horas, reunindo amigos e famílias em um ambiente seguro, imersivo e inovador. Na Javis, aprendizado, tecnologia e diversão caminham juntos, formando jovens e criando experiências marcantes para quem vive o universo gamer.",
 	},
@@ -21,7 +21,7 @@ const items = [
 		tags: ["Entretenimento", "Festa de Aniversário"],
 		color: "sky",
 		buttonLabel: "Saiba mais",
-		// duration: "Carga Horária: 20h",
+		images: ["/images/javis/servicos-1.jpg", "/images/javis/servicos-2.jpg"],
 		description:
 			"Na Javis, oferecemos experiências gamer imersivas e memoráveis, com estrutura moderna, tecnologia e máquinas de alta performance. Seja para jogar com amigos, comemorar uma ocasião especial ou aproveitar momentos de lazer, criamos um ambiente confortável, seguro e preparado para quem ama a cultura gamer. Aqui, o entretenimento vai além do jogo: é experiência, comunidade e diversão levada a sério.",
 	},
@@ -32,6 +32,12 @@ const items = [
 		color: "green",
 		buttonLabel: "Saiba mais",
 		duration: "Estrutura de Ponta",
+		images: [
+			"/images/estrutura-1.webp",
+			"/images/estrutura-2.webp",
+			"/images/estrutura-3.webp",
+			"/images/estrutura-4.webp",
+		],
 		description:
 			"A Javis oferece uma infraestrutura moderna e tecnológica, com máquinas de última geração, ambiente climatizado e setup de alta performance, pensados para garantir conforto, foco e qualidade nas atividades. O espaço foi criado para unir educação, tecnologia e entretenimento, com ambientes preparados para aulas, práticas, desafios em equipe e experiências imersivas no universo gamer. Além da formação, a estrutura também recebe momentos de lazer e eventos, como aluguel de máquinas, aniversários gamer e corujões, proporcionando experiências divertidas e marcantes em um ambiente seguro e inovador.",
 	},
@@ -42,6 +48,7 @@ const items = [
 		color: "red",
 		buttonLabel: "Saiba mais",
 		duration: "Carga Horária: 20h",
+		images: ["/images/javis/robotica-1.jpg", "/images/javis/robotica-2.jpg"],
 		description:
 			"No curso de Robótica da Javis, os alunos transformam tecnologia em criação prática. Em vez de aprender apenas conceitos isolados, eles passam por uma jornada completa: identificar problemas reais, desenvolver ideias, construir protótipos e integrar soluções funcionais. Durante o curso, desenvolvem pensamento lógico, autonomia, visão de projeto e capacidade de testar e melhorar suas próprias criações. A aprendizagem acontece por meio de projetos que integram Design Thinking, eletrônica, Arduino, sensores, atuadores e modelagem 3D, estimulando investigação, experimentação e resolução de problemas. Mais do que ensinar robótica, o curso forma jovens capazes de pensar, criar, testar e evoluir soluções, preparando-os para um mundo cada vez mais conectado à inovação.",
 	},
@@ -51,11 +58,86 @@ const items = [
 		tags: ["Extra Curricular", "Design", "Gamer", "Inglês"],
 		color: "purple",
 		buttonLabel: "Saiba mais",
-		duration: "Carga Horária: 20h",
+		duration: "Carga Horária: 78h",
+		images: [
+			"/images/javis/atleta-digital-1.jpg",
+			"/images/javis/atleta-digital-2.jpg",
+			"/images/javis/atleta-digital-3.jpg",
+		],
 		description:
-			"O curso Atleta Digital transforma a paixão por games em disciplina, estratégia e desenvolvimento pessoal. Em vez de apenas jogar, os alunos aprendem a usar o universo gamer para fortalecer foco, comunicação, responsabilidade e inteligência emocional. Com uma metodologia que une formação comportamental e visão estratégica dos e-sports, os jovens desenvolvem melhor desempenho dentro e fora do jogo. Mais do que formar jogadores, o curso prepara jovens mais conscientes, disciplinados e preparados para os desafios do presente e do futuro.",
+			"Na prática, o aluno aprende sobre competição saudável, conviver melhor e se posicionar melhor. Tudo isso dentro de uma metodologia que une formação comportamental, visão estratégica e repertório digital, utilizando os e-sports para gerar valores que fazem sentido para a vida.",
 	},
 ];
+
+function MediaGallery({ images = [], isActive, title }) {
+	const [currentIndex, setCurrentIndex] = useState(0);
+	const total = images.length;
+
+	useEffect(() => {
+		setCurrentIndex(0);
+	}, [images]);
+
+	useEffect(() => {
+		if (!isActive) return;
+		if (total <= 2) return;
+
+		const interval = window.setInterval(() => {
+			setCurrentIndex((prev) => (prev + 1) % total);
+		}, 2800);
+
+		return () => window.clearInterval(interval);
+	}, [isActive, total]);
+
+	if (!images.length) {
+		return <div className={styles.mediaPlaceholder} />;
+	}
+
+	if (images.length === 1) {
+		return (
+			<div className={styles.mediaSingle}>
+				<img src={images[0]} alt={title} />
+			</div>
+		);
+	}
+
+	if (images.length === 2) {
+		return (
+			<div className={styles.mediaDouble}>
+				{images.map((image, index) => (
+					<div key={index} className={styles.mediaDoubleItem}>
+						<img src={image} alt={`${title} ${index + 1}`} />
+					</div>
+				))}
+			</div>
+		);
+	}
+
+	return (
+		<div className={styles.mediaSlider}>
+			<div
+				className={styles.mediaTrack}
+				style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+			>
+				{images.map((image, index) => (
+					<div key={index} className={styles.mediaSlide}>
+						<img src={image} alt={`${title} ${index + 1}`} />
+					</div>
+				))}
+			</div>
+
+			<div className={styles.mediaDots}>
+				{images.map((_, index) => (
+					<span
+						key={index}
+						className={`${styles.mediaDot} ${
+							index === currentIndex ? styles.mediaDotActive : ""
+						}`}
+					/>
+				))}
+			</div>
+		</div>
+	);
+}
 
 export default function JanisAccordionShowcase() {
 	const [activeIndex, setActiveIndex] = useState(items.length - 1);
@@ -76,12 +158,10 @@ export default function JanisAccordionShowcase() {
 		if (!activeCard) return;
 
 		const headerOffset = 24;
-
 		const rect = activeCard.getBoundingClientRect();
 		const absoluteTop = window.scrollY + rect.top;
 		const cardCenter = absoluteTop + rect.height / 2;
 		const viewportCenter = window.innerHeight / 2;
-
 		const targetTop = Math.max(cardCenter - viewportCenter - headerOffset, 0);
 
 		window.scrollTo({
@@ -100,7 +180,7 @@ export default function JanisAccordionShowcase() {
 			<div className={styles.wrapper}>
 				<div className={styles.header}>
 					<div className={styles.brandArea}>
-						<img src="/images/logo.png" alt="" />
+						<img src="/images/logo.png" alt="Logo Javis" />
 					</div>
 
 					<div className={styles.headerText}>
@@ -154,7 +234,11 @@ export default function JanisAccordionShowcase() {
 											isActive ? styles.expandAreaOpen : ""
 										}`}
 									>
-										<div className={styles.mediaPlaceholder} />
+										<MediaGallery
+											images={item.images}
+											isActive={isActive}
+											title={item.title}
+										/>
 
 										<div className={styles.metaRow}>
 											<span>{item.duration}</span>
