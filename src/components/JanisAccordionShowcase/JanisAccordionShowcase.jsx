@@ -11,7 +11,7 @@ const items = [
 		tags: ["Metodologia", "Nossa missão"],
 		color: "blue",
 		buttonLabel: "Saiba mais",
-		images: ["/images/quem-somos.webp"],
+		images: ["/images/quem-somos.webp" ,"/images/estrutura-2.webp"],
 		description:
 			"A Javis é um espaço que une tecnologia, educação e cultura gamer para criar experiências de aprendizado e entretenimento. Oferecemos cursos como Robótica e Atleta Digital, que desenvolvem habilidades como lógica, estratégia, disciplina e criatividade. Com uma infraestrutura moderna e máquinas de alta performance, também proporcionamos experiências gamer como Corujões, Aniversários e Pacotes de Horas, reunindo amigos e famílias em um ambiente seguro, imersivo e inovador. Na Javis, aprendizado, tecnologia e diversão caminham juntos, formando jovens e criando experiências marcantes para quem vive o universo gamer.",
 	},
@@ -21,7 +21,7 @@ const items = [
 		tags: ["Entretenimento", "Festa de Aniversário"],
 		color: "sky",
 		buttonLabel: "Saiba mais",
-		images: ["/images/servicos-1.webp"],
+		images: ["/images/servicos-1.webp", "/images/servicos-2.webp"],
 		description:
 			"Na Javis, oferecemos experiências gamer imersivas e memoráveis, com estrutura moderna, tecnologia e máquinas de alta performance. Seja para jogar com amigos, comemorar uma ocasião especial ou aproveitar momentos de lazer, criamos um ambiente confortável, seguro e preparado para quem ama a cultura gamer. Aqui, o entretenimento vai além do jogo: é experiência, comunidade e diversão levada a sério.",
 	},
@@ -47,7 +47,7 @@ const items = [
 		tags: ["Manoel Nunes", "Prêmio Nobel", "Bolsa EUA"],
 		color: "red",
 		buttonLabel: "Saiba mais",
-		duration: "Carga Horária: 20h",
+		duration: "Carga Horária: 78h",
 		images: ["/images/robotica.webp", "/images/robotica-2.webp"],
 		description:
 			"No curso de Robótica da Javis, os alunos aprendem na prática ao identificar problemas, desenvolver ideias e criar soluções reais. Ao longo da jornada, estimulam o pensamento lógico, a autonomia e a capacidade de testar e evoluir projetos, utilizando tecnologias como Arduino, sensores e modelagem 3D. Mais do que ensinar robótica, o curso forma jovens preparados para inovar e resolver desafios do mundo atual.",
