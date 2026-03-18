@@ -60,9 +60,8 @@ const items = [
 		buttonLabel: "Saiba mais",
 		duration: "Carga Horária: 78h",
 		images: [
-			"/images/javis/atleta-digital-1.jpg",
-			"/images/javis/atleta-digital-2.jpg",
-			"/images/javis/atleta-digital-3.jpg",
+			"/images/atleta-digital-1.webp",
+			"/images/atleta-digital-2.webp",
 		],
 		description:
 			"Na prática, o aluno aprende sobre competição saudável, conviver melhor e se posicionar melhor. Tudo isso dentro de uma metodologia que une formação comportamental, visão estratégica e repertório digital, utilizando os e-sports para gerar valores que fazem sentido para a vida.",
