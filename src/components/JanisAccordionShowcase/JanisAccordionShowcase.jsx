@@ -11,7 +11,7 @@ const items = [
 		tags: ["Metodologia", "Nossa missão"],
 		color: "blue",
 		buttonLabel: "Saiba mais",
-		images: ["/images/javis/quem-somos-1.jpg", "/images/javis/quem-somos-2.jpg"],
+		images: ["/images/quem-somos.webp"],
 		description:
 			"A Javis é um espaço que une tecnologia, educação e cultura gamer para criar experiências de aprendizado e entretenimento. Oferecemos cursos como Robótica e Atleta Digital, que desenvolvem habilidades como lógica, estratégia, disciplina e criatividade. Com uma infraestrutura moderna e máquinas de alta performance, também proporcionamos experiências gamer como Corujões, Aniversários e Pacotes de Horas, reunindo amigos e famílias em um ambiente seguro, imersivo e inovador. Na Javis, aprendizado, tecnologia e diversão caminham juntos, formando jovens e criando experiências marcantes para quem vive o universo gamer.",
 	},
@@ -21,7 +21,7 @@ const items = [
 		tags: ["Entretenimento", "Festa de Aniversário"],
 		color: "sky",
 		buttonLabel: "Saiba mais",
-		images: ["/images/javis/servicos-1.jpg", "/images/javis/servicos-2.jpg"],
+		images: ["/images/servicos-1.webp"],
 		description:
 			"Na Javis, oferecemos experiências gamer imersivas e memoráveis, com estrutura moderna, tecnologia e máquinas de alta performance. Seja para jogar com amigos, comemorar uma ocasião especial ou aproveitar momentos de lazer, criamos um ambiente confortável, seguro e preparado para quem ama a cultura gamer. Aqui, o entretenimento vai além do jogo: é experiência, comunidade e diversão levada a sério.",
 	},
@@ -48,9 +48,9 @@ const items = [
 		color: "red",
 		buttonLabel: "Saiba mais",
 		duration: "Carga Horária: 20h",
-		images: ["/images/javis/robotica-1.jpg", "/images/javis/robotica-2.jpg"],
+		images: ["/images/robotica.webp", "/images/robotica-2.webp"],
 		description:
-			"No curso de Robótica da Javis, os alunos transformam tecnologia em criação prática. Em vez de aprender apenas conceitos isolados, eles passam por uma jornada completa: identificar problemas reais, desenvolver ideias, construir protótipos e integrar soluções funcionais. Durante o curso, desenvolvem pensamento lógico, autonomia, visão de projeto e capacidade de testar e melhorar suas próprias criações. A aprendizagem acontece por meio de projetos que integram Design Thinking, eletrônica, Arduino, sensores, atuadores e modelagem 3D, estimulando investigação, experimentação e resolução de problemas. Mais do que ensinar robótica, o curso forma jovens capazes de pensar, criar, testar e evoluir soluções, preparando-os para um mundo cada vez mais conectado à inovação.",
+			"No curso de Robótica da Javis, os alunos aprendem na prática ao identificar problemas, desenvolver ideias e criar soluções reais. Ao longo da jornada, estimulam o pensamento lógico, a autonomia e a capacidade de testar e evoluir projetos, utilizando tecnologias como Arduino, sensores e modelagem 3D. Mais do que ensinar robótica, o curso forma jovens preparados para inovar e resolver desafios do mundo atual.",
 	},
 	{
 		id: 5,
@@ -64,7 +64,7 @@ const items = [
 			"/images/atleta-digital-2.webp",
 		],
 		description:
-			"Na prática, o aluno aprende sobre competição saudável, conviver melhor e se posicionar melhor. Tudo isso dentro de uma metodologia que une formação comportamental, visão estratégica e repertório digital, utilizando os e-sports para gerar valores que fazem sentido para a vida.",
+			"Na prática, o aluno aprende sobre competição saudável, coviver melhor e se posicionar melhor. Tudo isso dentro de uma metodologia que une formação comportamental, visão estratégica e repertório digital, utilizando os e-sports para gerarvalores que fazem sentido para a vida.",
 	},
 ];
 
@@ -241,7 +241,17 @@ export default function JanisAccordionShowcase() {
 
 										<div className={styles.metaRow}>
 											<span>{item.duration}</span>
-											<span className={styles.cta}>{item.buttonLabel}</span>
+											<a
+												href={`https://wa.me/558699617957?text=${encodeURIComponent(
+													`Olá! Tenho interesse em saber mais sobre ${item.title}`
+												)}`}
+												target="_blank"
+												rel="noopener noreferrer"
+												className={styles.cta}
+												onClick={(e) => e.stopPropagation()}
+											>
+												{item.buttonLabel}
+											</a>
 										</div>
 
 										<p>{item.description}</p>
@@ -271,7 +281,16 @@ export default function JanisAccordionShowcase() {
 
 									<div className={styles.visualFooter}>
 										<span>{activeItem.duration}</span>
-										<button type="button">{activeItem.buttonLabel}</button>
+										<a
+											href={`https://wa.me/558699617957?text=${encodeURIComponent(
+												`Olá! Tenho interesse no ${activeItem.title} da Javis. Pode me enviar mais informações?`
+											)}`}
+											target="_blank"
+											rel="noopener noreferrer"
+											className={styles.ctaVisual}
+										>
+											{activeItem.buttonLabel}
+										</a>
 									</div>
 								</div>
 							</div>
