@@ -1,0 +1,225 @@
+.hero {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    // background: radial-gradient(circle at center, #4b1c9c, #0c0216);
+    color: white;
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* TOPO */
+.topStripeHero {
+	position: absolute;
+	top: 0px;
+	left: 0;
+	width: 100%;
+	height: 12px;
+	z-index: 5;
+	background: repeating-linear-gradient(
+		-55deg,
+		#f4d03f 0 42px,
+		#f4d03f 42px 84px,
+		#0b0615 84px 106px,
+		#0b0615 106px 128px
+	);
+	border-bottom: 0;
+    z-index: 999;
+    opacity: 1;
+}
+.bottomStrip {
+	position: absolute;
+	bottom: 0px;
+	left: 0;
+	width: 100%;
+	height: 12px;
+	z-index: 5;
+	background: linear-gradient(
+		90deg,
+		#00F577 0%,
+		#0084A9 15%,
+		#0038DF 34%,
+		#00C5CC 51%,
+		#01C231 69%,
+		#C8D300 86%,
+		#F30200 100%
+	);
+
+	background-size: 200% 200%;
+	animation: gradientMove 8s ease infinite;
+	border-bottom: 0;
+    z-index: 999;
+    opacity: 1;
+}
+
+@keyframes gradientMove {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.backLogo {
+    position: absolute;
+    height: 50vh;
+    top: 120px;
+    left: 0px;
+}
+.linesHero {
+    position: absolute;
+    height: 80vh;
+    top: 0px;
+    right: -20px;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+    height: 100vh;
+}
+
+/* TEXTO GIGANTE */
+.bigText {
+    position: absolute;
+    bottom: 180px;
+    left: 0;
+    font-size: clamp(5rem, 5vw, 10rem);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    z-index: 1;
+
+    span {
+        display: inline-block;
+        color: #f1ca26;
+    }
+}
+
+/* GLOW */
+.glow {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 80px;
+	width: 50vw;
+	height: 50vw;
+	border-radius: 50%;
+	z-index: 0;
+	pointer-events: none;
+}
+
+.glow::before {
+	content: "";
+	position: absolute;
+	inset: -80px;
+	border-radius: 50%;
+	background: radial-gradient(
+		circle at center,
+		rgba(127, 20, 183, 1) 0%,
+		rgba(45, 30, 92, 0.6) 45%,
+		transparent 100%
+	);
+	filter: blur(80px);
+}
+
+
+/* IMAGEM */
+.imageWrap {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 700px;
+    z-index: 3;
+
+    img {
+        width: 100%;
+        display: block;
+    }
+}
+
+/* TEXTO ESQUERDA */
+.bottomLeft {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    max-width: 500px;
+    z-index: 4;
+
+    h1 {
+        font-size: 100px;
+        font-weight: 900;
+        color: #f1ca26;
+        margin-bottom: 10px;
+        line-height: 100%;
+    }
+
+    p {
+        color: #ccc;
+        font-size: 14px;
+    }
+}
+
+/* DIREITA */
+.right {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    right: 0;
+    top: 200px;
+    max-width: 260px;
+
+    h3 {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 14px;
+        text-align: right;
+        color: #bbb;
+    }
+}
+
+/* DOTS */
+.dots {
+    margin-top: 15px;
+    display: flex;
+    gap: 8px;
+
+    span {
+        width: 8px;
+        height: 8px;
+        border: 1px solid white;
+        border-radius: 50%;
+    }
+}
+
+.active {
+    background: #f1ca26;
+}
+
+/* BOTÃO */
+.button {
+    position: absolute;
+    right: 0;
+    bottom: 40px;
+    background: #f1ca26;
+    color: black;
+    padding: 14px 24px;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}

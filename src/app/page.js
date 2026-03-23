@@ -3,26 +3,41 @@
 import styles from "./page.module.scss";
 import { useState } from "react";
 import PreloaderReveal from "@/components/_ui/PreloaderReveal/PreloaderReveal";
+import Hero from "@/components/_ui/Hero/Hero";
 
 export default function Sobre() {
-
   const [showPreloader, setShowPreloader] = useState(true);
+  const [ready, setReady] = useState(false);
 
-  return (  
+  const handlePreloaderComplete = () => {
+    setShowPreloader(false);
+    setReady(true);
+  };
+
+  return (
     <>
       {showPreloader && (
-				<PreloaderReveal
-					isVisible={showPreloader}
-					onComplete={() => setShowPreloader(false)}
-					logoSrc="/images/min-logo-line.svg"
-					marqueeText="Jarvis Game Academy"
-				/>
-			)}
+        <PreloaderReveal
+          isVisible={showPreloader}
+          onComplete={handlePreloaderComplete}
+          logoSrc="/images/min-logo-line.svg"
+          marqueeText="Jarvis Game Academy"
+        />
+      )}
+
+      {ready && (
+        <Hero
+            isReady={ready}
+            bigText="ATLETA DIGITAL"
+            subtitle="O competitivo dentro de eco sistema envolvendo os principais e-Sports, com jogadores profissionais desenvolvendo aulas para você evoluir na teória e prática."
+            rightTitle="EDUCAÇÃO"
+            rightText="Na área educacional, utilizamos games, criação digital e inovação como ferramentas para desenvolver criatividade, estratégia, colaboração,liguistica, reflexo e coordenação."
+            heroImage="/images/hero.png"
+        />
+      )}
 
       <div className={styles.page}>
-        <main className={styles.main}>
-          
-        </main>
+        <main className={styles.main}></main>
       </div>
     </>
   );
