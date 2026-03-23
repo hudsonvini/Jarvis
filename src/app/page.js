@@ -1,16 +1,29 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-import JanisAccordionShowcase from "@/components/JanisAccordionShowcase/JanisAccordionShowcase";
-import Footer from "@/components/Footer/Footer";
+"use client";
 
-export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <JanisAccordionShowcase />
+import styles from "./page.module.scss";
+import { useState } from "react";
+import PreloaderReveal from "@/components/_ui/PreloaderReveal/PreloaderReveal";
 
-        <Footer />
-      </main>
-    </div>
+export default function Sobre() {
+
+  const [showPreloader, setShowPreloader] = useState(true);
+
+  return (  
+    <>
+      {showPreloader && (
+				<PreloaderReveal
+					isVisible={showPreloader}
+					onComplete={() => setShowPreloader(false)}
+					logoSrc="/images/min-logo-line.svg"
+					marqueeText="Jarvis Game Academy"
+				/>
+			)}
+
+      <div className={styles.page}>
+        <main className={styles.main}>
+          
+        </main>
+      </div>
+    </>
   );
 }
