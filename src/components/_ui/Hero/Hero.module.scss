@@ -1,24 +1,24 @@
 .hero {
-    position: relative;
-    min-height: 100vh;
-    overflow: hidden;
-    // background: radial-gradient(circle at center, #4b1c9c, #0c0216);
-    color: white;
+	position: relative;
+	min-height: 100vh;
+	overflow: hidden;
+	color: white;
+	background:
+		radial-gradient(circle at 50% 62%, rgba(91, 24, 160, 0.3), transparent 34%),
+		linear-gradient(180deg, #09030f 0%, #0b0615 50%, #08030d 100%);
 }
 
 .hidden {
-    opacity: 0;
-    visibility: hidden;
+	opacity: 0;
+	visibility: hidden;
 }
 
-/* TOPO */
 .topStripeHero {
 	position: absolute;
-	top: 0px;
+	top: 0;
 	left: 0;
 	width: 100%;
 	height: 12px;
-	z-index: 5;
 	background: repeating-linear-gradient(
 		-55deg,
 		#f4d03f 0 42px,
@@ -26,33 +26,32 @@
 		#0b0615 84px 106px,
 		#0b0615 106px 128px
 	);
-	border-bottom: 0;
-    z-index: 999;
-    opacity: 1;
+	z-index: 999;
+	opacity: 1;
 }
+
 .bottomStrip {
 	position: absolute;
-	bottom: 0px;
+	bottom: 0;
 	left: 0;
 	width: 100%;
 	height: 12px;
-	z-index: 5;
+	z-index: 999;
+	opacity: 1;
 	background: linear-gradient(
 		90deg,
-		#00F577 0%,
-		#0084A9 15%,
-		#0038DF 34%,
-		#00C5CC 51%,
-		#01C231 69%,
-		#C8D300 86%,
-		#F30200 100%
+		#00f577 0%,
+		#0084a9 15%,
+		#0038df 34%,
+		#00c5cc 51%,
+		#01c231 69%,
+		#c8d300 86%,
+		#f30200 100%
 	);
-
 	background-size: 200% 200%;
 	animation: gradientMove 8s ease infinite;
-	border-bottom: 0;
-    z-index: 999;
-    opacity: 1;
+	transform-origin: left center;
+	will-change: transform;
 }
 
 @keyframes gradientMove {
@@ -68,43 +67,59 @@
 }
 
 .backLogo {
-    position: absolute;
-    height: 50vh;
-    top: 120px;
-    left: 0px;
+	position: absolute;
+	height: 50vh;
+	top: 120px;
+	left: 0;
+	z-index: 1;
+	color: rgba(255, 255, 255, 0.08);
+	pointer-events: none;
+
+	path,
+	rect,
+	line,
+	circle,
+	ellipse,
+	polyline,
+	polygon {
+		vector-effect: non-scaling-stroke;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		will-change: stroke-dashoffset, opacity, stroke;
+	}
 }
+
 .linesHero {
-    position: absolute;
-    height: 80vh;
-    top: 0px;
-    right: -20px;
+	position: absolute;
+	height: 80vh;
+	top: -60px;
+	right: -40px;
+	z-index: 1;
+	pointer-events: none;
+    opacity: .2;
+
+	path,
+	rect,
+	line,
+	circle,
+	ellipse,
+	polyline,
+	polygon {
+		vector-effect: non-scaling-stroke;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		will-change: stroke-dashoffset, opacity;
+	}
 }
 
-/* CONTAINER */
 .container {
-    max-width: 1300px;
-    margin: 0 auto;
-    position: relative;
-    height: 100vh;
+	max-width: 1300px;
+	margin: 0 auto;
+	position: relative;
+	height: 100vh;
+	padding: 0 24px;
 }
 
-/* TEXTO GIGANTE */
-.bigText {
-    position: absolute;
-    bottom: 180px;
-    left: 0;
-    font-size: clamp(5rem, 5vw, 10rem);
-    font-weight: 900;
-    letter-spacing: -0.05em;
-    z-index: 1;
-
-    span {
-        display: inline-block;
-        color: #f1ca26;
-    }
-}
-
-/* GLOW */
 .glow {
 	position: absolute;
 	left: 50%;
@@ -115,6 +130,7 @@
 	border-radius: 50%;
 	z-index: 0;
 	pointer-events: none;
+	will-change: transform, opacity;
 }
 
 .glow::before {
@@ -131,95 +147,303 @@
 	filter: blur(80px);
 }
 
-
-/* IMAGEM */
 .imageWrap {
-    position: absolute;
-    bottom: 40px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    width: 700px;
-    z-index: 3;
+	position: absolute;
+	bottom: 0px;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	width: min(700px, 58vw);
+	z-index: 3;
+	will-change: transform, opacity;
 
-    img {
-        width: 100%;
-        display: block;
-    }
+	img {
+		width: 100%;
+		display: block;
+	}
 }
 
-/* TEXTO ESQUERDA */
 .bottomLeft {
-    position: absolute;
-    bottom: 40px;
-    left: 0;
-    max-width: 500px;
-    z-index: 4;
+	position: absolute;
+	bottom: 40px;
+	left: 0;
+	max-width: 500px;
+	z-index: 4;
+	will-change: transform, opacity;
 
-    h1 {
-        font-size: 100px;
-        font-weight: 900;
-        color: #f1ca26;
-        margin-bottom: 10px;
-        line-height: 100%;
-    }
+	h1 {
+		font-size: clamp(48px, 7vw, 100px);
+		font-weight: 900;
+		color: #f1ca26;
+		margin-bottom: 10px;
+		line-height: 1;
+	}
 
-    p {
-        color: #ccc;
-        font-size: 14px;
-    }
+	p {
+		color: #ccc;
+		font-size: 14px;
+		line-height: 1.6;
+	}
 }
 
-/* DIREITA */
 .right {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    right: 0;
-    top: 200px;
-    max-width: 260px;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	right: 0;
+	top: 200px;
+	max-width: 260px;
+	z-index: 4;
+	will-change: transform, opacity;
 
-    h3 {
-        font-size: 32px;
-        margin-bottom: 10px;
-    }
+	h3 {
+		font-size: 32px;
+		margin-bottom: 10px;
+	}
 
-    p {
-        font-size: 14px;
-        text-align: right;
-        color: #bbb;
-    }
+	p {
+		font-size: 14px;
+		text-align: right;
+		color: #bbb;
+		line-height: 1.6;
+	}
 }
 
-/* DOTS */
 .dots {
-    margin-top: 15px;
-    display: flex;
-    gap: 8px;
+	margin-top: 15px;
+	display: flex;
+	gap: 8px;
 
-    span {
-        width: 8px;
-        height: 8px;
-        border: 1px solid white;
-        border-radius: 50%;
-    }
+	span {
+		width: 8px;
+		height: 8px;
+		border: 1px solid white;
+		border-radius: 50%;
+	}
 }
 
 .active {
-    background: #f1ca26;
+	background: #f1ca26;
 }
 
-/* BOTÃO */
 .button {
-    position: absolute;
-    right: 0;
-    bottom: 40px;
-    background: #f1ca26;
-    color: black;
-    padding: 14px 24px;
-    font-weight: bold;
-    font-size: 14px;
-    border: none;
-    cursor: pointer;
+	position: absolute;
+	right: 0;
+	bottom: 40px;
+	background: #f1ca26;
+	color: black;
+	padding: 14px 24px;
+	font-weight: bold;
+	font-size: 14px;
+	border: none;
+	cursor: pointer;
+	z-index: 4;
+	will-change: transform, opacity;
+}
+
+@media (max-width: 1200px) {
+	.backLogo {
+		height: 42vh;
+		top: 110px;
+	}
+
+	.linesHero {
+		height: 68vh;
+		right: 0;
+	}
+
+	.imageWrap {
+		width: min(620px, 62vw);
+	}
+
+	.bigText {
+		bottom: 170px;
+	}
+}
+
+@media (max-width: 992px) {
+	.container {
+		padding: 0 20px;
+	}
+
+	.backLogo {
+		height: 34vh;
+		top: 96px;
+		left: -10px;
+	}
+
+	.linesHero {
+		height: 52vh;
+		top: 30px;
+		right: -10px;
+	}
+
+	.bigText {
+		left: 20px;
+		bottom: 155px;
+		font-size: clamp(3.6rem, 10vw, 6rem);
+		white-space: normal;
+		max-width: 70%;
+	}
+
+	.imageWrap {
+		width: min(540px, 72vw);
+		bottom: 62px;
+	}
+
+	.bottomLeft {
+		max-width: 420px;
+
+		h1 {
+			font-size: clamp(42px, 8vw, 72px);
+		}
+	}
+
+	.right {
+		top: 140px;
+		max-width: 220px;
+
+		h3 {
+			font-size: 26px;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.hero {
+		min-height: 100svh;
+	}
+
+	.container {
+		height: 100svh;
+		padding: 0 16px 24px;
+	}
+
+	.topStripeHero,
+	.bottomStrip {
+		height: 10px;
+	}
+
+	.backLogo {
+		height: 26vh;
+		top: 82px;
+		left: -18px;
+		opacity: 0.8;
+	}
+
+	.linesHero {
+		height: 34vh;
+		top: 48px;
+		right: -20px;
+		opacity: 0.9;
+	}
+
+	.bigText {
+		position: absolute;
+		left: 16px;
+		right: 16px;
+		bottom: auto;
+		top: 118px;
+		max-width: 100%;
+		font-size: clamp(2.7rem, 12vw, 4.4rem);
+		line-height: 0.92;
+	}
+
+	.glow {
+		width: 88vw;
+		height: 88vw;
+		bottom: 150px;
+	}
+
+	.imageWrap {
+		width: min(460px, 92vw);
+		bottom: 150px;
+	}
+
+	.bottomLeft {
+		left: 16px;
+		right: 16px;
+		bottom: 74px;
+		max-width: 100%;
+
+		h1 {
+			font-size: clamp(34px, 10vw, 52px);
+			margin-bottom: 8px;
+		}
+
+		p {
+			font-size: 13px;
+		}
+	}
+
+	.right {
+		top: auto;
+		bottom: 320px;
+		right: 16px;
+		max-width: 180px;
+
+		h3 {
+			font-size: 20px;
+			margin-bottom: 6px;
+		}
+
+		p {
+			font-size: 12px;
+		}
+	}
+
+	.button {
+		right: 16px;
+		bottom: 24px;
+		padding: 12px 18px;
+		font-size: 13px;
+	}
+}
+
+@media (max-width: 560px) {
+	.backLogo {
+		height: 22vh;
+		top: 88px;
+		left: -24px;
+	}
+
+	.linesHero {
+		height: 28vh;
+		top: 58px;
+		right: -26px;
+	}
+
+	.bigText {
+		top: 126px;
+		font-size: clamp(2.4rem, 13vw, 3.4rem);
+	}
+
+	.imageWrap {
+		width: 96vw;
+		bottom: 170px;
+	}
+
+	.glow {
+		width: 100vw;
+		height: 100vw;
+		bottom: 165px;
+	}
+
+	.right {
+		bottom: 332px;
+		max-width: 150px;
+
+		h3 {
+			font-size: 18px;
+		}
+
+		p {
+			font-size: 11px;
+		}
+	}
+
+	.bottomLeft {
+		bottom: 78px;
+	}
 }
