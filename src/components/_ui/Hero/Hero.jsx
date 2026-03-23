@@ -221,7 +221,7 @@ export default function Hero({
 			ref={rootRef}
 			className={`${styles.hero} ${!isReady ? styles.hidden : ""}`}
 		>
-			<div className={styles.topStripeHero} />
+			{/* <div className={styles.topStripeHero} /> */}
 			<div className={styles.bottomStrip} ref={bottomStripRef} />
 
 			<div className={styles.container}>

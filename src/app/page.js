@@ -4,6 +4,7 @@ import styles from "./page.module.scss";
 import { useState } from "react";
 import PreloaderReveal from "@/components/_ui/PreloaderReveal/PreloaderReveal";
 import Hero from "@/components/_ui/Hero/Hero";
+import Navbar from "@/components/_global/Navbar/Navbar";
 
 export default function Sobre() {
   const [showPreloader, setShowPreloader] = useState(true);
@@ -26,14 +27,22 @@ export default function Sobre() {
       )}
 
       {ready && (
-        <Hero
+        <>
+          <Navbar 
+            logoSrc="/images/logo.png" 
+            logoAlt="Jarvis"
             isReady={ready}
-            bigText="ATLETA DIGITAL"
-            subtitle="O competitivo dentro de eco sistema envolvendo os principais e-Sports, com jogadores profissionais desenvolvendo aulas para você evoluir na teória e prática."
-            rightTitle="EDUCAÇÃO"
-            rightText="Na área educacional, utilizamos games, criação digital e inovação como ferramentas para desenvolver criatividade, estratégia, colaboração,liguistica, reflexo e coordenação."
-            heroImage="/images/hero.png"
-        />
+          />
+
+          <Hero
+              isReady={ready}
+              bigText="ATLETA DIGITAL"
+              subtitle="O competitivo dentro de eco sistema envolvendo os principais e-Sports, com jogadores profissionais desenvolvendo aulas para você evoluir na teória e prática."
+              rightTitle="EDUCAÇÃO"
+              rightText="Na área educacional, utilizamos games, criação digital e inovação como ferramentas para desenvolver criatividade, estratégia, colaboração,liguistica, reflexo e coordenação."
+              heroImage="/images/hero.png"
+          />
+        </>
       )}
 
       <div className={styles.page}>

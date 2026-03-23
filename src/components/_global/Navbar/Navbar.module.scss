@@ -1,0 +1,282 @@
+.navbarShell {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 60;
+    pointer-events: none;
+}
+
+.topStripWrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 80;
+    opacity: 0;
+}
+
+.topStripIntro {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    will-change: transform;
+}
+
+.topStripViewport {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.topStripTrack {
+    display: flex;
+    width: 200%;
+    height: 100%;
+    will-change: transform;
+}
+
+.topStripeHero {
+    flex: 0 0 50%;
+    height: 12px;
+    background: repeating-linear-gradient(
+        -55deg,
+        #f4d03f 0 42px,
+        #f4d03f 42px 84px,
+        #0b0615 84px 106px,
+        #0b0615 106px 128px
+    );
+}
+
+.navbar {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    padding-top: calc(12px + 0.75rem);
+    z-index: 70;
+    pointer-events: auto;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.navLogo,
+.navToggler {
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.navLogo {
+    will-change: transform, opacity;
+    opacity: 0;
+
+    a {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    img {
+        height: 44px;
+        object-fit: contain;
+        display: block;
+    }
+}
+
+.navToggler {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 5px;
+    overflow: hidden;
+
+    span {
+        width: 40px;
+        height: 2px;
+        background-color: #fff;
+        display: block;
+        will-change: transform, opacity;
+        backface-visibility: hidden;
+        transform: translateZ(0);
+        opacity: 1;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+}
+
+.open {
+    span:first-child {
+        transform: translateY(3.5px) rotate(45deg) scaleX(0.75);
+        opacity: 1;
+    }
+
+    span:nth-child(2) {
+        transform: translateY(-3.5px) rotate(-45deg) scaleX(0.75);
+        opacity: 1;
+    }
+}
+
+.navContent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: min(58svh, 620px);
+    pointer-events: none;
+    z-index: 50;
+}
+
+.navBg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transform: scaleY(0);
+    transform-origin: top;
+    will-change: transform;
+    pointer-events: none;
+
+    &:nth-child(1) {
+        background-color: #f4d03f;
+    }
+
+    &:nth-child(2) {
+        background-color: #362146;
+    }
+
+    &:nth-child(3) {
+        background-color: #22122f;
+    }
+
+    &:nth-child(4) {
+        background-color: #0F0716;
+    }
+}
+
+.navItems {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 8.5rem 4rem 3rem;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+    will-change: clip-path;
+    pointer-events: auto;
+    overflow: hidden;
+
+    a {
+        text-decoration: none;
+        color: #fff;
+        display: block;
+        line-height: 1.05;
+        margin-bottom: 0.5rem;
+    }
+}
+
+.navItemsCol {
+    &:nth-child(1) {
+        flex: 1.5;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+
+    &:nth-child(2) {
+        flex: 2.5;
+        display: flex;
+        gap: 2rem;
+        justify-content: space-between;
+    }
+}
+
+.navSocials {
+    a {
+        font-size: 1.1rem;
+    }
+}
+
+.navLegal {
+    a {
+        font-size: 0.9rem;
+        color: #bababa;
+    }
+}
+
+.navPrimaryLinks {
+    a {
+        font-size: clamp(2rem, 3vw, 3.2rem);
+    }
+}
+
+.navSecondaryLinks {
+    a {
+        font-size: 1.3rem;
+    }
+}
+
+.line {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    will-change: transform;
+    transform: translate3d(0, 100%, 0);
+    backface-visibility: hidden;
+}
+
+@media (max-width: 1200px) {
+    .navItems {
+        padding: 8rem 2.5rem 2.5rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .navContent {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100svh;
+    }
+
+    .navItems {
+        min-height: 100svh;
+        height: 100svh;
+        flex-direction: column;
+        justify-content: center;
+        padding: 7rem 2rem 2rem;
+    }
+
+    .navLegal,
+    .navSecondaryLinks {
+        display: none;
+    }
+
+    .navItemsCol {
+        &:nth-child(1),
+        &:nth-child(2) {
+            flex: none;
+        }
+    }
+
+    .navPrimaryLinks {
+        a {
+            font-size: clamp(2rem, 8vw, 3rem);
+        }
+    }
+
+    .navSocials {
+        a {
+            font-size: 1rem;
+        }
+    }
+}

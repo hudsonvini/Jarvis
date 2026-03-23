@@ -13,22 +13,22 @@
 	visibility: hidden;
 }
 
-.topStripeHero {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 12px;
-	background: repeating-linear-gradient(
-		-55deg,
-		#f4d03f 0 42px,
-		#f4d03f 42px 84px,
-		#0b0615 84px 106px,
-		#0b0615 106px 128px
-	);
-	z-index: 999;
-	opacity: 1;
-}
+// .topStripeHero {
+// 	position: absolute;
+// 	top: 0;
+// 	left: 0;
+// 	width: 100%;
+// 	height: 12px;
+// 	background: repeating-linear-gradient(
+// 		-55deg,
+// 		#f4d03f 0 42px,
+// 		#f4d03f 42px 84px,
+// 		#0b0615 84px 106px,
+// 		#0b0615 106px 128px
+// 	);
+// 	z-index: 999;
+// 	opacity: 1;
+// }
 
 .bottomStrip {
 	position: absolute;
