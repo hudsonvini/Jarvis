@@ -4,7 +4,7 @@
 	overflow: hidden;
 	color: white;
 	background:
-		radial-gradient(circle at 50% 62%, rgba(91, 24, 160, 0.3), transparent 34%),
+		// radial-gradient(circle at 50% 62%, rgba(91, 24, 160, 0.3), transparent 34%),
 		linear-gradient(180deg, #09030f 0%, #0b0615 50%, #08030d 100%);
 }
 
@@ -12,23 +12,6 @@
 	opacity: 0;
 	visibility: hidden;
 }
-
-// .topStripeHero {
-// 	position: absolute;
-// 	top: 0;
-// 	left: 0;
-// 	width: 100%;
-// 	height: 12px;
-// 	background: repeating-linear-gradient(
-// 		-55deg,
-// 		#f4d03f 0 42px,
-// 		#f4d03f 42px 84px,
-// 		#0b0615 84px 106px,
-// 		#0b0615 106px 128px
-// 	);
-// 	z-index: 999;
-// 	opacity: 1;
-// }
 
 .bottomStrip {
 	position: absolute;
@@ -70,7 +53,7 @@
 	position: absolute;
 	height: 50vh;
 	top: 120px;
-	left: 0;
+	left: 20px;
 	z-index: 1;
 	color: rgba(255, 255, 255, 0.08);
 	pointer-events: none;
@@ -97,6 +80,7 @@
 	z-index: 1;
 	pointer-events: none;
     opacity: .2;
+	opacity: .1;
 
 	path,
 	rect,
@@ -113,11 +97,11 @@
 }
 
 .container {
-	max-width: 1300px;
+	max-width: 1800px;
 	margin: 0 auto;
 	position: relative;
 	height: 100vh;
-	padding: 0 24px;
+	padding: 0 20px;
 }
 
 .glow {
@@ -153,7 +137,7 @@
 	left: 0;
 	right: 0;
 	margin: 0 auto;
-	width: min(700px, 58vw);
+	width: min(800px, 50vw);
 	z-index: 3;
 	will-change: transform, opacity;
 
@@ -166,7 +150,7 @@
 .bottomLeft {
 	position: absolute;
 	bottom: 40px;
-	left: 0;
+	left: 20px;
 	max-width: 500px;
 	z-index: 4;
 	will-change: transform, opacity;
@@ -191,7 +175,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
-	right: 0;
+	right: 20px;
 	top: 200px;
 	max-width: 260px;
 	z-index: 4;
@@ -229,7 +213,7 @@
 
 .button {
 	position: absolute;
-	right: 0;
+	right: 20px;
 	bottom: 40px;
 	background: #f1ca26;
 	color: black;
@@ -327,16 +311,15 @@
 
 	.backLogo {
 		height: 26vh;
-		top: 82px;
-		left: -18px;
+		top: 120px;
+		left: -40px;
 		opacity: 0.8;
 	}
 
 	.linesHero {
 		height: 34vh;
 		top: 48px;
-		right: -20px;
-		opacity: 0.9;
+		right: -40px;
 	}
 
 	.bigText {
@@ -379,7 +362,7 @@
 
 	.right {
 		top: auto;
-		bottom: 320px;
+		top: 120px;
 		right: 16px;
 		max-width: 180px;
 
@@ -404,14 +387,14 @@
 @media (max-width: 560px) {
 	.backLogo {
 		height: 22vh;
-		top: 88px;
-		left: -24px;
+		top: 110px;
+		left: -84px;
 	}
 
 	.linesHero {
 		height: 28vh;
 		top: 58px;
-		right: -26px;
+		right: -80px;
 	}
 
 	.bigText {
@@ -420,7 +403,7 @@
 	}
 
 	.imageWrap {
-		width: 96vw;
+		width: 100vw;
 		bottom: 170px;
 	}
 
@@ -432,7 +415,8 @@
 
 	.right {
 		bottom: 332px;
-		max-width: 150px;
+		max-width: 180px;
+		top: 120px;
 
 		h3 {
 			font-size: 18px;

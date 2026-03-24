@@ -43,13 +43,13 @@
 
 .topStripeHero {
     flex: 0 0 50%;
-    height: 12px;
+    height: 8px;
     background: repeating-linear-gradient(
         -55deg,
         #f4d03f 0 42px,
         #f4d03f 42px 84px,
-        #0b0615 84px 106px,
-        #0b0615 106px 128px
+        #09030f 84px 106px,
+        #09030f 106px 128px
     );
 }
 
@@ -63,7 +63,7 @@
     padding-top: calc(12px + 0.75rem);
     z-index: 70;
     pointer-events: auto;
-    max-width: 1300px;
+    max-width: 1800px;
     margin: 0 auto;
 }
 
@@ -241,6 +241,9 @@
 }
 
 @media (max-width: 1000px) {
+    .navbar {
+        padding: 1rem 0px;
+    }
     .navContent {
         position: fixed;
         inset: 0;

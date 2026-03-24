@@ -264,12 +264,12 @@ export default function Hero({
 							y2="675"
 							gradientUnits="userSpaceOnUse"
 						>
-							<stop offset="0%" stopColor="#00F577" />
-							<stop offset="15%" stopColor="#0084A9" />
-							<stop offset="34%" stopColor="#0038DF" />
-							<stop offset="51%" stopColor="#00C5CC" />
-							<stop offset="69%" stopColor="#01C231" />
-							<stop offset="86%" stopColor="#C8D300" />
+							<stop offset="0%" stopColor="#F30200" />
+							<stop offset="15%" stopColor="#fff" />
+							<stop offset="34%" stopColor="#fff" />
+							<stop offset="51%" stopColor="#fff" />
+							<stop offset="69%" stopColor="#fff" />
+							<stop offset="86%" stopColor="#fff" />
 							<stop offset="100%" stopColor="#F30200" />
 						</linearGradient>
 					</defs>
