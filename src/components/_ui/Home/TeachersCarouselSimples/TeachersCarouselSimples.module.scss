@@ -41,67 +41,6 @@
 	margin: 0;
 }
 
-.controls {
-	display: flex;
-	align-items: center;
-	gap: 14px;
-	margin-left: auto;
-	padding-top: 6px;
-}
-
-.gameFilters {
-	display: flex;
-	align-items: center;
-	gap: 10px;
-}
-
-.gameFilterButton {
-	position: relative;
-	width: fit-content;
-	height: 58px;
-	padding: 0;
-    padding: 0px 16px;
-	border: 1px solid rgba(255, 255, 255, 0.147);
-	// background: rgba(255, 255, 255, 0.02);
-    background-color: transparent;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
-	transition:
-		background 0.3s ease,
-		border-color 0.3s ease,
-		transform 0.3s ease,
-		box-shadow 0.3s ease;
-}
-
-.gameFilterButton:hover {
-	border-color: rgba(255, 214, 10, 0.45);
-}
-
-.gameFilterButtonActive {
-	border-color: #e0b31a;
-	box-shadow: 0 0 0 1px rgba(224, 179, 26, 0.18) inset;
-
-    .gameFilterLogo {
-        opacity: 1;
-    }
-}
-
-.gameFilterLogo {
-	width: auto;
-	display: block;
-    opacity: 0.4;
-}
-
-.sliderTrackChanging {
-	opacity: 0.45;
-	transform: scale(0.985);
-	transition:
-		transform 0.35s ease,
-		opacity 0.35s ease;
-}
-
 .navButtons {
 	display: flex;
 	gap: 8px;
@@ -313,25 +252,6 @@
 		font-size: 0.98rem;
 		line-height: 1.65;
 	}
-
-	.controls {
-		flex-wrap: wrap;
-		gap: 12px;
-	}
-
-	.gameFilters {
-        gap: 8px;
-    }
-    
-    .gameFilterButton {
-        width: 50px;
-        height: 50px;
-    }
-    
-    .gameFilterLogo {
-        width: 22px;
-        height: 22px;
-    }
 
 	.navButton {
 		width: 50px;
