@@ -1,0 +1,375 @@
+.sectionTeachers {
+	position: relative;
+	width: 100%;
+	padding: 110px 28px 80px;
+	background:
+		radial-gradient(circle at 20% 30%, rgba(81, 14, 140, 0.12), transparent 32%),
+		radial-gradient(circle at 80% 20%, rgba(255, 196, 0, 0.06), transparent 20%),
+		radial-gradient(circle at 50% 100%, rgba(130, 30, 255, 0.08), transparent 35%),
+		#06010d;
+	overflow: hidden;
+}
+
+.inner {
+	width: 100%;
+	max-width: 1800px;
+	margin: 0 auto;
+}
+
+.topBar {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 32px;
+	margin-bottom: 42px;
+}
+
+.headingBlock {
+	max-width: 720px;
+}
+
+.eyebrow {
+	display: inline-block;
+	font-size: 32px;
+	line-height: 1;
+	font-weight: 700;
+	letter-spacing: -0.03em;
+	color: #f3eefc;
+	margin-bottom: 18px;
+}
+
+.description {
+	max-width: 620px;
+	font-size: 14px;
+	line-height: 1.7;
+	color: rgba(219, 209, 236, 0.58);
+	margin: 0;
+}
+
+.controls {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	margin-left: auto;
+	padding-top: 6px;
+}
+
+.gameFilters {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.gameFilterButton {
+	position: relative;
+	width: fit-content;
+	height: 58px;
+	padding: 0;
+    padding: 0px 16px;
+	border: 1px solid rgba(255, 255, 255, 0.147);
+	// background: rgba(255, 255, 255, 0.02);
+    background-color: transparent;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition:
+		background 0.3s ease,
+		border-color 0.3s ease,
+		transform 0.3s ease,
+		box-shadow 0.3s ease;
+}
+
+.gameFilterButton:hover {
+	border-color: rgba(255, 214, 10, 0.45);
+}
+
+.gameFilterButtonActive {
+	border-color: #e0b31a;
+	box-shadow: 0 0 0 1px rgba(224, 179, 26, 0.18) inset;
+
+    .gameFilterLogo {
+        opacity: 1;
+    }
+}
+
+.gameFilterLogo {
+	width: auto;
+	display: block;
+    opacity: 0.4;
+}
+
+.sliderTrackChanging {
+	opacity: 0.45;
+	transform: scale(0.985);
+	transition:
+		transform 0.35s ease,
+		opacity 0.35s ease;
+}
+
+.navButtons {
+	display: flex;
+	gap: 8px;
+}
+
+.navButton {
+	width: 58px;
+	height: 58px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	background: rgba(255, 255, 255, 0.04);
+	color: #efe9fb;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition:
+		background 0.3s ease,
+		border-color 0.3s ease,
+		transform 0.3s ease,
+		color 0.3s ease;
+}
+
+.navButton:hover {
+	background: rgba(255, 214, 10, 0.08);
+	border-color: rgba(255, 214, 10, 0.45);
+	color: #ffd83d;
+	// transform: translateY(-2px);
+}
+
+.navButton span {
+	font-size: 1.3rem;
+	line-height: 1;
+}
+
+.sliderViewport {
+	width: 100%;
+	overflow: hidden;
+}
+
+.sliderTrack {
+	display: flex;
+	will-change: transform;
+	transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.slide {
+	flex: 0 0 33.3333%;
+	padding: 0 14px;
+	box-sizing: border-box;
+}
+
+.card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background:
+		radial-gradient(circle at 50% 100%, rgba(102, 31, 157, 0.18), transparent 35%),
+		linear-gradient(180deg, rgba(18, 8, 30, 0.92) 0%, rgba(11, 3, 20, 0.98) 100%);
+	border: 1px solid rgba(255, 255, 255, 0.09);
+	overflow: hidden;
+	isolation: isolate;
+	transition:
+		border-color 0.35s ease,
+		transform 0.45s ease,
+		box-shadow 0.45s ease;
+	clip-path: polygon(0 0, 100% 0, 100% 86%, 90% 100%, 0 100%);
+}
+
+.card:hover {
+	border-color: #e0b31a;
+	box-shadow: 0 22px 50px rgba(0, 0, 0, 0.3);
+}
+
+.cardGlow {
+	position: absolute;
+	inset: 0;
+	background:
+		radial-gradient(circle at 50% 110%, rgba(255, 120, 0, 0.09), transparent 24%),
+		radial-gradient(circle at 65% 10%, rgba(79, 0, 135, 0.08), transparent 28%);
+	z-index: 0;
+	pointer-events: none;
+}
+
+.cardHeader {
+	position: relative;
+	z-index: 2;
+	padding: 42px 28px 26px;
+}
+
+.cardTopIcon {
+	position: absolute;
+	top: 24px;
+	right: 20px;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.cardTopIcon span {
+	width: 10px;
+	height: 10px;
+	background: #f0c11d;
+	transform: rotate(45deg);
+	display: block;
+}
+
+.cardTitle {
+	margin: 0px 0 10px;
+	font-size: 32px;
+	line-height: 0.98;
+	letter-spacing: -0.05em;
+	color: #fff7ee;
+	font-weight: 700;
+}
+
+.cardName {
+	margin: 0 0 10px;
+	font-size: 16px;
+	color: rgba(255, 255, 255, 0.72);
+}
+
+.cardRole {
+	display: inline-flex;
+	align-items: center;
+	gap: 12px;
+	color: #f1edf9;
+	font-size: 1.02rem;
+	font-weight: 600;
+}
+
+.cardRole i {
+	width: 9px;
+	height: 9px;
+	background: #8a10ff;
+	display: inline-block;
+}
+
+.mediaArea {
+	position: relative;
+	height: 360px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	z-index: 1;
+	margin-top: auto;
+	background:
+		radial-gradient(circle at 50% 100%, rgba(255, 124, 37, 0.14), transparent 38%),
+		linear-gradient(180deg, rgba(33, 13, 45, 0.56) 0%, rgba(38, 12, 20, 0.6) 100%);
+}
+
+.mediaOverlay {
+	position: absolute;
+	inset: 0;
+	background:
+		linear-gradient(180deg, rgba(8, 4, 15, 0) 0%, rgba(8, 4, 15, 0.12) 100%),
+		radial-gradient(circle at 50% 30%, rgba(84, 0, 255, 0.08), transparent 45%);
+	pointer-events: none;
+}
+
+.teacherImage {
+	position: relative;
+	z-index: 2;
+	display: block;
+	max-width: 88%;
+	max-height: 108%;
+	object-fit: contain;
+	object-position: center bottom;
+	filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.35));
+	transform: translateY(10px);
+	transition: transform 0.45s ease;
+}
+
+.card:hover .teacherImage {
+	transform: translateY(0);
+}
+
+@media (max-width: 1180px) {
+	.topBar {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.controls {
+		width: 100%;
+		justify-content: space-between;
+		margin-left: 0;
+	}
+
+	.slide {
+		flex: 0 0 50%;
+	}
+
+	.mediaArea {
+		height: 320px;
+	}
+}
+
+@media (max-width: 767px) {
+	.sectionTeachers {
+		padding: 80px 18px 60px;
+	}
+
+	.topBar {
+		margin-bottom: 28px;
+	}
+
+	.description {
+		font-size: 0.98rem;
+		line-height: 1.65;
+	}
+
+	.controls {
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+
+	.gameFilters {
+        gap: 8px;
+    }
+    
+    .gameFilterButton {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .gameFilterLogo {
+        width: 22px;
+        height: 22px;
+    }
+
+	.navButton {
+		width: 50px;
+		height: 50px;
+	}
+
+	.slide {
+		flex: 0 0 100%;
+		padding: 0 6px;
+	}
+
+
+	.cardHeader {
+		padding: 34px 22px 20px;
+	}
+
+	.cardTitle {
+		font-size: clamp(2rem, 10vw, 3rem);
+	}
+
+	.cardName {
+		font-size: 1.02rem;
+	}
+
+	.cardRole {
+		font-size: 0.95rem;
+	}
+
+	.mediaArea {
+		height: 290px;
+	}
+
+	.teacherImage {
+		max-width: 92%;
+	}
+}

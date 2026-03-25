@@ -6,6 +6,7 @@ import PreloaderReveal from "@/components/_ui/PreloaderReveal/PreloaderReveal";
 import Hero from "@/components/_ui/Home/Hero/Hero";
 import Navbar from "@/components/_global/Navbar/Navbar";
 import CoursesSection from "@/components/_ui/Home/CoursesSection/CoursesSection";
+import TeachersCarousel from "@/components/_ui/Home/TeachersCarousel/TeachersCarousel";
 
 export default function Sobre() {
   const [showPreloader, setShowPreloader] = useState(true);
@@ -46,6 +47,8 @@ export default function Sobre() {
 
           <main className={styles.main}>
             <CoursesSection />
+
+            <TeachersCarousel />
           </main>
         </>
       )}
