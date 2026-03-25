@@ -22,9 +22,9 @@ const legalLinks = [
 
 const primaryLinks = [
     { label: "Home", href: "/" },
-    { label: "Pacotes de Hora", href: "#" },
-    { label: "Cursos", href: "#" },
-    { label: "Aniversário", href: "#" },
+    { label: "Pacotes de Hora", href: "/sobre" },
+    { label: "Cursos", href: "/sobre" },
+    { label: "Aniversário", href: "/sobre" },
     { label: "Sobre", href: "/sobre" },
 ];
 

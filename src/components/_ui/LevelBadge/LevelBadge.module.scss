@@ -1,0 +1,107 @@
+.levelBadge {
+	display: inline-flex;
+	flex-direction: column;
+	gap: 0.35rem;
+	color: #f4efe9;
+    margin-top: 10px;
+}
+
+.topLabel {
+	font-size: 0.95rem;
+	line-height: 1;
+	color: rgba(255, 255, 255, 0.8);
+}
+
+.row {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.9rem;
+}
+
+.icons {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+}
+
+.diamond {
+	width: 10px;
+	height: 10px;
+	display: block;
+	transform: rotate(45deg);
+	border-radius: 1px;
+	flex-shrink: 0;
+	transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+
+    &:not(:first-child) {
+        margin-left: -6px;
+        box-shadow: 0px 0px 0px 2px #132031;
+    }
+}
+
+.active {
+	background: #f4d03f;
+	box-shadow:
+		0 0 0 1px #132031,
+		0 0 14px #132031;
+}
+
+.inactive {
+    display: none;
+	background: #132031;
+	opacity: 0.45;
+}
+
+.text {
+    line-height: 1;
+	font-weight: 400;
+	letter-spacing: -0.02em;
+	color: #f4efe9;
+	white-space: nowrap;
+	font-size: 12px;
+}
+
+.full {
+	.topLabel {
+		margin-left: 2px;
+	}
+
+	.text {
+		font-size: 16px;
+	}
+}
+
+.compact {
+	gap: 0;
+
+	.row {
+		gap: 0.8rem;
+	}
+
+	.text {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 768px) {
+	.topLabel {
+		font-size: 0.82rem;
+	}
+
+	.icons {
+		gap: 0.28rem;
+	}
+
+	.diamond {
+		width: 12px;
+		height: 12px;
+	}
+
+	.full .text {
+		font-size: 1.35rem;
+	}
+
+	.compact .text {
+		font-size: 1.15rem;
+	}
+}
