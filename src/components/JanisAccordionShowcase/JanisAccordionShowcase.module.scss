@@ -93,7 +93,11 @@
 .buttonsArea {
 	display: flex;
 	align-items: center;
-	gap: 20px;
+	gap: 10px;
+
+	@include tablet  {
+		gap: 20px;
+	}
 
 	a {
 		display: flex;
@@ -107,9 +111,19 @@
 			height: 16px;
 		}
 
+		span {
+			display: none;
+		}
+
 		&.primaryButton {
 			background-color: #f1ca26;
 			color: #000;
+
+			@include tablet  {
+				span {
+					display: block;
+				}
+			}
 		}
 	}
 }
