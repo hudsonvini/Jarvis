@@ -1,4 +1,4 @@
-import { Syne, Geist_Mono } from "next/font/google";
+import { Syne, Bai_Jamjuree } from "next/font/google";
 import "./globals.css";
 
 const syne = Syne({
@@ -6,9 +6,10 @@ const syne = Syne({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const bai = Bai_Jamjuree({
+  variable: "--font-bai",
   subsets: ["latin"],
+  weight: ["400", "600"],
 });
 
 export const metadata = {
@@ -19,7 +20,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${syne.variable} ${geistMono.variable}`}>
+      <body className={`${syne.variable} ${bai.variable}`}>
         {children}
       </body>
     </html>

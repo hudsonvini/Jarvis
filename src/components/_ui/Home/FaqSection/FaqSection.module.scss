@@ -1,10 +1,6 @@
 .faqSection {
 	position: relative;
 	width: 100%;
-	background:
-		radial-gradient(circle at 82% 14%, rgba(255, 140, 0, 0.08), transparent 18%),
-		radial-gradient(circle at 12% 0%, rgba(120, 60, 255, 0.08), transparent 28%),
-		#05010d;
 	color: #f5efe4;
 	overflow: hidden;
 	padding: 110px 24px 90px;
@@ -41,55 +37,10 @@
 	pointer-events: none;
 }
 
-.visualSlot {
-	position: relative;
-	width: clamp(160px, 15vw, 250px);
-	aspect-ratio: 1 / 1;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-shrink: 0;
-	margin-top: 10px;
-}
-
-.visualRingText {
-	position: absolute;
-	inset: 0;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: clamp(0.44rem, 0.7vw, 0.62rem);
-	letter-spacing: 0.42em;
-	text-transform: uppercase;
-	color: rgba(231, 225, 240, 0.62);
-	text-align: center;
-	animation: ringRotate 16s linear infinite;
-}
-
-.visualCore {
-	position: relative;
-	z-index: 2;
-	width: clamp(42px, 4.6vw, 72px);
-	height: clamp(42px, 4.6vw, 72px);
-	border-radius: 999px;
-	background:
-		radial-gradient(circle at 35% 35%, #ffb04a 0%, #ff8800 38%, #e36a00 100%);
-	box-shadow:
-		0 0 22px rgba(255, 136, 0, 0.25),
-		0 0 60px rgba(255, 136, 0, 0.12);
-}
-
-.visualSvgPlaceholder {
-	position: absolute;
-	inset: 0;
-	pointer-events: none;
-}
-
 .visualSvg {
-	position: absolute;
-	inset: 0;
+	display: block;
 	width: 100%;
-	height: 100%;
+	height: auto;
 
 	path,
 	line,
@@ -102,6 +53,7 @@
 		stroke-width: 1.2;
 		stroke-linecap: round;
 		stroke-linejoin: round;
+		vector-effect: non-scaling-stroke;
 	}
 }
 
@@ -129,16 +81,16 @@
 	display: grid;
 	grid-template-columns: 140px 1fr;
 	align-items: center;
-	gap: 18px;
+	gap: 20px;
 	padding: 34px 8px 34px 0;
 }
 
 .itemNumber {
-	font-size: clamp(3.7rem, 6vw, 7rem);
+	font-family: 'Bai Jamjuree', Syne, sans-serif;
+	font-size: clamp(3rem, 6vw, 7rem);
 	font-weight: 800;
 	line-height: 0.84;
 	font-style: italic;
-	letter-spacing: -0.08em;
 	color: rgba(245, 239, 228, 0.98);
 	padding-left: 4px;
 	will-change: transform, opacity, filter;
@@ -149,8 +101,9 @@
 }
 
 .itemTitle {
+	font-family: 'Bai Jamjuree', Syne, sans-serif;
 	margin: 0 0 10px;
-	font-size: clamp(1.45rem, 2.15vw, 3rem);
+	font-size: 24px;
 	font-weight: 800;
 	line-height: 1;
 	letter-spacing: -0.04em;
@@ -161,10 +114,10 @@
 
 .itemDescription {
 	margin: 0;
-	font-size: clamp(0.98rem, 1.05vw, 1.2rem);
+	font-size: clamp(0.98rem, 1.0vw, 1.2rem);
 	line-height: 1.55;
 	color: rgba(218, 211, 228, 0.5);
-	max-width: 760px;
+	max-width: 500px;
 	will-change: transform, opacity, filter;
 }
 
@@ -228,11 +181,6 @@
 		gap: 24px;
 	}
 
-	.visualSlot {
-		width: 150px;
-		margin-left: auto;
-	}
-
 	.giantWord {
 		font-size: clamp(4rem, 20vw, 8rem);
 	}
@@ -274,15 +222,6 @@
 @media (max-width: 640px) {
 	.faqSection {
 		padding: 74px 16px 62px;
-	}
-
-	.visualSlot {
-		width: 128px;
-	}
-
-	.visualRingText {
-		font-size: 0.38rem;
-		letter-spacing: 0.32em;
 	}
 
 	.itemRow {

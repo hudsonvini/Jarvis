@@ -6,7 +6,8 @@ body {
 body {
   color: #fff;
   background: #09030f;
-  font-family: Syne , Helvetica, sans-serif;
+  /* font-family: Syne , Helvetica, sans-serif; */
+  font-family: 'Bai Jamjuree', Syne, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -14,12 +15,21 @@ body {
 
 * {
   box-sizing: border-box;
-  font-family: Syne , Helvetica, sans-serif;
+  /* font-family: Syne , Helvetica, sans-serif; */
+  font-family: 'Bai Jamjuree', Syne, sans-serif;
   padding: 0;
   margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Syne" , Helvetica, sans-serif;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  font-family: Syne , Helvetica, sans-serif;
 }
