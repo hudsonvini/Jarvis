@@ -251,7 +251,7 @@ export default function JanisAccordionShowcase() {
 											</div>
 										</div>
 
-										<span className={styles.icon}>
+										<span className={styles.icon }>
 											<span
 												className={
 													isActive ? styles.closeIcon : styles.chevron
