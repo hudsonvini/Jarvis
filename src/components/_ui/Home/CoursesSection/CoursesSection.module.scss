@@ -29,258 +29,272 @@
 }
 
 .card {
-    position: relative;
+	position: relative;
 	border: 1px solid #29222f;
-    transition: .3s;
-    padding: 20px;
+	transition: 0.3s;
+	padding: 20px;
 
-    &:hover {
-        border: 1px solid #f4d03f;
-    }
+	&:hover {
+		border: 1px solid #f4d03f;
+	}
 
 	&.cardPrincipal {
 		grid-row: 1 / span 3;
-        background-color: rgba(26, 22, 29, 0.62);
-        overflow: hidden;
+		background-color: rgba(26, 22, 29, 0.62);
+		overflow: hidden;
 
-        .imagePrincipal  {
-            left: 50%;
-            transform: translateX(0%);
-        }
+		.imagePrincipal {
+			left: 50%;
+			transform: translateX(0%);
+		}
 
-        .areaText {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: absolute;
-            height: calc(100% - 40px);
-            // bottom: 20px;
-            z-index: 9;
+		.areaText {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			position: absolute;
+			height: calc(100% - 40px);
+			z-index: 9;
 
-            .descriptionCard {
-                max-width: 50%;
-            }
-        }
+			.descriptionCard {
+				max-width: 50%;
+			}
+		}
 
-        .buttonInscrever {
-            right: 20px;
-            bottom: 20px;
-        }
+		.buttonInscrever {
+			right: 20px;
+			bottom: 20px;
+		}
 	}
 
 	&.cardSecondary1 {
 		grid-column: 2;
 		grid-row: 1;
 
-        &:hover {
-            .buttonInscrever {
-                opacity: 1;
-            }
-        }
+		&:hover {
+			.buttonInscrever {
+				opacity: 1;
+			}
+		}
 
-        .titleCard {
-            &:after  {
-                background-color: #E36725;
-            }
-        }
+		.titleCard {
+			&:after {
+				background-color: #e36725;
+			}
+		}
 
-        .buttonInscrever {
-            transition: .3s;
-            opacity: 0;
-        }
+		.buttonInscrever {
+			transition: 0.3s;
+			opacity: 0;
+		}
 	}
 
 	&.cardSecondary2 {
 		grid-column: 2;
 		grid-row: 2;
 
-        &:hover {
-            .buttonInscrever {
-                opacity: 1;
-            }
-        }
+		&:hover {
+			.buttonInscrever {
+				opacity: 1;
+			}
+		}
 
-        .titleCard {
-            &:after  {
-                background-color: #7FDC82;
-            }
-        }
+		.titleCard {
+			&:after {
+				background-color: #7fdc82;
+			}
+		}
 
-        .buttonInscrever {
-            transition: .3s;
-            opacity: 0;
-        }
+		.buttonInscrever {
+			transition: 0.3s;
+			opacity: 0;
+		}
 	}
 
 	&.cardNumber {
 		grid-column: 3;
 		grid-row: 1 / span 2;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        background: rgba(26, 22, 29, 10.04);
-        background: linear-gradient(146deg,rgba(26, 22, 29, 0.4) 33%, rgba(45, 30, 92, 1) 100%);
-        
-        &:hover {
-            svg {
-                fill: #F9CF3B;
-            }
-        }
-        svg {
-            transition: .3s;
-            fill: #FFF2DF;
-            height: 80px;
-        }
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		background: rgba(26, 22, 29, 10.04);
+		background: linear-gradient(
+			146deg,
+			rgba(26, 22, 29, 0.4) 33%,
+			rgba(45, 30, 92, 1) 100%
+		);
 
-        a {
-            position: relative;
-            margin-top: 10px;
-            color: #F9CF3B;
+		&:hover {
+			svg {
+				fill: #f9cf3b;
+			}
+		}
 
-            &::after {
-                content: '';
-                position: absolute;
-                left: 0px;
-                bottom: -10px;
-                width: 100%;
-                height: 1px;
-                background-color: #F9CF3B;
-            }
-        }
-    }
+		svg {
+			transition: 0.3s;
+			fill: #fff2df;
+			height: 80px;
+		}
+
+		a {
+			position: relative;
+			margin-top: 10px;
+			color: #f9cf3b;
+			text-align: center;
+
+			&::after {
+				content: "";
+				position: absolute;
+				left: 0px;
+				bottom: -10px;
+				width: 100%;
+				height: 1px;
+				background-color: #f9cf3b;
+			}
+		}
+	}
 
 	&.cardBanner {
 		grid-column: 1 / span 3;
 
-        .areaText {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
+		.areaText {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			height: 100%;
 
-            .titleAtleta {
-                margin-top: 10px;
-            }
+			.titleAtleta {
+				margin-top: 10px;
+			}
 
-            .bottomArea {
-                display: flex;
-                align-items: center;
-                gap: 20px;
+			.bottomArea {
+				display: flex;
+				align-items: center;
+				gap: 20px;
 
-                .buttonInscrever {
-                    position: static;
-                }
-            }
-        }
+				.buttonInscrever {
+					position: static;
+				}
+			}
+		}
 	}
 
-    .tagHour {
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #7F14B7;
-        width: fit-content;
-        width: 50px;
-        height: 30px;
-        color: #fff;
-        text-transform: uppercase;
-        font-weight: 700;
-    }
+	.tagHour {
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #7f14b7;
+		width: 50px;
+		height: 30px;
+		color: #fff;
+		text-transform: uppercase;
+		font-weight: 700;
+		z-index: 12;
+	}
 
-    .tag {
-        display: block;
-        color: #787878;
-        margin-bottom: 8px;
-    }
+	.tag {
+		display: block;
+		color: #787878;
+		margin-bottom: 8px;
+	}
 
-    .titleCard {
-        position: relative;
-        font-size: 20px;
-        margin-left: 10px;
+	.titleCard {
+		position: relative;
+		font-size: 20px;
+		margin-left: 10px;
 
-        &:after {
-            content: '';
-            position: absolute;
-            left: -12px;
-            width: 3px;
-            height: 100%;
-            background-color: #7F14B7;
-        }
-    }
-    .descriptionCard {
-        margin-top: 10px;
-        font-size: 14px;
-        color: #B5B5B5;
-    }
+		&:after {
+			content: "";
+			position: absolute;
+			left: -12px;
+			width: 3px;
+			height: 100%;
+			background-color: #7f14b7;
+		}
+	}
 
-    .imagePrincipal {
-        position: absolute;
-        bottom: 0px;
-        right: 0px;
-    }
-    .professorArea {
-        display: flex;
-        gap: 10px;
-        margin-top: 10px;
+	.descriptionCard {
+		margin-top: 10px;
+		font-size: 14px;
+		color: #b5b5b5;
+	}
 
-        .image {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 2px solid #7F14B7;
-            overflow: hidden;
+	.imagePrincipal {
+		position: absolute;
+		bottom: 0px;
+		right: 0px;
+		max-width: 100%;
+		height: auto;
+	}
 
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-        }
+	.professorArea {
+		display: flex;
+		gap: 10px;
+		margin-top: 10px;
 
-        .infoProf {
-            font-size: 14px;
-            
-            p {
-                color: #787878;
-            }
-            span {
-                font-size: 16px;
-            }
-        }
-    }
-    .buttonInscrever {
-        position: absolute;
-        bottom: 0px;
-        right: 0px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 4px;
-        background-color: #f4d03f;
-        padding: 10px 10px;
-        color: #000;
-        width: fit-content;
-        font-weight: 600;
+		.image {
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			border: 2px solid #7f14b7;
+			overflow: hidden;
+			flex-shrink: 0;
 
-        svg {
-            height: 14px;
-        }
-    }
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+
+		.infoProf,
+		.vas {
+			font-size: 14px;
+
+			p {
+				color: #787878;
+			}
+
+			span {
+				font-size: 16px;
+			}
+		}
+	}
+
+	.buttonInscrever {
+		position: absolute;
+		bottom: 0px;
+		right: 0px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 4px;
+		background-color: #f4d03f;
+		padding: 10px 10px;
+		color: #000;
+		width: fit-content;
+		font-weight: 600;
+		z-index: 11;
+
+		svg {
+			height: 14px;
+		}
+	}
 }
 
 .bannerIdentidadeVisual {
-    grid-column: 1/span 3;
-    // border: 1px solid #f4d03f;
+	grid-column: 1 / span 3;
 }
 
 .rollArea {
 	position: relative;
 	grid-column: 2 / span 2;
 	overflow: hidden;
+	min-height: 50px;
 }
 
 .strip {
@@ -315,5 +329,513 @@
 
 	to {
 		background-position-x: calc(var(--stripe-size) * -1);
+	}
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 1440px) {
+	.gridCardsArea {
+		grid-template-columns: 1fr 1.05fr 0.55fr;
+		grid-template-rows: 150px 150px 48px 230px 90px;
+		gap: 16px;
+	}
+
+	.card {
+		padding: 18px;
+
+		&.cardPrincipal {
+			.areaText {
+				height: calc(100% - 36px);
+
+				.descriptionCard {
+					max-width: 48%;
+				}
+			}
+		}
+
+		&.cardBanner {
+			.areaText {
+				.topArea {
+					max-width: 58%;
+				}
+			}
+		}
+
+		.titleCard {
+			font-size: 18px;
+		}
+
+		.descriptionCard {
+			font-size: 13px;
+		}
+
+		.buttonInscrever {
+			padding: 10px 12px;
+		}
+	}
+}
+
+@media (max-width: 1200px) {
+	.containerCourses {
+		padding: 18px;
+	}
+
+	.titleArea {
+		margin-top: 40px;
+
+		h2 {
+			font-size: 28px;
+		}
+
+		p {
+			font-size: 13px;
+		}
+	}
+
+	.gridCardsArea {
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: auto auto 42px auto auto auto;
+		gap: 16px;
+	}
+
+	.card {
+		min-height: 0;
+
+		&.cardPrincipal {
+			grid-column: 1 / span 2;
+			grid-row: auto;
+			min-height: 420px;
+
+			.areaText {
+				position: relative;
+				height: 100%;
+				max-width: 52%;
+
+				.descriptionCard {
+					max-width: 100%;
+				}
+			}
+
+			.imagePrincipal {
+				left: auto;
+				right: -10px;
+				transform: none;
+				max-height: 100%;
+				width: 44%;
+				object-fit: contain;
+			}
+
+			.buttonInscrever {
+				right: 18px;
+				bottom: 18px;
+			}
+		}
+
+		&.cardSecondary1 {
+			grid-column: 1;
+			grid-row: auto;
+
+			.buttonInscrever {
+				opacity: 1;
+			}
+		}
+
+		&.cardSecondary2 {
+			grid-column: 2;
+			grid-row: auto;
+
+			.buttonInscrever {
+				opacity: 1;
+			}
+		}
+
+		&.cardNumber {
+			grid-column: 1 / span 2;
+			grid-row: auto;
+			min-height: 190px;
+		}
+
+		&.cardBanner {
+			grid-column: 1 / span 2;
+			grid-row: auto;
+			min-height: 320px;
+
+			.areaText {
+				position: relative;
+				z-index: 2;
+				max-width: 58%;
+
+				.topArea {
+					max-width: 100%;
+				}
+
+				.bottomArea {
+					flex-wrap: wrap;
+				}
+			}
+
+			.imagePrincipal {
+				width: 38%;
+				max-height: 100%;
+				object-fit: contain;
+			}
+		}
+
+		.titleCard {
+			font-size: 18px;
+		}
+	}
+
+	.rollArea {
+		grid-column: 1 / span 2;
+		grid-row: auto;
+		min-height: 42px;
+	}
+
+	.bannerIdentidadeVisual {
+		grid-column: 1 / span 2;
+		grid-row: auto;
+	}
+}
+
+@media (max-width: 900px) {
+	.containerCourses {
+		padding: 16px;
+	}
+
+	.titleArea {
+		h2 {
+			font-size: 24px;
+		}
+
+		p {
+			font-size: 13px;
+			line-height: 1.6;
+
+			br {
+				display: none;
+			}
+		}
+	}
+
+	.gridCardsArea {
+		grid-template-columns: 1fr;
+		grid-template-rows: none;
+		gap: 14px;
+	}
+
+	.card {
+		padding: 18px;
+
+		&.cardPrincipal,
+		&.cardSecondary1,
+		&.cardSecondary2,
+		&.cardNumber,
+		&.cardBanner {
+			grid-column: auto;
+			grid-row: auto;
+		}
+
+		&.cardPrincipal {
+			min-height: 640px;
+
+			.areaText {
+				position: relative;
+				max-width: 100%;
+				height: auto;
+				padding-right: 0;
+				display: flex;
+				flex-direction: column;
+				gap: 14px;
+			}
+
+			.imagePrincipal {
+				position: relative;
+				right: auto;
+				left: auto;
+				bottom: auto;
+				transform: none;
+				display: block;
+				width: min(100%, 420px);
+				max-width: 88%;
+				margin: 10px auto 84px;
+			}
+
+			.buttonInscrever {
+				right: 18px;
+				bottom: 18px;
+			}
+		}
+
+		&.cardSecondary1,
+		&.cardSecondary2 {
+			min-height: 240px;
+
+			.imagePrincipal {
+				width: 42%;
+				max-width: 240px;
+			}
+
+			.buttonInscrever {
+				opacity: 1;
+			}
+		}
+
+		&.cardNumber {
+			min-height: 180px;
+
+			svg {
+				height: 68px;
+			}
+		}
+
+		&.cardBanner {
+			min-height: 420px;
+
+			.areaText {
+				max-width: 100%;
+				position: relative;
+				z-index: 2;
+
+				.topArea {
+					max-width: 100%;
+				}
+
+				.titleAtleta {
+					width: min(100%, 520px);
+				}
+
+				.bottomArea {
+					flex-direction: row;
+					flex-wrap: wrap;
+					align-items: flex-start;
+					gap: 16px;
+				}
+			}
+
+			.imagePrincipal {
+				width: min(100%, 320px);
+				right: 0;
+			}
+		}
+
+		.tagHour {
+			width: 52px;
+			height: 32px;
+			font-size: 14px;
+		}
+
+		.titleCard {
+			font-size: 20px;
+		}
+
+		.descriptionCard {
+			font-size: 14px;
+			line-height: 1.65;
+		}
+
+		.buttonInscrever {
+			padding: 12px 14px;
+		}
+	}
+
+	.rollArea,
+	.bannerIdentidadeVisual {
+		grid-column: auto;
+	}
+
+	.rollArea {
+		min-height: 46px;
+	}
+}
+
+@media (max-width: 640px) {
+	.containerCourses {
+		padding: 14px;
+	}
+
+	.titleArea {
+		margin-top: 28px;
+
+		h2 {
+			font-size: 22px;
+		}
+
+		p {
+			font-size: 12px;
+		}
+	}
+
+	.card {
+		padding: 16px;
+
+		&.cardPrincipal {
+			min-height: auto;
+
+			.imagePrincipal {
+				width: min(100%, 320px);
+				max-width: 100%;
+				margin: 6px auto 74px;
+			}
+		}
+
+		&.cardSecondary1,
+		&.cardSecondary2 {
+			min-height: 280px;
+
+			.imagePrincipal {
+				width: 48%;
+				max-width: 200px;
+			}
+		}
+
+		&.cardNumber {
+			min-height: 160px;
+
+			svg {
+				height: 56px;
+			}
+
+			a {
+				font-size: 15px;
+			}
+		}
+
+		&.cardBanner {
+			min-height: 380px;
+
+			.areaText {
+				.titleAtleta {
+					width: 100%;
+				}
+
+				.bottomArea {
+					gap: 12px;
+				}
+			}
+
+			.imagePrincipal {
+				width: min(100%, 250px);
+				right: -8px;
+			}
+		}
+
+		.tag {
+			font-size: 12px;
+			line-height: 1.4;
+			padding-right: 56px;
+		}
+
+		.titleCard {
+			font-size: 18px;
+			margin-left: 8px;
+
+			&:after {
+				left: -10px;
+			}
+		}
+
+		.descriptionCard {
+			font-size: 13px;
+			line-height: 1.6;
+		}
+
+		.professorArea {
+			gap: 8px;
+
+			.image {
+				width: 38px;
+				height: 38px;
+			}
+
+			.infoProf,
+			.vas {
+				font-size: 13px;
+
+				span {
+					font-size: 15px;
+				}
+			}
+		}
+
+		.buttonInscrever {
+			font-size: 15px;
+			padding: 12px 14px;
+
+			svg {
+				height: 13px;
+			}
+		}
+
+		.tagHour {
+			width: 50px;
+			height: 30px;
+			font-size: 13px;
+		}
+	}
+
+	.rollArea {
+		min-height: 40px;
+	}
+
+	.stripWrap {
+		--stripe-size: 140px;
+	}
+}
+
+@media (max-width: 420px) {
+	.containerCourses {
+		padding: 12px;
+	}
+
+	.gridCardsArea {
+		gap: 12px;
+	}
+
+	.card {
+		padding: 14px;
+
+		&.cardPrincipal {
+			.imagePrincipal {
+				width: 100%;
+				max-width: 280px;
+				margin-bottom: 70px;
+			}
+		}
+
+		&.cardSecondary1,
+		&.cardSecondary2 {
+			min-height: 260px;
+
+			.imagePrincipal {
+				width: 46%;
+				max-width: 170px;
+			}
+		}
+
+		&.cardBanner {
+			min-height: 340px;
+
+			.imagePrincipal {
+				width: min(100%, 215px);
+				right: -10px;
+			}
+		}
+
+		.titleCard {
+			font-size: 17px;
+		}
+
+		.descriptionCard {
+			font-size: 12.5px;
+		}
+
+		.buttonInscrever {
+			font-size: 14px;
+			padding: 11px 12px;
+		}
 	}
 }
