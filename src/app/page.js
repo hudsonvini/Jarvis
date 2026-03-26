@@ -9,6 +9,7 @@ import CoursesSection from "@/components/_ui/Home/CoursesSection/CoursesSection"
 import TeachersCarousel from "@/components/_ui/Home/TeachersCarousel/TeachersCarousel";
 import TeachersCarouselSimples from "@/components/_ui/Home/TeachersCarouselSimples/TeachersCarouselSimples";
 import TextDecoSection from "@/components/_ui/Home/TextDecoSection/TextDecoSection";
+import FaqSection from "@/components/_ui/Home/FaqSection/FaqSection";
 
 export default function Sobre() {
   const [showPreloader, setShowPreloader] = useState(true);
@@ -55,6 +56,8 @@ export default function Sobre() {
             <TextDecoSection />
 
             <TeachersCarouselSimples />
+
+            <FaqSection />
           </main>
         </>
       )}
