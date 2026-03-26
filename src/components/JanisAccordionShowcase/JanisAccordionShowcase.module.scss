@@ -90,6 +90,30 @@
 	}
 }
 
+.buttonsArea {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+
+	a {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+		border: 1px solid #f1ca26;
+		padding: 10px;
+		color: #f1ca26;
+
+		svg {
+			height: 16px;
+		}
+
+		&.primaryButton {
+			background-color: #f1ca26;
+			color: #000;
+		}
+	}
+}
+
 .contentGrid {
 	display: grid;
 	grid-template-columns: 1fr;

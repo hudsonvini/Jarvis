@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./JanisAccordionShowcase.module.scss";
 
+import { Phone } from "lucide-react";
+
 const items = [
 	{
 		id: 1,
@@ -182,9 +184,14 @@ export default function JanisAccordionShowcase() {
 						<img src="/images/logo.png" alt="Logo Javis" />
 					</div>
 
-					<div className={styles.headerText}>
+					{/* <div className={styles.headerText}>
 						<strong>Aprendizado e diversão</strong>
 						<span>pode ser no mesmo lugar!</span>
+					</div> */}
+
+					<div className={styles.buttonsArea}>
+						<a href="https://agendamento.javisacademy.com.br/verificar">Agendamento</a>
+						<a href="https://wa.me/558694318273?text=Olá%20tenho%20interesse" className={styles.primaryButton}><Phone />Entre em contato</a>
 					</div>
 				</div>
 
