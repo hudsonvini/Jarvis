@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./JanisAccordionShowcase.module.scss";
 
-import { Phone } from "lucide-react";
+import { CalendarDays, Phone } from "lucide-react";
 
 const items = [
 	{
@@ -13,7 +13,11 @@ const items = [
 		tags: ["Metodologia", "Nossa missão"],
 		color: "blue",
 		buttonLabel: "Saiba mais",
-		images: ["/images/quem-somos.webp" ,"/images/estrutura-2.webp"],
+		buttonHref:
+			"https://wa.me/558699617957?text=Ol%C3%A1!%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Quem%20Somos",
+		scheduleLabel: "Agendar",
+		scheduleHref: "https://agendamento.javisacademy.com.br/verificar",
+		images: ["/images/quem-somos.webp", "/images/estrutura-2.webp"],
 		description:
 			"A Javis é um espaço que une tecnologia, educação e cultura gamer para criar experiências de aprendizado e entretenimento. Oferecemos cursos como Robótica e Atleta Digital, que desenvolvem habilidades como lógica, estratégia, disciplina e criatividade. Com uma infraestrutura moderna e máquinas de alta performance, também proporcionamos experiências gamer como Corujões, Aniversários e Pacotes de Horas, reunindo amigos e famílias em um ambiente seguro, imersivo e inovador. Na Javis, aprendizado, tecnologia e diversão caminham juntos, formando jovens e criando experiências marcantes para quem vive o universo gamer.",
 	},
@@ -23,6 +27,8 @@ const items = [
 		tags: ["Entretenimento", "Festa de Aniversário"],
 		color: "sky",
 		buttonLabel: "Saiba mais",
+		buttonHref:
+			"https://wa.me/558699617957?text=Ol%C3%A1!%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Nossos%20Servi%C3%A7os",
 		images: ["/images/servicos-1.webp", "/images/servicos-2.webp"],
 		description:
 			"Na Javis, oferecemos experiências gamer imersivas e memoráveis, com estrutura moderna, tecnologia e máquinas de alta performance. Seja para jogar com amigos, comemorar uma ocasião especial ou aproveitar momentos de lazer, criamos um ambiente confortável, seguro e preparado para quem ama a cultura gamer. Aqui, o entretenimento vai além do jogo: é experiência, comunidade e diversão levada a sério.",
@@ -33,6 +39,10 @@ const items = [
 		tags: ["Fotos", "Shopping Rio Poty"],
 		color: "green",
 		buttonLabel: "Saiba mais",
+		buttonHref:
+			"https://wa.me/558699617957?text=Ol%C3%A1!%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Nossa%20estrutura",
+		scheduleLabel: "Agendar visita",
+		scheduleHref: "https://agendamento.javisacademy.com.br/verificar",
 		duration: "Estrutura de Ponta",
 		images: [
 			"/images/estrutura-1.webp",
@@ -49,6 +59,10 @@ const items = [
 		tags: ["Manoel Nunes", "Prêmio Nobel", "Bolsa EUA"],
 		color: "red",
 		buttonLabel: "Saiba mais",
+		buttonHref:
+			"https://wa.me/558699617957?text=Ol%C3%A1!%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Curso%20Rob%C3%B3tica",
+		scheduleLabel: "Agendar",
+		scheduleHref: "https://agendamento.javisacademy.com.br/verificar",
 		duration: "Carga Horária: 78h",
 		images: ["/images/robotica.webp", "/images/robotica-2.webp"],
 		description:
@@ -60,6 +74,10 @@ const items = [
 		tags: ["Extra Curricular", "Design", "Gamer", "Inglês"],
 		color: "purple",
 		buttonLabel: "Saiba mais",
+		buttonHref:
+			"https://wa.me/558699617957?text=Ol%C3%A1!%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Curso%20Atleta%20Digital",
+		scheduleLabel: "Agendar",
+		scheduleHref: "https://agendamento.javisacademy.com.br/verificar",
 		duration: "Carga Horária: 78h",
 		images: [
 			"/images/atleta-digital-1.webp",
@@ -190,8 +208,16 @@ export default function JanisAccordionShowcase() {
 					</div> */}
 
 					<div className={styles.buttonsArea}>
-						<a href="https://agendamento.javisacademy.com.br/verificar">Agendamento</a>
-						<a href="https://wa.me/558694318273?text=Olá%20tenho%20interesse" className={styles.primaryButton}><Phone /><span>Entre em contato</span></a>
+						<a href="https://agendamento.javisacademy.com.br/verificar">
+							Agendamento
+						</a>
+						<a
+							href="https://wa.me/558694318273?text=Olá%20tenho%20interesse"
+							className={styles.primaryButton}
+						>
+							<Phone />
+							<span>Entre em contato</span>
+						</a>
 					</div>
 				</div>
 
@@ -248,17 +274,34 @@ export default function JanisAccordionShowcase() {
 
 										<div className={styles.metaRow}>
 											<span>{item.duration}</span>
-											<a
-												href={`https://wa.me/558699617957?text=${encodeURIComponent(
-													`Olá! Tenho interesse em saber mais sobre ${item.title}`
-												)}`}
-												target="_blank"
-												rel="noopener noreferrer"
-												className={styles.cta}
+
+											<div
+												className={styles.ctaGroup}
 												onClick={(e) => e.stopPropagation()}
 											>
-												{item.buttonLabel}
-											</a>
+												{item.buttonHref && (
+													<a
+														href={item.buttonHref}
+														target="_blank"
+														rel="noopener noreferrer"
+														className={styles.cta}
+													>
+														{item.buttonLabel || "Saiba mais"}
+													</a>
+												)}
+
+												{item.scheduleHref && (
+													<a
+														href={item.scheduleHref}
+														target="_blank"
+														rel="noopener noreferrer"
+														className={styles.ctaSecondary}
+													>
+														<CalendarDays />
+														<span>{item.scheduleLabel || "Agendar"}</span>
+													</a>
+												)}
+											</div>
 										</div>
 
 										<p>{item.description}</p>
@@ -288,16 +331,33 @@ export default function JanisAccordionShowcase() {
 
 									<div className={styles.visualFooter}>
 										<span>{activeItem.duration}</span>
-										<a
-											href={`https://wa.me/558699617957?text=${encodeURIComponent(
-												`Olá! Tenho interesse no ${activeItem.title} da Javis. Pode me enviar mais informações?`
-											)}`}
-											target="_blank"
-											rel="noopener noreferrer"
-											className={styles.ctaVisual}
-										>
-											{activeItem.buttonLabel}
-										</a>
+
+										<div className={styles.visualCtaGroup}>
+											{activeItem.buttonHref && (
+												<a
+													href={activeItem.buttonHref}
+													target="_blank"
+													rel="noopener noreferrer"
+													className={styles.ctaVisual}
+												>
+													{activeItem.buttonLabel || "Saiba mais"}
+												</a>
+											)}
+
+											{activeItem.scheduleHref && (
+												<a
+													href={activeItem.scheduleHref}
+													target="_blank"
+													rel="noopener noreferrer"
+													className={styles.ctaVisualSecondary}
+												>
+													<CalendarDays />
+													<span>
+														{activeItem.scheduleLabel || "Agendar"}
+													</span>
+												</a>
+											)}
+										</div>
 									</div>
 								</div>
 							</div>

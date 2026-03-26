@@ -54,13 +54,13 @@
 	flex-direction: column;
 	gap: 2px;
 
-    img {
-        height: 40px;
+	img {
+		height: 40px;
 
-        @include desktop-lg {
-            height: 55px;
-        }
-    }
+		@include desktop-lg {
+			height: 55px;
+		}
+	}
 }
 
 .headerText {
@@ -70,7 +70,7 @@
 	text-align: right;
 
 	strong {
-		font-size: .8rem;
+		font-size: 0.8rem;
 		font-weight: 700;
 	}
 
@@ -95,7 +95,7 @@
 	align-items: center;
 	gap: 10px;
 
-	@include tablet  {
+	@include tablet {
 		gap: 20px;
 	}
 
@@ -119,7 +119,7 @@
 			background-color: #f1ca26;
 			color: #000;
 
-			@include tablet  {
+			@include tablet {
 				span {
 					display: block;
 				}
@@ -193,6 +193,7 @@
 	&:first-child {
 		margin-top: 0;
 	}
+
 	&:last-child {
 		border-radius: $radius-lg $radius-lg $radius-lg $radius-lg;
 	}
@@ -200,15 +201,19 @@
 	&:nth-child(1) {
 		z-index: 1;
 	}
+
 	&:nth-child(2) {
 		z-index: 2;
 	}
+
 	&:nth-child(3) {
 		z-index: 3;
 	}
+
 	&:nth-child(4) {
 		z-index: 4;
 	}
+
 	&:nth-child(5) {
 		z-index: 5;
 	}
@@ -539,13 +544,44 @@
 	}
 }
 
-.cta {
+.ctaGroup {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.cta,
+.ctaSecondary {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
 	padding: 8px 14px;
 	border-radius: $radius-pill;
 	font-size: 0.88rem !important;
 	font-weight: 700;
+	transition: transform 0.25s ease, opacity 0.25s ease;
+
+	&:hover {
+		transform: translateY(-1px);
+	}
+}
+
+.cta {
 	background: $color-cta;
 	color: $color-cta-text !important;
+}
+
+.ctaSecondary {
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	background: rgba(255, 255, 255, 0.08);
+	color: $color-white !important;
+
+	svg {
+		width: 16px;
+		height: 16px;
+	}
 }
 
 .visualColumn {
@@ -645,16 +681,47 @@
 		font-size: 1rem;
 		opacity: 0.9;
 	}
+}
 
-	a {
-		border: none;
-		cursor: pointer;
-		padding: 14px 20px;
-		border-radius: $radius-pill;
-		font-size: 0.95rem;
-		font-weight: 700;
-		background: $color-cta;
-		color: #091109;
+.visualCtaGroup {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+
+.ctaVisual,
+.ctaVisualSecondary {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	cursor: pointer;
+	padding: 14px 20px;
+	border-radius: $radius-pill;
+	font-size: 0.95rem;
+	font-weight: 700;
+	transition: transform 0.25s ease, opacity 0.25s ease;
+
+	&:hover {
+		transform: translateY(-1px);
+	}
+}
+
+.ctaVisual {
+	border: none;
+	background: $color-cta;
+	color: #091109;
+}
+
+.ctaVisualSecondary {
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	background: rgba(255, 255, 255, 0.06);
+	color: $color-white;
+
+	svg {
+		width: 18px;
+		height: 18px;
 	}
 }
 
