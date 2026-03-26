@@ -208,12 +208,11 @@ export default function JanisAccordionShowcase() {
 					</div> */}
 
 					<div className={styles.buttonsArea}>
-						<a href="https://agendamento.javisacademy.com.br/verificar">
+						<a className={styles.primaryButton} href="https://agendamento.javisacademy.com.br/verificar">
 							Agendamento
 						</a>
 						<a
 							href="https://wa.me/558694318273?text=Olá%20tenho%20interesse"
-							className={styles.primaryButton}
 						>
 							<Phone />
 							<span>Entre em contato</span>
