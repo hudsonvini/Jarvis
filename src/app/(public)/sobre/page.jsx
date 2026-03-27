@@ -16,7 +16,7 @@ export default function Home() {
       isVisible={showPreloader}
       onComplete={() => setShowPreloader(false)}
       logoSrc="/images/min-logo-line.svg"
-      marqueeText="Jarvis Game Academy"
+      marqueeText="Javis Game Academy"
     />
       <div className={styles.page}>
         <main className={styles.main}>

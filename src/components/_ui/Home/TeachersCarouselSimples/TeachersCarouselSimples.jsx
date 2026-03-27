@@ -92,7 +92,7 @@ export default function TeachersCarouselSimples() {
 
 						<p className={styles.description}>
 							Conheça alguns dos profissionais que elevam a experiência da
-							Jarvis com visão estratégica, repertório de mercado e domínio
+							Javis com visão estratégica, repertório de mercado e domínio
 							prático.
 						</p>
 					</div>

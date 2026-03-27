@@ -38,7 +38,7 @@ export default function Sobre() {
                     isVisible={showPreloader}
                     onComplete={handlePreloaderComplete}
                     logoSrc="/images/min-logo-line.svg"
-                    marqueeText="Jarvis Game Academy"
+                    marqueeText="Javis Game Academy"
                 />
             )}
 
@@ -46,7 +46,7 @@ export default function Sobre() {
                 <>
                     <Navbar
                         logoSrc="/images/logo.png"
-                        logoAlt="Jarvis"
+                        logoAlt="Javis"
                         isReady={ready}
                     />
 

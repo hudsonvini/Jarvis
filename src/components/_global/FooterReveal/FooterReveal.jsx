@@ -222,7 +222,7 @@ export default function FooterReveal({ isReady = false }) {
 									</div>
 
 									<div className={styles.brandMiniText}>
-										<span className={styles.brandMiniName}>Jarvis</span>
+										<span className={styles.brandMiniName}>Javis</span>
 										<span className={styles.brandMiniSub}>GAME ACADEMY</span>
 									</div>
 								</div>
@@ -234,7 +234,7 @@ export default function FooterReveal({ isReady = false }) {
 
 							<div className={styles.columns}>
 								<div className={styles.column}>
-									<h4 className={styles.columnTitle}>Jarvis</h4>
+									<h4 className={styles.columnTitle}>Javis</h4>
 
 									<nav className={styles.linkList} aria-label="Navegação do footer">
 										<a href="/">Home</a>
@@ -249,7 +249,7 @@ export default function FooterReveal({ isReady = false }) {
 									<h4 className={styles.columnTitle}>Biblioteca</h4>
 
 									<div className={styles.linkList}>
-										<a href="/metodo">Método Jarvis</a>
+										<a href="/metodo">Método Javis</a>
 										<a href="/trilhas">Trilhas de Aprendizado</a>
 										<a href="/projetos">Projetos Reais</a>
 										<a href="/comunidade">Comunidade</a>
@@ -260,7 +260,7 @@ export default function FooterReveal({ isReady = false }) {
 									<h4 className={styles.columnTitle}>Informação</h4>
 
 									<div className={styles.infoList}>
-										<a href="mailto:contato@jarvis.com.br">contato@jarvis.com.br</a>
+										<a href="mailto:contato@javis.com.br">contato@javis.com.br</a>
 										<a href="tel:+5586999999999">+55 86 99999-9999</a>
 										<p>Segunda - Sexta</p>
 										<p>8h às 18h</p>
@@ -270,7 +270,7 @@ export default function FooterReveal({ isReady = false }) {
 								<div className={styles.column}>
 									<div className={styles.legalBlock}>
 										<p>Plataforma educacional:</p>
-										<strong>Jarvis Academy</strong>
+										<strong>Javis Academy</strong>
 									</div>
 
 									<div className={styles.legalBlock}>
@@ -307,7 +307,7 @@ export default function FooterReveal({ isReady = false }) {
 
 							<div className={styles.brandHero}>
 								<div className={styles.brandHeroText}>
-									<span className={styles.brandHeroName}>Jarvis</span>
+									<span className={styles.brandHeroName}>Javis</span>
 									<span className={styles.brandHeroBadge}>®</span>
 								</div>
 
@@ -315,7 +315,7 @@ export default function FooterReveal({ isReady = false }) {
 
 							<div className={styles.bottomBar}>
 								<p className={styles.copy}>
-									© 2026 Jarvis. Todos os direitos reservados.
+									© 2026 Javis. Todos os direitos reservados.
 								</p>
 
 								<div className={styles.bottomLinks}>

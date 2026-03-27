@@ -8,8 +8,8 @@ export default function PreloaderReveal({
 	isVisible = true,
 	onComplete,
 	logoSrc = "/images/jarvis/logo-white.png",
-	logoAlt = "Jarvis Game Academy",
-	marqueeText = "Jarvis Game Academy",
+	logoAlt = "Javis Game Academy",
+	marqueeText = "Javis Game Academy",
 }) {
 	const rootRef = useRef(null);
 	const finderRef = useRef(null);
