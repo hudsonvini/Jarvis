@@ -177,11 +177,11 @@ export default function FooterReveal({ isReady = false }) {
 						<div className={styles.heroGlowBottom} aria-hidden="true" />
 
 						<div className={styles.heroImageWrap} aria-hidden="true">
-							<img
+							{/* <img
 								src="/images/jarvis/footer-woman.png"
 								alt=""
 								className={styles.heroImage}
-							/>
+							/> */}
 						</div>
 
 						<div className={styles.heroContent}>
