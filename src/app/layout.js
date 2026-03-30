@@ -13,7 +13,7 @@ const bai = Bai_Jamjuree({
 });
 
 export const metadata = {
-  title: "Jarvis",
+  title: "Javis",
   description: "Game Academy",
 };
 
