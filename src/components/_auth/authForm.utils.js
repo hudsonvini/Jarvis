@@ -10,6 +10,12 @@ export const registrationInitialValues = {
     acceptPromos: false,
 };
 
+export const loginInitialValues = {
+    email: "",
+    password: "",
+    rememberMe: false,
+};
+
 export function sanitizeWhitespace(value = "") {
     return value.replace(/\s+/g, " ").trim();
 }
@@ -103,5 +109,41 @@ export function buildRegistrationPayload(values) {
         password: values.password,
         acceptTerms: Boolean(values.acceptTerms),
         acceptPromos: Boolean(values.acceptPromos),
+    };
+}
+
+export function validateLoginField(name, value) {
+    switch (name) {
+        case "email": {
+            const normalized = value.trim().toLowerCase();
+
+            if (!normalized) return "Informe seu e-mail.";
+            if (!emailRegex.test(normalized)) return "Digite um e-mail valido.";
+
+            return "";
+        }
+
+        case "password":
+            if (!value) return "Informe sua senha.";
+            if (value.length < 8) return "Sua senha parece incompleta.";
+            return "";
+
+        default:
+            return "";
+    }
+}
+
+export function validateLogin(values) {
+    return {
+        email: validateLoginField("email", values.email),
+        password: validateLoginField("password", values.password),
+    };
+}
+
+export function buildLoginPayload(values) {
+    return {
+        email: values.email.trim().toLowerCase(),
+        password: values.password,
+        rememberMe: Boolean(values.rememberMe),
     };
 }

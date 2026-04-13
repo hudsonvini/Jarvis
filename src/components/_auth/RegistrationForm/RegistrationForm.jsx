@@ -248,7 +248,7 @@ export default function RegistrationForm({ onSubmit }) {
                 <AuthSocialButtons />
 
                 <p className={styles.loginLink}>
-                    ja tem conta? <Link href="#">Login</Link>
+                    ja tem conta? <Link href="/login">Login</Link>
                 </p>
             </form>
         </section>

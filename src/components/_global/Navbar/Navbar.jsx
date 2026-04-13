@@ -25,6 +25,7 @@ const legalLinks = [
 const primaryLinks = [
     { label: "Home", href: "/" },
     { label: "Cadastro", href: "/cadastro" },
+    { label: "Login", href: "/login" },
     { label: "Pacotes de Hora", href: "/sobre" },
     { label: "Cursos", href: "/sobre" },
     { label: "Aniversário", href: "/sobre" },
