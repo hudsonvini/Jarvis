@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import styles from "./Navbar.module.scss";
@@ -22,6 +24,7 @@ const legalLinks = [
 
 const primaryLinks = [
     { label: "Home", href: "/" },
+    { label: "Cadastro", href: "/cadastro" },
     { label: "Pacotes de Hora", href: "/sobre" },
     { label: "Cursos", href: "/sobre" },
     { label: "Aniversário", href: "/sobre" },
@@ -281,12 +284,14 @@ export default function Navbar({
                     ref={logoRef}
                     className={styles.navLogo}
                 >
-                    <a href="/">
-                        <img
+                    <Link href="/">
+                        <Image
                             src={logoSrc}
                             alt={logoAlt}
+                            width={176}
+                            height={44}
                         />
-                    </a>
+                    </Link>
                 </div>
 
                 <button
@@ -338,13 +343,13 @@ export default function Navbar({
                     <div className={styles.navItemsCol}>
                         <div className={styles.navPrimaryLinks}>
                             {primaryLinks.map((item) => (
-                                <a
+                                <Link
                                     key={item.label}
                                     href={item.href}
                                     className={styles.splitTarget}
                                 >
                                     {item.label}
-                                </a>
+                                </Link>
                             ))}
                         </div>
 

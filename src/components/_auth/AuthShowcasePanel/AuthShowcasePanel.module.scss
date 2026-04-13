@@ -1,0 +1,98 @@
+.panel {
+    position: relative;
+    height: 80vh;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01)),
+        rgba(34, 14, 49, 0.72);
+    overflow: hidden;
+}
+
+.frame,
+.glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+
+.media {
+    position: absolute;
+    inset: 1.2rem;
+    overflow: hidden;
+}
+
+.slideMedia {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: scale(1.04);
+    transition: opacity 0.55s ease, transform 0.8s ease;
+
+    img {
+        object-fit: cover;
+    }
+}
+
+.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.copy {
+    position: absolute;
+    right: clamp(1.5rem, 3vw, 3rem);
+    bottom: clamp(2.6rem, 7vw, 7rem);
+    max-width: 330px;
+    text-align: right;
+    z-index: 1;
+
+    p {
+        color: rgba(255, 248, 234, 0.72);
+        font-size: 14px;
+        line-height: 1.4;
+    }
+}
+
+.kicker {
+    display: block;
+    margin-bottom: 1rem;
+    color: #fff4da;
+    font-family: "Syne", Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+}
+
+.progress {
+    position: absolute;
+    left: 50%;
+    bottom: 2.8rem;
+    display: flex;
+    gap: 0.6rem;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.progressItem {
+    width: 68px;
+    height: 10px;
+    border: 0;
+    background: rgba(133, 66, 171, 0.46);
+    transition: background 0.25s ease, transform 0.25s ease, width 0.25s ease;
+}
+
+.progressActive {
+    width: 84px;
+    background: #ffcf40;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 1023px) {
+    .panel {
+        min-height: 340px;
+    }
+
+    .copy {
+        max-width: 420px;
+    }
+}

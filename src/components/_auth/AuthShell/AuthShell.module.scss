@@ -1,0 +1,136 @@
+.page {
+    min-height: 100svh;
+    padding: 7.5rem 1.5rem 1.2rem;
+    padding-bottom: 60px;
+    background:
+        radial-gradient(circle at top right, rgba(121, 34, 164, 0.12), transparent 28%),
+        linear-gradient(180deg, #14071b 0%, #0b0311 100%);
+}
+
+.shell {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(380px, 0.9fr);
+    gap: clamp(1.5rem, 3vw, 3rem);
+    max-width: 1740px;
+    min-height: calc(100svh - 8.8rem);
+    margin: 0 auto;
+}
+
+.badge {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    z-index: 9;
+    transform: translate(-50%, -50%);
+    // min-width: 240px;
+    width: 200px;
+    padding: 10px 20px;
+    background: #ffcf40;
+    color: #120818;
+    text-align: center;
+    font-family: "Syne", Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.left,
+.right {
+    min-width: 0;
+}
+
+.left {
+    position: relative;
+    padding: 20px;
+}
+
+.cornerTopLeft,
+.cornerTopRight,
+.cornerBottomLeft,
+.cornerBottomRight {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-color: #ffcf40;
+    border-style: solid;
+}
+
+.cornerTopLeft {
+    top: 0px;
+    left: 0px;
+    border-width: 2px 0 0 2px;
+}
+
+.cornerTopRight {
+    top: 0px;
+    right: 0px;
+    border-width: 2px 2px 0 0;
+}
+
+.cornerBottomLeft {
+    bottom: 0px;
+    left: 0px;
+    border-width: 0 0 2px 2px;
+}
+
+.cornerBottomRight {
+    right: 0px;
+    bottom: 0px;
+    border-width: 0 2px 2px 0;
+}
+
+.bottomBar {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 18px;
+    margin-top: 1.2rem;
+    background: linear-gradient(90deg, #00ef6f, #1e7dff, #00ef6f, #ffc900, #ff2a00);
+}
+
+@media (max-width: 1180px) {
+    .shell {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-top: 4.5rem;
+    }
+
+    .badge {
+        left: 50%;
+    }
+}
+
+@media (max-width: 640px) {
+    .page {
+        padding-inline: 0.75rem;
+    }
+
+    .shell {
+        padding-inline: 0.75rem;
+    }
+
+    .badge {
+        min-width: auto;
+        width: calc(100% - 3rem);
+        font-size: 1.75rem;
+    }
+
+    .cornerTopLeft,
+    .cornerTopRight,
+    .cornerBottomLeft,
+    .cornerBottomRight {
+        width: 34px;
+        height: 34px;
+    }
+
+    .cornerTopLeft,
+    .cornerBottomLeft {
+        left: 1rem;
+    }
+
+    .cornerTopRight,
+    .cornerBottomRight {
+        right: 1rem;
+    }
+}
