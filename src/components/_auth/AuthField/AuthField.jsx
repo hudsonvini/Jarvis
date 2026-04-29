@@ -16,6 +16,9 @@ export default function AuthField({
     isValid,
     trailingAction,
     autoComplete,
+    inputMode,
+    max,
+    min,
 }) {
     const helperId = `${name}-helper`;
 
@@ -41,6 +44,9 @@ export default function AuthField({
                         onChange={onChange}
                         onBlur={onBlur}
                         autoComplete={autoComplete}
+                        inputMode={inputMode}
+                        max={max}
+                        min={min}
                         aria-invalid={Boolean(error)}
                         aria-describedby={error ? helperId : undefined}
                     />
@@ -58,8 +64,8 @@ export default function AuthField({
             </label>
 
             {error ? (
-                <p id={helperId} className={styles.errorText}>
-                    <CircleAlert size={14} strokeWidth={2} />
+                <p id={helperId} className={styles.errorText} role="alert">
+                    <CircleAlert size={14} strokeWidth={2} aria-hidden="true" />
                     <span>{error}</span>
                 </p>
             ) : null}

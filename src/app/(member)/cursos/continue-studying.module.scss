@@ -1,0 +1,81 @@
+@use "variables" as *;
+
+.section {
+  margin-bottom: 32px;
+}
+
+.sectionLabel {
+  font-size: 0.875rem;
+  color: $color-text-muted;
+  margin-bottom: 12px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: $color-card-bg;
+  border: 1px solid $color-card-border;
+  backdrop-filter: blur(10px);
+  text-decoration: none;
+  transition: border-color $transition-fast;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+}
+
+.cardLogo {
+  width: 48px;
+  height: 48px;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-syne), $font-heading;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: $color-text-heading;
+  flex-shrink: 0;
+}
+
+.cardInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.cardName {
+  font-family: var(--font-syne), $font-heading;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: $color-text-heading;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardMeta {
+  font-size: 0.8rem;
+  color: $color-text-muted;
+  margin-bottom: 8px;
+}
+
+.progressRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.progressText {
+  font-size: 0.75rem;
+  color: $color-text-muted;
+  white-space: nowrap;
+}

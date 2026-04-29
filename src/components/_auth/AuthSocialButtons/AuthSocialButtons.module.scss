@@ -1,6 +1,7 @@
 .group {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     gap: 1rem;
 }
 
@@ -22,9 +23,14 @@
         line-height: 1;
     }
 
-    &:hover {
+    &:hover:not(:disabled) {
         transform: translateY(-2px);
         border-color: rgba(255, 207, 64, 0.4);
         background: rgba(255, 207, 64, 0.12);
+    }
+
+    &:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
     }
 }

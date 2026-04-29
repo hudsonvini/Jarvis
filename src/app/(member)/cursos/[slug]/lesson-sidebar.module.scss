@@ -1,0 +1,119 @@
+@use "variables" as *;
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.courseTitle {
+  font-family: var(--font-syne), $font-heading;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: $color-text-heading;
+  padding-bottom: 12px;
+  border-bottom: 1px solid $color-sidebar-border;
+}
+
+.progressSection {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.progressLabel {
+  font-size: 0.8rem;
+  color: $color-text-muted;
+}
+
+.moduleGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.moduleHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  cursor: pointer;
+  transition: color $transition-fast;
+  background: none;
+  border: none;
+  text-align: left;
+  width: 100%;
+
+  &:hover {
+    color: $color-text-heading;
+  }
+}
+
+.moduleName {
+  font-family: var(--font-syne), $font-heading;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: $color-text-body;
+  display: block;
+}
+
+.moduleDuration {
+  font-size: 0.75rem;
+  color: $color-text-muted;
+}
+
+.chevron {
+  width: 16px;
+  height: 16px;
+  color: $color-text-muted;
+  transition: transform $transition-fast;
+  flex-shrink: 0;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.lessonsList {
+  display: flex;
+  flex-direction: column;
+}
+
+.lessonItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  font-size: 0.8rem;
+  color: $color-text-muted;
+  transition: background $transition-fast;
+  border-left: 2px solid transparent;
+
+  &:hover {
+    background: $color-sidebar-active;
+  }
+}
+
+.lessonItemActive {
+  border-left-color: $color-primary;
+  background: $color-sidebar-active;
+  color: $color-text-heading;
+}
+
+.lessonIndex {
+  font-size: 0.7rem;
+  color: $color-text-muted;
+  min-width: 20px;
+}
+
+.lessonName {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lessonDuration {
+  font-size: 0.7rem;
+  color: $color-text-muted;
+  white-space: nowrap;
+}

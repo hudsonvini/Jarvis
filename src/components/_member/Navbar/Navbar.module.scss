@@ -1,0 +1,121 @@
+@use "variables" as *;
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $navbar-height;
+  padding: 0 24px;
+  background: $gradient-navbar;
+  backdrop-filter: blur(10px);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: $gradient-rainbow-strip;
+    z-index: 1;
+  }
+}
+
+.logo {
+  color: $color-primary;
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+
+  @include respond-to($bp-tablet) {
+    display: none;
+  }
+}
+
+.navLink {
+  font-family: var(--font-syne), $font-heading;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: $color-text-muted;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-text-heading;
+  }
+}
+
+.navLinkActive {
+  color: $color-primary;
+}
+
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.userName {
+  font-family: var(--font-syne), $font-heading;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: $color-text-body;
+
+  @include respond-to($bp-mobile-lg) {
+    display: none;
+  }
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: $color-secondary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-syne), $font-heading;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: $color-text-heading;
+}
+
+.logoutButton {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: $color-text-muted;
+  font-size: 0.85rem;
+  font-family: var(--font-bai), $font-body;
+  cursor: pointer;
+  padding: 6px 12px;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  @include respond-to($bp-mobile-lg) {
+    display: none;
+  }
+}
+
+.hamburger {
+  display: none;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  color: $color-text-body;
+
+  @include respond-to($bp-tablet) {
+    display: flex;
+  }
+}

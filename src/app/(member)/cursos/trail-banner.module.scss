@@ -1,0 +1,59 @@
+@use "variables" as *;
+
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: $color-card-bg;
+  border: 1px solid $color-card-border;
+  backdrop-filter: blur(10px);
+  transition: all $transition-fast;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $color-primary;
+    box-shadow: $shadow-card-md;
+  }
+}
+
+.iconWrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: var(--font-syne), $font-heading;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.info {
+  flex: 1;
+  min-width: 0;
+}
+
+.name {
+  font-family: var(--font-syne), $font-heading;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: $color-text-heading;
+  margin-bottom: 2px;
+}
+
+.description {
+  font-size: 0.8rem;
+  color: $color-text-muted;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.courseBadge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: $color-text-muted;
+  white-space: nowrap;
+}

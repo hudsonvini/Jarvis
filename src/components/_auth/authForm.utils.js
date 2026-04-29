@@ -1,8 +1,12 @@
+import { isValidCpf, stripCpf, formatCpf } from "@/lib/cpf";
+
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export const registrationInitialValues = {
     fullName: "",
     phone: "",
+    cpf: "",
+    dataNascimento: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -32,6 +36,8 @@ export function formatPhoneNumber(value = "") {
     return digits;
 }
 
+export { formatCpf };
+
 export function validateRegistrationField(name, value, values) {
     switch (name) {
         case "fullName": {
@@ -52,6 +58,33 @@ export function validateRegistrationField(name, value, values) {
 
             if (!digits) return "Informe seu WhatsApp.";
             if (digits.length !== 11) return "Digite um celular com DDD.";
+
+            return "";
+        }
+
+        case "cpf": {
+            const digits = stripCpf(value);
+
+            if (!digits) return "Informe seu CPF.";
+            if (digits.length !== 11) return "O CPF precisa ter 11 digitos.";
+            if (!isValidCpf(digits)) return "CPF invalido. Verifique os numeros.";
+
+            return "";
+        }
+
+        case "dataNascimento": {
+            if (!value) return "Informe sua data de nascimento.";
+
+            const birthDate = new Date(value);
+            const today = new Date();
+            const minDate = new Date("1900-01-01");
+            const minAgeDate = new Date();
+            minAgeDate.setFullYear(minAgeDate.getFullYear() - 13);
+
+            if (isNaN(birthDate.getTime())) return "Data invalida.";
+            if (birthDate >= today) return "A data nao pode ser no futuro.";
+            if (birthDate < minDate) return "Data fora do intervalo permitido.";
+            if (birthDate > minAgeDate) return "Voce precisa ter pelo menos 13 anos.";
 
             return "";
         }
@@ -94,6 +127,8 @@ export function validateRegistration(values) {
     return {
         fullName: validateRegistrationField("fullName", values.fullName, values),
         phone: validateRegistrationField("phone", values.phone, values),
+        cpf: validateRegistrationField("cpf", values.cpf, values),
+        dataNascimento: validateRegistrationField("dataNascimento", values.dataNascimento, values),
         email: validateRegistrationField("email", values.email, values),
         password: validateRegistrationField("password", values.password, values),
         confirmPassword: validateRegistrationField("confirmPassword", values.confirmPassword, values),
@@ -105,8 +140,11 @@ export function buildRegistrationPayload(values) {
     return {
         fullName: sanitizeWhitespace(values.fullName),
         phone: values.phone.replace(/\D/g, ""),
+        cpf: stripCpf(values.cpf),
+        dataNascimento: values.dataNascimento,
         email: values.email.trim().toLowerCase(),
         password: values.password,
+        confirmPassword: values.confirmPassword,
         acceptTerms: Boolean(values.acceptTerms),
         acceptPromos: Boolean(values.acceptPromos),
     };

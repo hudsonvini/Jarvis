@@ -1,0 +1,103 @@
+// COLORS — Primary
+$color-primary: #f4d03f;
+$color-primary-dark: #e0b31a;
+$color-primary-variant: #f1ca26;
+$color-primary-light: #ffd43b;
+$color-primary-on: #000000;
+
+// COLORS — Secondary (Purple)
+$color-secondary: #7f3dff;
+$color-secondary-dark: #2a0d57;
+$color-secondary-glow: #a844ff;
+$color-accent-magenta: #d660ff;
+
+// COLORS — Backgrounds
+$color-bg-base: #09030f;
+$color-bg-dark: #05010b;
+$color-bg-mid: #0b0615;
+$color-bg-deep: #08030d;
+$color-bg-overlay: rgba(0, 0, 0, 0.4);
+$color-card-bg: rgba(26, 22, 29, 0.62);
+$color-card-border: #29222f;
+
+// COLORS — Text
+$color-text-heading: #ffffff;
+$color-text-heading-warm: #fff2df;
+$color-text-body: #f4efe9;
+$color-text-muted: rgba(255, 255, 255, 0.8);
+$color-text-description: rgba(219, 209, 236, 0.58);
+
+// COLORS — State
+$color-error: #ff2b2b;
+$color-success: #00ff84;
+$color-info: #0038df;
+
+// TYPOGRAPHY
+$font-heading: "Syne", Helvetica, sans-serif;
+$font-body: "Bai Jamjuree", Syne, sans-serif;
+
+// SHADOWS
+$shadow-card: 0 14px 38px #00000047;
+$shadow-card-md: 0 10px 30px #00000040;
+$shadow-purple: 0 10px 30px #a844ff4d;
+
+// TRANSITIONS
+$transition-fast: 0.25s;
+$transition-default: 0.3s;
+$transition-medium: 0.35s;
+$transition-slow: 0.45s;
+
+// GRADIENTS
+$gradient-hero-bg: linear-gradient(#09030f 0%, #0b0615 50%, #08030d 100%);
+$gradient-rainbow-strip: linear-gradient(90deg, #00f577 0%, #0084a9 15%, #0038df 34%, #00c5cc 51%, #01c231 69%, #c8d300 86%, #f30200 100%);
+$gradient-purple-glow: radial-gradient(circle, #7f14b7 0%, #2d1e5c99 45%, transparent 100%);
+$gradient-navbar: linear-gradient(90deg, #0b0416fa 0%, #110324fc 45%, #080212fa 100%);
+
+// BREAKPOINTS
+$bp-mobile-sm: 420px;
+$bp-mobile: 540px;
+$bp-mobile-lg: 640px;
+$bp-tablet: 768px;
+$bp-tablet-lg: 992px;
+$bp-desktop: 1024px;
+$bp-desktop-lg: 1200px;
+$bp-wide: 1440px;
+
+// MIXINS
+@mixin respond-to($bp) {
+  @media (max-width: $bp) {
+    @content;
+  }
+}
+
+@mixin respond-from($bp) {
+  @media (min-width: $bp) {
+    @content;
+  }
+}
+
+// LAYOUT — Sidebar & Navbar
+$color-sidebar-bg: #0d0718;
+$color-sidebar-border: #1a1425;
+$color-sidebar-active: rgba(244, 208, 63, 0.08);
+$color-progress-track: #1a1425;
+$color-progress-fill: #f4d03f;
+$navbar-height: 64px;
+$sidebar-width: 260px;
+
+// AUTH — Form surfaces
+$color-input-bg: rgba(26, 22, 29, 0.4);
+$shadow-primary-glow: 0 0 24px rgba(244, 208, 63, 0.15);
+
+// AUTH — Decorative patterns
+$gradient-stripe-pattern: repeating-linear-gradient(
+  -55deg,
+  rgba(244, 208, 63, 0.15) 0 2px,
+  transparent 2px 12px
+);
+
+$gradient-dot-wave: radial-gradient(
+  circle,
+  rgba(234, 57, 255, 0.4) 1.4px,
+  transparent 1.4px
+);
