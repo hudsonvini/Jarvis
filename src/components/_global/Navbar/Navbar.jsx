@@ -27,7 +27,7 @@ const primaryLinks = [
     { label: "Cadastro", href: "/cadastro" },
     { label: "Login", href: "/login" },
     { label: "Pacotes de Hora", href: "/sobre" },
-    { label: "Cursos", href: "/sobre" },
+    { label: "Cursos", href: "/academy/cursos" },
     { label: "Aniversário", href: "/sobre" },
     { label: "Sobre", href: "/sobre" },
 ];
