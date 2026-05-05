@@ -173,7 +173,7 @@ export default function CursosPublicPage() {
 						<section id="cursos-em-breve" className={styles.comingSection}>
 							<div className={styles.sectionHeader}>
 								<span className={styles.sectionEyebrow}>Roadmap Academy</span>
-								<h2>Cursos que estao por vir</h2>
+								<h2 className={styles.titleAtrasados}>Cursos que estao por vir</h2>
 								<p>
 									Proximas turmas preparadas para entrar no catalogo assim que a
 									grade oficial for liberada.
@@ -197,6 +197,10 @@ export default function CursosPublicPage() {
 								))}
 							</div>
 						</section>
+
+						<div className={styles.areaImage}>
+							<img src="/images/cs.png" alt="cs" />
+						</div>
 					</main>
 				</>
 			)}

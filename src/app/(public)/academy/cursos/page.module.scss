@@ -23,6 +23,10 @@
 	margin: 0 auto 42px;
 	text-align: center;
 
+	.sectionEyebrow {
+		color: #f4d03f;
+	}
+
 	h2 {
 		margin-top: 10px;
 		color: #fff2df;
@@ -30,6 +34,10 @@
 		font-weight: 900;
 		line-height: 0.94;
 		text-transform: uppercase;
+
+		&.titleAtrasados {
+			font-size: clamp(38px, 3vw, 92px);
+		}
 	}
 
 	p {
@@ -166,12 +174,12 @@
 		gap: 6px;
 		min-height: 34px;
 		color: rgba(255, 255, 255, 0.76);
-		font-size: 12px;
+		font-size: 14px;
 	}
 
 	svg {
-		width: 14px;
-		height: 14px;
+		width: 18px;
+		height: 18px;
 		color: var(--course-accent);
 		flex-shrink: 0;
 	}
@@ -235,9 +243,9 @@
 	min-height: 600px;
 	padding: 58px;
 	border: 1px solid rgba(244, 208, 63, 0.2);
-	background:
-		radial-gradient(circle at 82% 20%, rgba(244, 208, 63, 0.2), transparent 24%),
-		linear-gradient(146deg, rgba(26, 22, 29, 0.68) 20%, rgba(45, 30, 92, 0.96) 100%);
+	// background:
+	// 	radial-gradient(circle at 82% 20%, rgba(244, 208, 63, 0.2), transparent 24%),
+	// 	linear-gradient(146deg, rgba(26, 22, 29, 0.68) 20%, rgba(45, 30, 92, 0.96) 100%);
 }
 
 .offerContent {
@@ -246,10 +254,8 @@
 	h2 {
 		margin-top: 12px;
 		color: #fff2df;
-		font-size: clamp(38px, 4.9vw, 82px);
-		font-weight: 900;
-		line-height: 0.95;
-		text-transform: uppercase;
+		font-size: clamp(38px, 2.5vw, 82px);
+		font-weight: 600;
 	}
 
 	p {
@@ -261,7 +267,18 @@
 	}
 
 	.primaryButton {
-		margin-top: 30px;
+		display: flex;
+		gap: 8px;
+		width: fit-content;
+		padding: 14px;
+		border: 1px solid #f4d03f;
+		margin-top: 40px;
+
+		svg {
+			height: 20px;
+			width: auto;
+			color: #f4d03f;
+		}
 	}
 }
 
@@ -444,6 +461,21 @@
 	}
 }
 
+.areaImage {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+
+	img {
+		@media (max-width: 1000px) {
+			max-width: 500px;
+			width: 90%;
+			height: auto;
+		}
+	}
+}
+
 @media (max-width: 1320px) {
 	.heroInner {
 		grid-template-columns: 1fr minmax(320px, 520px);
@@ -532,9 +564,14 @@
 		align-items: flex-start;
 		text-align: left;
 		margin-bottom: 28px;
+		padding-top: 50px;
 
 		h2 {
-			font-size: clamp(34px, 12vw, 54px);
+			font-size: clamp(28px, 3vw, 54px);
+			
+			&.titleAtrasados {
+				font-size: clamp(28px, 3vw, 54px);
+			}
 		}
 	}
 
@@ -570,7 +607,7 @@
 
 	.offerContent {
 		h2 {
-			font-size: clamp(34px, 11vw, 52px);
+			font-size: clamp(24px, 3vw, 52px);
 		}
 
 		p {

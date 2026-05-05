@@ -28,7 +28,7 @@ const primaryLinks = [
     { label: "Login", href: "/login" },
     { label: "Pacotes de Hora", href: "/sobre" },
     { label: "Cursos", href: "/academy/cursos" },
-    { label: "Aniversário", href: "/sobre" },
+    { label: "Aniversário", href: "/academy/aniversario" },
     { label: "Sobre", href: "/sobre" },
 ];
 
