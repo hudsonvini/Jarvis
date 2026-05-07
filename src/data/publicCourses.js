@@ -11,7 +11,12 @@ export const publicCourses = [
 		image: "/images/professor-robotica.png",
 		heroImage: "/images/robotica.webp",
 		previewImage: "/images/robotica-2.webp",
+		footerImage: "/images/robotica.webp",
+		vimeoUrl: "https://vimeo.com/76979871",
 		accent: "#7f14b7",
+		heroBackground:
+			"linear-gradient(135deg, #4f1173 0%, #26083f 46%, #09030f 100%)",
+		heroDotColor: "rgba(244, 208, 63, 0.46)",
 		level: "avancado",
 		hours: "78h",
 		lessons: "52 aulas",
@@ -115,8 +120,13 @@ export const publicCourses = [
 			"Uma trilha pratica para construir interfaces profissionais com React e Next.js, passando por componentizacao, rotas, dados mockados, consumo de API, responsividade e deploy.",
 		image: "/images/image-front.png",
 		heroImage: "/images/servicos-1.webp",
-		previewImage: "/images/estrutura-4.webp",
-		accent: "#e36725",
+		previewImage: "https://assets.awwwards.com/awards/course/674d91f7a4f6f086603742.webp",
+		footerImage: "/images/servicos-1.webp",
+		vimeoUrl: "https://vimeo.com/76979871",
+		accent: "#4f1173",
+		heroBackground:
+			"linear-gradient(135deg, #4f1173 0%, #561176 48%, #2a073e 100%)",
+		heroDotColor: "rgba(244, 208, 63, 0.5)",
 		level: "intermediario",
 		hours: "72h",
 		lessons: "48 aulas",
@@ -174,7 +184,12 @@ export const publicCourses = [
 		image: "/images/image-motion-curso.png",
 		heroImage: "/images/quem-somos.webp",
 		previewImage: "/images/atleta-digital-1.webp",
+		footerImage: "/images/image-motion-curso.png",
+		vimeoUrl: "https://vimeo.com/76979871",
 		accent: "#7fdc82",
+		heroBackground:
+			"linear-gradient(135deg, #183f28 0%, #0c251c 48%, #09030f 100%)",
+		heroDotColor: "rgba(127, 220, 130, 0.42)",
 		level: "iniciante",
 		hours: "72h",
 		lessons: "48 aulas",
@@ -220,7 +235,12 @@ export const publicCourses = [
 		image: "/images/curso-atleta.png",
 		heroImage: "/images/atleta-digital-1.webp",
 		previewImage: "/images/atleta-digital-2.webp",
+		footerImage: "/images/curso-atleta.png",
+		vimeoUrl: "https://vimeo.com/76979871",
 		accent: "#f4d03f",
+		heroBackground:
+			"linear-gradient(135deg, #4f1173 0%, #2a073e 48%, #09030f 100%)",
+		heroDotColor: "rgba(244, 208, 63, 0.48)",
 		level: "iniciante",
 		hours: "72h",
 		lessons: "40 aulas",
@@ -285,6 +305,11 @@ export const academyStats = [
 	{ value: "420h", label: "de conteudo aplicado" },
 	{ value: "100%", label: "foco em projeto real" },
 ];
+
+export const coursesPageFooterVisual = {
+	image: "/images/cs.png",
+	alt: "Javis Academy",
+};
 
 export function getPublicCourseBySlug(slug) {
 	return publicCourses.find((course) => course.slug === slug);

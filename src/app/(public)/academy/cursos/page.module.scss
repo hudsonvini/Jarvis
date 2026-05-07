@@ -57,10 +57,13 @@
 
 .courseCard {
 	--course-accent: #7f14b7;
+	--course-bg-image: none;
 
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	min-height: 100%;
+	overflow: hidden;
 	border: 1px solid #29222f;
 	background:
 		linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015)),
@@ -75,6 +78,7 @@
 
 .courseImage {
 	position: relative;
+	z-index: 1;
 	display: flex;
 	align-items: flex-end;
 	justify-content: center;
@@ -85,6 +89,18 @@
 	&::before {
 		content: "";
 		position: absolute;
+		inset: 0;
+		background:
+			linear-gradient(180deg, rgba(9, 3, 15, 0.08), rgba(9, 3, 15, 0.72)),
+			var(--course-bg-image) center / cover no-repeat;
+		opacity: 0.2;
+		mix-blend-mode: screen;
+		pointer-events: none;
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
 		left: 50%;
 		bottom: -42%;
 		width: 90%;
@@ -92,8 +108,9 @@
 		border-radius: 50%;
 		background: var(--course-accent);
 		filter: blur(58px);
-		opacity: 0.5;
+		opacity: 0.42;
 		transform: translateX(-50%);
+		pointer-events: none;
 	}
 
 	img {
@@ -122,6 +139,8 @@
 }
 
 .courseBody {
+	position: relative;
+	z-index: 1;
 	display: flex;
 	flex: 1;
 	flex-direction: column;
@@ -186,6 +205,8 @@
 }
 
 .courseFooter {
+	position: relative;
+	z-index: 1;
 	display: grid;
 	grid-template-columns: 1fr auto auto;
 	align-items: center;

@@ -18,6 +18,7 @@ import LevelBadge from "@/components/_ui/LevelBadge/LevelBadge";
 import {
 	academyStats,
 	comingSoonPublicCourses,
+	coursesPageFooterVisual,
 	publicCourses,
 } from "@/data/publicCourses";
 import styles from "./page.module.scss";
@@ -73,7 +74,10 @@ export default function CursosPublicPage() {
 									<article
 										key={course.id}
 										className={styles.courseCard}
-										style={{ "--course-accent": course.accent }}
+										style={{
+											"--course-accent": course.accent,
+											"--course-bg-image": `url(${course.heroImage || course.previewImage || course.image})`,
+										}}
 									>
 										<div className={styles.courseImage}>
 											<img src={course.image} alt={course.title} />
@@ -199,7 +203,7 @@ export default function CursosPublicPage() {
 						</section>
 
 						<div className={styles.areaImage}>
-							<img src="/images/cs.png" alt="cs" />
+							<img src={coursesPageFooterVisual.image} alt={coursesPageFooterVisual.alt} />
 						</div>
 					</main>
 				</>

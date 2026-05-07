@@ -73,7 +73,7 @@ export default function BirthdayRentalPage() {
 					<Navbar logoSrc="/images/logo.png" logoAlt="Javis" />
 
 					<main className={styles.page}>
-						<section className={styles.hero}>
+						{/* <section className={styles.hero}>
 							<div className={styles.heroPattern} aria-hidden="true" />
 							<div className={styles.heroGlow} aria-hidden="true" />
 							<div className={styles.bottomStrip} aria-hidden="true" />
@@ -127,7 +127,7 @@ export default function BirthdayRentalPage() {
 									</div>
 								</div>
 							</div>
-						</section>
+						</section> */}
 
 						<section id="agenda" className={styles.bookingSection}>
 							<div className={styles.sectionHeader}>

@@ -17,6 +17,8 @@ import {
 	Star,
 	Users,
 	Video,
+	List,
+	X,
 } from "lucide-react";
 import Navbar from "@/components/_global/Navbar/Navbar";
 import PreloaderReveal from "@/components/_ui/PreloaderReveal/PreloaderReveal";
@@ -32,12 +34,39 @@ const purchaseBenefits = [
 	{ icon: Award, text: "Certificado de conclusao" },
 ];
 
+function getVimeoEmbedUrl(vimeoUrl) {
+	if (!vimeoUrl) return "";
+
+	try {
+		const url = new URL(vimeoUrl);
+
+		if (url.hostname.includes("player.vimeo.com")) {
+			return `${url.origin}${url.pathname}?autoplay=1&title=0&byline=0&portrait=0`;
+		}
+
+		const videoId = url.pathname.split("/").filter(Boolean).pop();
+
+		if (videoId) {
+			return `https://player.vimeo.com/video/${videoId}?autoplay=1&title=0&byline=0&portrait=0`;
+		}
+	} catch (error) {
+		const match = String(vimeoUrl).match(/vimeo\.com\/(?:.*\/)?(\d+)/);
+
+		if (match?.[1]) {
+			return `https://player.vimeo.com/video/${match[1]}?autoplay=1&title=0&byline=0&portrait=0`;
+		}
+	}
+
+	return vimeoUrl;
+}
+
 export default function CourseInternalPage() {
 	const params = useParams();
 	const course = getPublicCourseBySlug(params?.slug);
 	const [showPreloader, setShowPreloader] = useState(true);
 	const [ready, setReady] = useState(false);
 	const [footerReady, setFooterReady] = useState(false);
+	const [isVslOpen, setIsVslOpen] = useState(false);
 
 	const relatedCourses = useMemo(() => {
 		if (!course) return [];
@@ -50,6 +79,8 @@ export default function CourseInternalPage() {
 	if (!course) {
 		notFound();
 	}
+
+	const vimeoEmbedUrl = getVimeoEmbedUrl(course.vimeoUrl);
 
 	const handlePreloaderComplete = () => {
 		setShowPreloader(false);
@@ -80,9 +111,18 @@ export default function CourseInternalPage() {
 				<>
 					<Navbar logoSrc="/images/logo.png" logoAlt="Javis" />
 
-					<main className={styles.page} style={{ "--course-accent": course.accent }}>
+					<main
+						className={styles.page}
+						style={{
+							"--course-accent": course.accent,
+							"--course-hero-background": course.heroBackground || course.accent,
+							"--hero-dot-color": course.heroDotColor || "rgba(244, 208, 63, 0.52)",
+							"--course-bg-image": `url(${course.heroImage || course.previewImage || course.image})`,
+						}}
+					>
 						<section className={styles.hero}>
 							<div className={styles.heroPattern} aria-hidden="true" />
+							<div className={styles.heroDotMatrix} aria-hidden="true" />
 							<div className={styles.bottomStrip} aria-hidden="true" />
 
 							<div className={styles.heroInner}>
@@ -100,33 +140,49 @@ export default function CourseInternalPage() {
 										</div>
 									</div>
 
-									<div className={styles.purchaseBox}>
-										<div className={styles.price}>
-											<strong>{course.price}</strong>
-											<span>{course.installments}</span>
-										</div>
+									<div className={styles.areaPrice}>
+										<div className={styles.purchaseBox}>
+											<div className={styles.price}>
+												<strong>{course.price}</strong>
+												<span>{course.installments}</span>
+											</div>
 
-										<Link href="/cadastro" className={styles.buyButton}>
-											<ShoppingCart />
-											Comprar agora
-										</Link>
+
+										</div>
 
 										<button type="button" className={styles.lockButton}>
 											<LockKeyhole />
 										</button>
+
+										<div className={styles.nivelArea}>
+											<span>Nivel</span>
+											<LevelBadge level={course.level} variant="compact" />
+										</div>
 									</div>
+
+									<Link href="/cadastro" className={styles.buyButton}>
+										<ShoppingCart />
+										Comprar agora
+									</Link>
 								</div>
 
 								<div className={styles.previewShell}>
-									<div className={styles.previewCard}>
-										<img src={course.previewImage} alt={`Preview ${course.title}`} />
-										<div className={styles.previewOverlay} />
-										<button type="button" className={styles.playButton} aria-label="Assistir VSL">
-											<Play />
-										</button>
-										<div className={styles.previewBadge}>
-											<Video />
-											<span>Preview VSL</span>
+									<div className={styles.previewFrame}>
+										<div className={styles.previewCard}>
+											<img src={course.previewImage} alt={`Preview ${course.title}`} />
+											<div className={styles.previewOverlay} />
+											<button
+												type="button"
+												className={styles.playButton}
+												onClick={() => setIsVslOpen(true)}
+												aria-label="Assistir VSL"
+											>
+												<Play />
+											</button>
+											<div className={styles.previewBadge}>
+												<Video />
+												<span>Assista o Video</span>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -134,11 +190,11 @@ export default function CourseInternalPage() {
 						</section>
 
 						<section className={styles.courseSpecs}>
+							<div className={styles.titleMiddleArea}>
+								<List />
+								Mais Informações
+							</div>
 							<div className={styles.specGrid}>
-								<div>
-									<span>Nivel</span>
-									<LevelBadge level={course.level} variant="compact" />
-								</div>
 								<div>
 									<span>Ferramenta</span>
 									<strong>{course.tool}</strong>
@@ -218,33 +274,10 @@ export default function CourseInternalPage() {
 							</div>
 						</section>
 
-						<section className={styles.investmentSection}>
-							<div className={styles.investmentCard}>
-								<div>
-									<span className={styles.courseTag}>Investimento</span>
-									<h2>{course.title}</h2>
-									<strong>{course.price} a vista</strong>
-									<p>{course.installments}</p>
-
-									<Link href="/cadastro" className={styles.buyButton}>
-										<ShoppingCart />
-										Comprar agora
-									</Link>
-								</div>
-
-								<div className={styles.benefitsGrid}>
-									{purchaseBenefits.map(({ icon: Icon, text }) => (
-										<div key={text}>
-											<Icon />
-											<span>{text}</span>
-										</div>
-									))}
-								</div>
-							</div>
-						</section>
-
 						<section className={styles.mentorSection}>
-							<img src={course.instructorImage} alt={course.instructor} />
+							<div className={styles.mentorImageWrap}>
+								<img src={course.instructorImage} alt={course.instructor} />
+							</div>
 							<div>
 								<span>Mentor</span>
 								<h2>{course.instructor}</h2>
@@ -260,7 +293,7 @@ export default function CourseInternalPage() {
 						<section className={styles.experienceSection}>
 							<div>
 								<Sparkles />
-								<h2>Feito com experiencia real</h2>
+								<h2>Feito com <br />experiencia real</h2>
 							</div>
 							<p>
 								A Javis Academy nasce para conectar educacao, games, criatividade
@@ -285,45 +318,65 @@ export default function CourseInternalPage() {
 							</div>
 						</section>
 
-						<section className={styles.relatedSection}>
-							<div className={styles.sectionIntro}>
-								<span>Confira mais cursos</span>
-								<h2>Continue explorando a Academy.</h2>
-							</div>
+						<section className={styles.investmentSection}>
+							<div className={styles.investmentCard}>
+								<div>
+									<span className={styles.courseTag}>Investimento</span>
+									<h2>{course.title}</h2>
+									<strong>{course.price} a vista</strong>
+									<p>{course.installments}</p>
 
-							<div className={styles.relatedGrid}>
-								{relatedCourses.map((item) => (
-									<article
-										key={item.slug}
-										className={styles.relatedCard}
-										style={{ "--related-accent": item.accent }}
-									>
-										<img src={item.image} alt={item.title} />
-										<div>
-											<span>{item.eyebrow}</span>
-											<h3>{item.title}</h3>
-											<p>
-												<Clock3 />
-												{item.hours}
-											</p>
-											<p>
-												<Users />
-												{item.students}
-											</p>
-											<p>
-												<Star />
-												{item.score}
-											</p>
+									<Link href="/cadastro" className={styles.buyButton}>
+										<ShoppingCart />
+										Comprar agora
+									</Link>
+								</div>
+
+								<div className={styles.benefitsGrid}>
+									{purchaseBenefits.map(({ icon: Icon, text }) => (
+										<div key={text}>
+											<Icon />
+											<span>{text}</span>
 										</div>
-										<Link href={`/academy/cursos/${item.slug}`}>
-											Saiba mais
-											<ArrowRight />
-										</Link>
-									</article>
-								))}
+									))}
+								</div>
 							</div>
 						</section>
+						
+						<div className={styles.areaImage}>
+							<img
+								src={course.footerImage || course.heroImage || course.image}
+								alt={`${course.title} Javis Academy`}
+							/>
+						</div>
 					</main>
+
+					{isVslOpen && vimeoEmbedUrl && (
+						<div className={styles.videoModal} role="dialog" aria-modal="true">
+							<button
+								type="button"
+								className={styles.videoBackdrop}
+								onClick={() => setIsVslOpen(false)}
+								aria-label="Fechar video"
+							/>
+							<div className={styles.videoDialog}>
+								<button
+									type="button"
+									className={styles.videoClose}
+									onClick={() => setIsVslOpen(false)}
+									aria-label="Fechar video"
+								>
+									<X />
+								</button>
+								<iframe
+									src={vimeoEmbedUrl}
+									title={`VSL ${course.title}`}
+									allow="autoplay; fullscreen; picture-in-picture"
+									allowFullScreen
+								/>
+							</div>
+						</div>
+					)}
 				</>
 			)}
 
