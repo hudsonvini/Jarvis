@@ -106,6 +106,10 @@
 	font-size: 14px;
 	font-weight: 700;
 	letter-spacing: 0.08em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: fit-content;
 	text-transform: uppercase;
 	cursor: pointer;
 	transition:

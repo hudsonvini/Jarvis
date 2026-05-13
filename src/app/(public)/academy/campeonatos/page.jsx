@@ -58,7 +58,7 @@ export default function CampeonatosPage() {
 						<section className={styles.championshipsSection}>
 							<div className={styles.sectionHeader}>
 								<span>Calendario competitivo</span>
-								<h2>Escolha seu campeonato</h2>
+								<h2>Escolha seu <br /> campeonato</h2>
 								<p>
 									Os links abaixo sao externos e podem ser trocados diretamente
 									no arquivo de dados de cada campeonato.
@@ -80,12 +80,13 @@ export default function CampeonatosPage() {
 											aria-label={`Abrir detalhes de ${championship.name}`}
 										>
 											<div className={styles.media}>
-												<Image
+												{/* <Image
 													src={championship.image}
 													alt={championship.name}
 													fill
 													sizes="(max-width: 720px) 100vw, (max-width: 1320px) 50vw, 25vw"
-												/>
+												/> */}
+												<img src={championship.image} alt={championship.name} />
 												<span>{championship.statusLabel}</span>
 											</div>
 
