@@ -10,6 +10,7 @@ import TeachersCarousel from "@/components/_ui/Home/TeachersCarousel/TeachersCar
 import TeachersCarouselSimples from "@/components/_ui/Home/TeachersCarouselSimples/TeachersCarouselSimples";
 import TextDecoSection from "@/components/_ui/Home/TextDecoSection/TextDecoSection";
 import FaqSection from "@/components/_ui/Home/FaqSection/FaqSection";
+import ChampionshipsSlider from "@/components/_ui/Home/ChampionshipsSlider/ChampionshipsSlider";
 import FooterReveal from "@/components/_global/FooterReveal/FooterReveal";
 
 export default function Sobre() {
@@ -68,7 +69,12 @@ export default function Sobre() {
                         <TextDecoSection />
                         <TeachersCarouselSimples />
                         <FaqSection />
+                        <ChampionshipsSlider />
+                        <div className={styles.areaImage}>
+                            <img src='/images/cs.png' alt='cs' />
+                        </div>
                     </div>
+
                 </>
             )}
 

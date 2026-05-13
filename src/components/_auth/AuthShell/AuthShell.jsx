@@ -10,7 +10,7 @@ export default function AuthShell({
 
             <section className={styles.shell}>
 
-                <div className={styles.left}>
+                {/* <div className={styles.left}>
                     <span className={styles.badge}>{titleBadge}</span>
 
                     <div className={styles.cornerTopLeft} />
@@ -18,7 +18,7 @@ export default function AuthShell({
                     <div className={styles.cornerBottomLeft} />
                     <div className={styles.cornerBottomRight} />
                     {visual}
-                </div>
+                </div> */}
                 <div className={styles.right}>{children}</div>
             </section>
 
