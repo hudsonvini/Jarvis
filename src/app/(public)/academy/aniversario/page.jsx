@@ -1,13 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
 	ArrowRight,
-	CalendarDays,
 	Check,
 	Clock3,
 	Gamepad2,
+	MapPin,
 	MonitorPlay,
 	PartyPopper,
 	ShieldCheck,
@@ -19,29 +20,66 @@ import PreloaderReveal from "@/components/_ui/PreloaderReveal/PreloaderReveal";
 import FooterReveal from "@/components/_global/FooterReveal/FooterReveal";
 import {
 	birthdayAddons,
-	birthdayCalendarDays,
 	birthdayGallery,
 	birthdayPackages,
 } from "@/data/birthdayRental";
 import styles from "./page.module.scss";
+import DotWaveStrip from "@/components/_ui/Home/DotWaveStrip/DotWaveStrip";
 
-const weekDays = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom"];
+const benefits = [
+	{
+		icon: Gamepad2,
+		title: "Arena gamer preparada",
+		text: "Setups, consoles e jogos organizados para a turma entrar direto na experiencia.",
+	},
+	{
+		icon: MonitorPlay,
+		title: "Telao e parabens",
+		text: "Espaco para exibir fotos, nome do aniversariante, placares e momentos do evento.",
+	},
+	{
+		icon: Users,
+		title: "Equipe de apoio",
+		text: "Monitoria para conduzir partidas, organizar os grupos e manter o roteiro fluindo.",
+	},
+	{
+		icon: ShieldCheck,
+		title: "Evento reservado",
+		text: "Formato fechado por pacote, com estrutura pensada para familia e convidados.",
+	},
+];
+
+const experienceSteps = [
+	{
+		number: "01",
+		title: "Escolha o pacote",
+		text: "Compare tempo, convidados e beneficios para selecionar o formato ideal.",
+	},
+	{
+		number: "02",
+		title: "Siga para a reserva",
+		text: "Na proxima tela entram datas disponiveis, dados do evento e pagamento.",
+	},
+	{
+		number: "03",
+		title: "Personalize a festa",
+		text: "Defina jogos, roteiro, extras e detalhes do parabens com a equipe.",
+	},
+	{
+		number: "04",
+		title: "Chegue para celebrar",
+		text: "A Javis prepara a arena e acompanha a operacao durante o aniversario.",
+	},
+];
+
+function packageHref(packageId) {
+	return `/academy/aniversario/reserva/${packageId}`;
+}
 
 export default function BirthdayRentalPage() {
 	const [showPreloader, setShowPreloader] = useState(true);
 	const [ready, setReady] = useState(false);
 	const [footerReady, setFooterReady] = useState(false);
-	const [selectedDay, setSelectedDay] = useState(
-		birthdayCalendarDays.find((day) => day.status !== "booked")
-	);
-
-	const availability = useMemo(() => {
-		const free = birthdayCalendarDays.filter((day) => day.status === "free").length;
-		const busy = birthdayCalendarDays.filter((day) => day.status === "busy").length;
-		const booked = birthdayCalendarDays.filter((day) => day.status === "booked").length;
-
-		return { free, busy, booked };
-	}, []);
 
 	const handlePreloaderComplete = () => {
 		setShowPreloader(false);
@@ -73,154 +111,76 @@ export default function BirthdayRentalPage() {
 					<Navbar logoSrc="/images/logo.png" logoAlt="Javis" />
 
 					<main className={styles.page}>
-						{/* <section className={styles.hero}>
-							<div className={styles.heroPattern} aria-hidden="true" />
-							<div className={styles.heroGlow} aria-hidden="true" />
-							<div className={styles.bottomStrip} aria-hidden="true" />
-
-							<div className={styles.heroInner}>
-								<div className={styles.heroCopy}>
-									<span className={styles.kicker}>Javis Birthday Arena</span>
-									<h1>Alugue a Javis para um aniversario gamer premium.</h1>
-									<p>
-										Um espaco imersivo para celebrar com amigos, setups gamers,
-										telao, campeonato, area para parabens e uma equipe preparada
-										para conduzir a experiencia.
-									</p>
-
-									<div className={styles.heroActions}>
-										<a href="#agenda" className={styles.primaryButton}>
-											Ver datas livres
-											<CalendarDays />
-										</a>
-										<a href="#pacotes" className={styles.secondaryButton}>
-											Comparar pacotes
-											<ArrowRight />
-										</a>
-									</div>
-								</div>
-
-								<div className={styles.heroVisual}>
-									<img src="/images/atleta-digital-1.webp" alt="Espaco gamer Javis" />
-									<div className={styles.heroCard}>
-										<span>Pacotes a partir de</span>
-										<strong>R$890</strong>
-										<small>evento reservado por horario</small>
-									</div>
-								</div>
-
-								<div className={styles.heroStats}>
-									<div>
-										<Users />
-										<strong>50</strong>
-										<span>convidados</span>
-									</div>
-									<div>
-										<Gamepad2 />
-										<strong>3h+</strong>
-										<span>de arena</span>
-									</div>
-									<div>
-										<MonitorPlay />
-										<strong>VSL</strong>
-										<span>preview do espaco</span>
-									</div>
-								</div>
+						<section className={styles.hero}>
+							<div className={styles.heroMedia}>
+								<Image
+									src="/images/atleta-digital-1.webp"
+									alt="Espaco gamer Javis preparado para aniversario"
+									fill
+									priority
+									sizes="100vw"
+								/>
 							</div>
-						</section> */}
 
-						<section id="agenda" className={styles.bookingSection}>
-							<div className={styles.sectionHeader}>
-								<span>Agenda mockada</span>
-								<h2>Escolha uma data livre para reservar o espaco.</h2>
+							<div className={styles.heroContent}>
+								<span className={styles.kicker}>Javis Birthday Arena</span>
+								<h1>Aniversario gamer na Javis.</h1>
 								<p>
-									A estrutura ja separa dias livres, dias reservados e dias com
-									poucos horarios. Depois, basta substituir este mock pelo retorno
-									da API de agenda.
+									Uma festa com arena gamer, telao, desafios em grupo, espaco
+									para parabens e equipe de apoio para transformar o evento em
+									uma experiencia fluida para convidados e familia.
 								</p>
+
+								<div className={styles.heroActions}>
+									<a href="#pacotes" className={styles.primaryButton}>
+										Ver pacotes
+										<ArrowRight />
+									</a>
+									<a href="#espaco" className={styles.secondaryButton}>
+										Conhecer o espaco
+									</a>
+								</div>
 							</div>
 
-							<div className={styles.bookingGrid}>
-								<div className={styles.calendarPanel}>
-									<div className={styles.calendarTop}>
-										<div>
-											<span>Maio 2026</span>
-											<strong>Disponibilidade</strong>
-										</div>
-										<div className={styles.legend}>
-											<span className={styles.free}>Livre</span>
-											<span className={styles.busy}>Poucos horarios</span>
-											<span className={styles.booked}>Reservado</span>
-										</div>
-									</div>
+							{/* <div className={styles.heroStrip} aria-hidden="true" /> */}
+						</section>
+						
+						<DotWaveStrip />
 
-									<div className={styles.weekGrid}>
-										{weekDays.map((day) => (
-											<span key={day}>{day}</span>
-										))}
-									</div>
+						<section className={styles.introSection}>
+							<div className={styles.introText}>
+								<span className={styles.kicker}>O que esta incluso</span>
+								<h2>Uma festa pensada para jogar, competir e comemorar.</h2>
+							</div>
 
-									<div className={styles.daysGrid}>
-										{birthdayCalendarDays.map((day) => (
-											<button
-												key={day.day}
-												type="button"
-												className={`${styles.dayButton} ${styles[day.status]} ${
-													selectedDay?.day === day.day ? styles.selected : ""
-												}`}
-												onClick={() => setSelectedDay(day)}
-											>
-												<strong>{day.day}</strong>
-												<span>{day.label}</span>
-											</button>
-										))}
-									</div>
-								</div>
+							<div className={styles.benefitsGrid}>
+								{benefits.map((benefit) => {
+									const Icon = benefit.icon;
 
-								<aside className={styles.scheduleCard}>
-									<span>Data selecionada</span>
-									<h3>{selectedDay?.day} de maio</h3>
-									<p>
-										{selectedDay?.status === "booked"
-											? "Esta data ja esta reservada. Escolha outro dia livre no calendario."
-											: "Horarios disponiveis para conversar com a equipe e iniciar a pre-reserva."}
-									</p>
-
-									<div className={styles.slotList}>
-										{selectedDay?.slots.length ? (
-											selectedDay.slots.map((slot) => <button key={slot}>{slot}</button>)
-										) : (
-											<small>Nenhum horario disponivel</small>
-										)}
-									</div>
-
-									<div className={styles.availabilityStats}>
-										<div>
-											<strong>{availability.free}</strong>
-											<span>dias livres</span>
-										</div>
-										<div>
-											<strong>{availability.busy}</strong>
-											<span>com poucos horarios</span>
-										</div>
-										<div>
-											<strong>{availability.booked}</strong>
-											<span>reservados</span>
-										</div>
-									</div>
-
-									<Link href="/cadastro" className={styles.primaryButton}>
-										Iniciar pre-reserva
-										<ArrowRight />
-									</Link>
-								</aside>
+									return (
+										<article key={benefit.title}>
+											<Icon />
+											<h3>{benefit.title}</h3>
+											<p>{benefit.text}</p>
+										</article>
+									);
+								})}
 							</div>
 						</section>
+
+						<div className={styles.bannerArea}>
+							<img src="http://localhost:3000/_next/image?url=%2Fimages%2Fquem-somos.webp&w=1080&q=75" alt="" />
+						</div>
+
 
 						<section id="pacotes" className={styles.packagesSection}>
 							<div className={styles.sectionHeader}>
 								<span>Pacotes</span>
-								<h2>Compare formatos e escolha o tamanho da festa.</h2>
+								<h2>Escolha o formato do aniversario.</h2>
+								<p>
+									Aqui a pessoa escolhe o plano. A data, dados do evento e
+									pagamento entram na proxima tela do fluxo de reserva.
+								</p>
 							</div>
 
 							<div className={styles.packageGrid}>
@@ -230,9 +190,12 @@ export default function BirthdayRentalPage() {
 										className={`${styles.packageCard} ${pack.highlight ? styles.highlight : ""}`}
 									>
 										{pack.highlight && <span className={styles.bestTag}>Mais escolhido</span>}
-										<h3>{pack.name}</h3>
-										<strong>{pack.price}</strong>
-										<p>{pack.description}</p>
+
+										<div className={styles.packageTop}>
+											<h3>{pack.name}</h3>
+											<strong>{pack.price}</strong>
+											<p>{pack.description}</p>
+										</div>
 
 										<div className={styles.packageMeta}>
 											<span>
@@ -254,8 +217,8 @@ export default function BirthdayRentalPage() {
 											))}
 										</ul>
 
-										<Link href="/cadastro">
-											Quero este pacote
+										<Link href={packageHref(pack.id)}>
+											Escolher pacote
 											<ArrowRight />
 										</Link>
 									</article>
@@ -263,21 +226,61 @@ export default function BirthdayRentalPage() {
 							</div>
 						</section>
 
-						<section className={styles.spaceSection}>
+						<section id="espaco" className={styles.spaceSection}>
 							<div className={styles.sectionHeader}>
-								<span>O espaco</span>
-								<h2>Arena, lounge e estrutura pronta para receber.</h2>
+								<span>O local</span>
+								<h2>A Javis pronta para receber a turma.</h2>
 								<p>
-									O aniversario pode combinar jogo livre, desafios em grupo,
-									parabens no telao e uma experiencia guiada para que a familia
-									nao precise operar nada durante o evento.
+									O foco da pagina e mostrar estrutura, atmosfera e beneficios:
+									o calendario fica reservado para a etapa de compra.
 								</p>
 							</div>
 
+							<div className={styles.locationPanel}>
+								<div className={styles.locationImage}>
+									<Image
+										src="/images/quem-somos.webp"
+										alt="Ambiente da Javis"
+										fill
+										sizes="(max-width: 980px) 100vw, 50vw"
+									/>
+								</div>
+
+								<div className={styles.locationContent}>
+									<MapPin />
+									<h3>Ambiente fechado, roteiro simples e visual gamer.</h3>
+									<p>
+										A estrutura combina area de jogo, espaco de convivencia,
+										suporte tecnico e telao para que o aniversario tenha ritmo de
+										evento sem virar trabalho para a familia.
+									</p>
+
+									<div className={styles.locationFacts}>
+										<div>
+											<strong>3h+</strong>
+											<span>de experiencia</span>
+										</div>
+										<div>
+											<strong>20-50</strong>
+											<span>convidados</span>
+										</div>
+										<div>
+											<strong>100%</strong>
+											<span>evento reservado</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
 							<div className={styles.galleryGrid}>
-								{birthdayGallery.map((item, index) => (
-									<article key={item.title} className={index === 0 ? styles.largePhoto : ""}>
-										<img src={item.image} alt={item.title} />
+								{birthdayGallery.map((item) => (
+									<article key={item.title}>
+										<Image
+											src={item.image}
+											alt={item.title}
+											fill
+											sizes="(max-width: 900px) 100vw, 33vw"
+										/>
 										<div>
 											<h3>{item.title}</h3>
 											<p>{item.text}</p>
@@ -289,27 +292,25 @@ export default function BirthdayRentalPage() {
 
 						<section className={styles.experienceSection}>
 							<div className={styles.experiencePanel}>
-								<div>
-									<span>Como funciona</span>
-									<h2>Da visita a celebracao, tudo com roteiro simples.</h2>
+								<div className={styles.experienceIntro}>
+									<span className={styles.kicker}>Como funciona</span>
+									<h2>Da escolha do pacote ao dia da festa.</h2>
+									<p>
+										O fluxo foi separado para esta pagina vender a experiencia e
+										a proxima tela cuidar de datas, dados e pagamento.
+									</p>
 								</div>
 
 								<div className={styles.steps}>
-									<article>
-										<strong>01</strong>
-										<h3>Escolha data e pacote</h3>
-										<p>Veja horarios livres, selecione o formato e envie a pre-reserva.</p>
-									</article>
-									<article>
-										<strong>02</strong>
-										<h3>Personalize a experiencia</h3>
-										<p>Defina jogos, numero de convidados, extras e roteiro do parabens.</p>
-									</article>
-									<article>
-										<strong>03</strong>
-										<h3>Chegue para celebrar</h3>
-										<p>A equipe prepara o espaco e acompanha a operacao do evento.</p>
-									</article>
+									{experienceSteps.map((step) => (
+										<article key={step.number}>
+											<strong>{step.number}</strong>
+											<div>
+												<h3>{step.title}</h3>
+												<p>{step.text}</p>
+											</div>
+										</article>
+									))}
 								</div>
 							</div>
 						</section>
@@ -318,8 +319,12 @@ export default function BirthdayRentalPage() {
 							<div className={styles.addonsIntro}>
 								<Sparkles />
 								<div>
-									<span>Extras para vender mais</span>
-									<h2>Adicione experiencias ao aluguel.</h2>
+									<span className={styles.kicker}>Extras</span>
+									<h2>Complemente a experiencia.</h2>
+									<p>
+										Adicionais que podem entrar como upsell na etapa de reserva
+										ou em contato direto com a equipe.
+									</p>
 								</div>
 							</div>
 
@@ -336,15 +341,15 @@ export default function BirthdayRentalPage() {
 						<section className={styles.finalCta}>
 							<div>
 								<ShieldCheck />
-								<h2>Transforme a Javis no palco do aniversario.</h2>
+								<h2>Comece escolhendo um pacote.</h2>
 								<p>
-									Reserve uma data, receba a confirmacao da equipe e monte uma
-									experiencia gamer com cara de evento premium.
+									Depois disso, o fluxo segue para disponibilidade de datas,
+									dados da festa e pagamento pelo gateway integrado.
 								</p>
 							</div>
-							<a href="#agenda" className={styles.primaryButton}>
-								Consultar agenda
-								<CalendarDays />
+							<a href="#pacotes" className={styles.primaryButton}>
+								Comparar pacotes
+								<ArrowRight />
 							</a>
 						</section>
 					</main>
