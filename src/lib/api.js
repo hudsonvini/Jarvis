@@ -3,9 +3,14 @@ import "server-only";
 import { getSession, deleteSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 
-const API_URL = process.env.API_URL;
-if (!API_URL) {
-  throw new Error("Variavel de ambiente API_URL nao configurada.");
+function getApiUrl() {
+  const apiUrl = process.env.API_URL;
+
+  if (!apiUrl) {
+    throw new Error("Variavel de ambiente API_URL nao configurada.");
+  }
+
+  return apiUrl;
 }
 
 export async function authFetch(path, options) {
@@ -26,7 +31,7 @@ export async function authFetch(path, options) {
 
   let res;
   try {
-    res = await fetch(`${API_URL}${path}`, {
+    res = await fetch(`${getApiUrl()}${path}`, {
       ...options,
       headers,
     });

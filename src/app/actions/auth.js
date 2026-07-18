@@ -4,9 +4,14 @@ import { redirect } from "next/navigation";
 import { createSession, deleteSession } from "@/lib/session";
 import { isValidCpf, stripCpf } from "@/lib/cpf";
 
-const API_URL = process.env.API_URL;
-if (!API_URL) {
-  throw new Error("Variavel de ambiente API_URL nao configurada.");
+function getApiUrl() {
+  const apiUrl = process.env.API_URL;
+
+  if (!apiUrl) {
+    throw new Error("Variavel de ambiente API_URL nao configurada.");
+  }
+
+  return apiUrl;
 }
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -15,7 +20,7 @@ const MAX_TOKEN_LENGTH = 4096;
 
 async function apiPost(path, body) {
   try {
-    const res = await fetch(`${API_URL}${path}`, {
+    const res = await fetch(`${getApiUrl()}${path}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
