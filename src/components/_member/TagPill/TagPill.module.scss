@@ -1,0 +1,30 @@
+@use "variables" as *;
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  font-size: 0.76rem;
+  color: rgba(255, 255, 255, 0.92);
+  transition: all $transition-fast;
+  cursor: default;
+  white-space: nowrap;
+}
+
+.clickable {
+  cursor: pointer;
+
+  &:hover {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+}
+
+.active {
+  background: rgba(244, 208, 63, 0.12);
+  border-color: $color-primary;
+  color: $color-primary;
+}

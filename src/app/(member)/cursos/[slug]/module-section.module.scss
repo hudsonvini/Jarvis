@@ -1,0 +1,30 @@
+@use "variables" as *;
+
+.section {
+  margin-bottom: 32px;
+}
+
+.header {
+  padding-left: 12px;
+  border-left: 3px solid $color-primary;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-family: var(--font-syne), $font-heading;
+  font-size: 1rem;
+  font-weight: 700;
+  color: $color-text-heading;
+}
+
+.subtitle {
+  font-size: 0.8rem;
+  color: $color-text-muted;
+  margin-top: 2px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}

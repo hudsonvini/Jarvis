@@ -31,6 +31,13 @@
 	letter-spacing: -0.03em;
 	color: #FFF2DF;
 	margin-bottom: 18px;
+
+	@media (max-width: 900px) {
+		font-size: 24px;
+	}
+	@media (max-width: 640px) {
+		font-size: 22px;
+	}
 }
 
 .description {
@@ -39,6 +46,13 @@
 	line-height: 1.7;
 	color: rgba(219, 209, 236, 0.58);
 	margin: 0;
+
+	@media (max-width: 900px) {
+		font-size: 13px;
+	}
+	@media (max-width: 640px) {
+		font-size: 12px;
+	}
 }
 
 .navButtons {
@@ -248,11 +262,6 @@
 		margin-bottom: 28px;
 	}
 
-	.description {
-		font-size: 0.98rem;
-		line-height: 1.65;
-	}
-
 	.navButton {
 		width: 50px;
 		height: 50px;
@@ -269,7 +278,7 @@
 	}
 
 	.cardTitle {
-		font-size: clamp(2rem, 10vw, 3rem);
+		font-size: 26px;
 	}
 
 	.cardName {
@@ -281,7 +290,7 @@
 	}
 
 	.mediaArea {
-		height: 290px;
+		height: 200px;
 	}
 
 	.teacherImage {

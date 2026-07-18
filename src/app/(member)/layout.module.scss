@@ -1,0 +1,17 @@
+@use "variables" as *;
+
+.shell {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+  background: $color-bg-base;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: $sidebar-width 1fr;
+
+  @include respond-to($bp-desktop) {
+    grid-template-columns: 1fr;
+  }
+}

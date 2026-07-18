@@ -6,6 +6,8 @@ import { Eye, EyeOff, KeyRound, Mail } from "lucide-react";
 import AuthCheckbox from "../AuthCheckbox/AuthCheckbox";
 import AuthField from "../AuthField/AuthField";
 import AuthSocialButtons from "../AuthSocialButtons/AuthSocialButtons";
+import FormAlert from "../FormAlert/FormAlert";
+import FormSpinner from "../FormSpinner/FormSpinner";
 import {
     buildLoginPayload,
     loginInitialValues,
@@ -14,13 +16,28 @@ import {
 } from "../authForm.utils";
 import styles from "../RegistrationForm/RegistrationForm.module.scss";
 
-export default function LoginForm({ onSubmit }) {
+const FOCUS_ORDER = ["email", "password"];
+
+function focusFirstError(errors) {
+    for (const fieldName of FOCUS_ORDER) {
+        if (errors[fieldName]) {
+            const el = document.getElementById(fieldName);
+            if (el && typeof el.focus === "function") {
+                el.focus();
+                return;
+            }
+        }
+    }
+}
+
+export default function LoginForm({ onSubmit, topBanner = null }) {
     const [values, setValues] = useState(loginInitialValues);
     const [errors, setErrors] = useState({});
     const [touched, setTouched] = useState({});
     const [showPassword, setShowPassword] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitMessage, setSubmitMessage] = useState("");
+    const [formError, setFormError] = useState("");
+    const [validationHint, setValidationHint] = useState("");
 
     const visibleErrors = useMemo(() => {
         return Object.fromEntries(
@@ -45,7 +62,8 @@ export default function LoginForm({ onSubmit }) {
         const { name, type, checked, value } = event.target;
         const nextValue = type === "checkbox" ? checked : value;
 
-        setSubmitMessage("");
+        setFormError("");
+        setValidationHint("");
         setFieldValue(name, nextValue);
     };
 
@@ -71,26 +89,51 @@ export default function LoginForm({ onSubmit }) {
 
         setTouched((current) => ({ ...current, ...allTouched }));
         setErrors(validation);
+        setFormError("");
 
         if (Object.values(validation).some(Boolean)) {
-            setSubmitMessage("Revise os campos destacados para continuar.");
+            setValidationHint("Revise os campos destacados para continuar.");
+            focusFirstError(validation);
             return;
         }
 
+        setValidationHint("");
         const payload = buildLoginPayload(values);
 
         try {
             setIsSubmitting(true);
 
             if (onSubmit) {
-                await onSubmit(payload);
+                const result = await onSubmit(payload);
+
+                if (result?.fieldErrors) {
+                    setErrors((current) => ({ ...current, ...result.fieldErrors }));
+                    setTouched((current) => {
+                        const next = { ...current };
+                        Object.keys(result.fieldErrors).forEach((key) => {
+                            next[key] = true;
+                        });
+                        return next;
+                    });
+                    setValidationHint("Revise os campos destacados para continuar.");
+                    focusFirstError(result.fieldErrors);
+                    return;
+                }
+
+                if (result?.error) {
+                    setFormError(result.error);
+                    return;
+                }
             } else {
                 await new Promise((resolve) => window.setTimeout(resolve, 650));
+                setValidationHint("Login validado no front e pronto para integrar com a API.");
             }
-
-            setSubmitMessage("Login validado no front e pronto para integrar com a API.");
-        } catch {
-            setSubmitMessage("Nao foi possivel concluir o login agora.");
+        } catch (error) {
+            const message = error?.message ?? "";
+            if (message.includes("NEXT_REDIRECT")) {
+                throw error;
+            }
+            setFormError("Nao foi possivel concluir o login agora.");
         } finally {
             setIsSubmitting(false);
         }
@@ -99,6 +142,9 @@ export default function LoginForm({ onSubmit }) {
     return (
         <section className={styles.panel}>
             <form className={styles.form} onSubmit={handleSubmit} noValidate>
+                {topBanner ? <div className={styles.topBanner}>{topBanner}</div> : null}
+                {formError ? <FormAlert variant="error">{formError}</FormAlert> : null}
+
                 <AuthField
                     label="E-mail"
                     name="email"
@@ -149,13 +195,23 @@ export default function LoginForm({ onSubmit }) {
                         onBlur={handleBlur}
                         label="Manter minha sessao conectada"
                     />
+
+                    <Link href="/forgot-password" className={styles.forgotLink}>
+                        Esqueceu a senha?
+                    </Link>
                 </div>
 
-                <button type="submit" className={styles.submitButton} disabled={isSubmitting}>
-                    {isSubmitting ? "Validando..." : "Entrar"}
+                <button
+                    type="submit"
+                    className={styles.submitButton}
+                    disabled={isSubmitting}
+                    aria-busy={isSubmitting}
+                >
+                    {isSubmitting ? <FormSpinner /> : null}
+                    {isSubmitting ? "Entrando..." : "Entrar"}
                 </button>
 
-                {submitMessage ? <p className={styles.submitMessage}>{submitMessage}</p> : null}
+                {validationHint ? <p className={styles.submitMessage}>{validationHint}</p> : null}
 
                 <div className={styles.separator}>
                     <span />

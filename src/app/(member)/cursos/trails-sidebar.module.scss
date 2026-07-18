@@ -1,0 +1,86 @@
+@use "variables" as *;
+
+.sidebarContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sidebarTitle {
+  font-family: var(--font-syne), $font-heading;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: $color-text-heading;
+  margin-bottom: 10px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 10px 14px;
+  padding-right: 36px;
+  background: $color-card-bg;
+  border: 1px solid $color-card-border;
+  border-radius: 0;
+  color: $color-text-body;
+  font-size: 0.875rem;
+  transition: border-color $transition-fast;
+
+  &::placeholder {
+    color: $color-text-muted;
+  }
+
+  &:focus-visible {
+    border-color: $color-primary;
+    outline: none;
+    box-shadow: 0 0 0 1px $color-primary;
+  }
+}
+
+.searchWrapper {
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $color-text-muted;
+  pointer-events: none;
+}
+
+.tagsGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.orderGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.orderButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  font-size: 0.875rem;
+  color: $color-text-muted;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    color: $color-text-body;
+    background: $color-sidebar-active;
+  }
+}
+
+.orderButtonActive {
+  color: $color-primary;
+  background: $color-sidebar-active;
+}

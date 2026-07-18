@@ -35,12 +35,12 @@ function RenderChars({ text, className }) {
 
 export default function TextDecoSection({
 	eyebrow = "UPSTREAM LIVE AUTOMATION",
-	titleLine1 = "Take your YouTube channel to the next level",
-	titleLine2 = "with Upstream.",
-	titleLine3 = "The easiest way to",
-	titleHighlight = "build & maintain",
-	titleLine4 = "a 24 hour live stream using pre recorded videos.",
-	description = "Take your YouTube channel to the next level with Upstream. The easiest way to build and maintain a 24 hour live stream using pre recorded videos.",
+	titleLine1 = "Domine os fundamentos, ",
+	titleLine2 = "evolua sua técnica e",
+	titleLine3 = "prepare-se para transformar ",
+	titleHighlight = "sua paixão por games",
+	titleLine4 = "em profissão com a Jarvis Game Academy.",
+	description = "Leve sua jornada nos games para o próximo nível com a Jarvis. Aprenda, evolua e transforme sua paixão por jogos em habilidade real com uma formação feita para quem quer entrar no mercado gamer.",
 	buttonText = "Get started",
 }) {
 	const sectionRef = useRef(null);
@@ -251,9 +251,9 @@ export default function TextDecoSection({
 								<RenderChars text={description} className={styles.descriptionInline} />
 							</p>
 
-							<button className={styles.cta} ref={buttonRef} type="button">
+							<a href="/sobre" className={styles.cta} ref={buttonRef} type="button">
 								{buttonText}
-							</button>
+							</a>
 						</div>
 
 						<div className={styles.right}>

@@ -786,7 +786,7 @@
 	}
 }
 
-@media (max-width: 420px) {
+@media (max-width: 550px) {
 	.containerCourses {
 		padding: 12px;
 	}
@@ -801,8 +801,8 @@
 		&.cardPrincipal {
 			.imagePrincipal {
 				width: 100%;
-				max-width: 280px;
-				margin-bottom: 70px;
+				max-width: 240px;
+				margin-bottom: -14px;
 			}
 		}
 
@@ -811,23 +811,34 @@
 			min-height: 260px;
 
 			.imagePrincipal {
-				width: 46%;
-				max-width: 170px;
+				width: 100%;
+				// max-width: 170px;
 			}
 		}
 
 		&.cardBanner {
-			min-height: 340px;
+			min-height: 300px;
+			overflow: hidden;
+			border: 1px solid #f4d03f;
 
 			.imagePrincipal {
 				width: min(100%, 215px);
 				right: -10px;
+			}
+
+			.areaText {
+				.bottomArea {
+					display: flex;
+					flex-direction: column;
+				}
+
 			}
 		}
 
 		.titleCard {
 			font-size: 17px;
 		}
+
 
 		.descriptionCard {
 			font-size: 12.5px;
@@ -837,5 +848,10 @@
 			font-size: 14px;
 			padding: 11px 12px;
 		}
+	}
+
+	.rollArea {
+		min-height: 20px;
+		height: 20px;
 	}
 }

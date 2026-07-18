@@ -2,12 +2,15 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { Eye, EyeOff, KeyRound, Mail, Phone, UserRound } from "lucide-react";
+import { CalendarDays, Eye, EyeOff, IdCard, KeyRound, Mail, Phone, UserRound } from "lucide-react";
 import AuthCheckbox from "../AuthCheckbox/AuthCheckbox";
 import AuthField from "../AuthField/AuthField";
 import AuthSocialButtons from "../AuthSocialButtons/AuthSocialButtons";
+import FormAlert from "../FormAlert/FormAlert";
+import FormSpinner from "../FormSpinner/FormSpinner";
 import {
     buildRegistrationPayload,
+    formatCpf,
     formatPhoneNumber,
     registrationInitialValues,
     validateRegistration,
@@ -18,10 +21,43 @@ import styles from "./RegistrationForm.module.scss";
 const fieldIcons = {
     fullName: UserRound,
     phone: Phone,
+    cpf: IdCard,
+    dataNascimento: CalendarDays,
     email: Mail,
     password: KeyRound,
     confirmPassword: KeyRound,
 };
+
+const FOCUS_ORDER = [
+    "fullName",
+    "phone",
+    "cpf",
+    "dataNascimento",
+    "email",
+    "password",
+    "confirmPassword",
+    "acceptTerms",
+];
+
+function focusFirstError(errors) {
+    for (const fieldName of FOCUS_ORDER) {
+        if (errors[fieldName]) {
+            const el = document.getElementById(fieldName);
+            if (el && typeof el.focus === "function") {
+                el.focus();
+                return;
+            }
+        }
+    }
+}
+
+function getTodayISO() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+}
 
 export default function RegistrationForm({ onSubmit }) {
     const [values, setValues] = useState(registrationInitialValues);
@@ -30,13 +66,16 @@ export default function RegistrationForm({ onSubmit }) {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitMessage, setSubmitMessage] = useState("");
+    const [formError, setFormError] = useState("");
+    const [validationHint, setValidationHint] = useState("");
 
     const visibleErrors = useMemo(() => {
         return Object.fromEntries(
             Object.entries(errors).filter(([key, value]) => touched[key] && value)
         );
     }, [errors, touched]);
+
+    const todayISO = useMemo(() => getTodayISO(), []);
 
     const setFieldValue = (name, nextValue) => {
         setValues((current) => {
@@ -62,10 +101,16 @@ export default function RegistrationForm({ onSubmit }) {
         const { name, type, checked, value } = event.target;
         const nextValue = type === "checkbox" ? checked : value;
 
-        setSubmitMessage("");
+        setFormError("");
+        setValidationHint("");
 
         if (name === "phone") {
             setFieldValue(name, formatPhoneNumber(nextValue));
+            return;
+        }
+
+        if (name === "cpf") {
+            setFieldValue(name, formatCpf(nextValue));
             return;
         }
 
@@ -94,26 +139,51 @@ export default function RegistrationForm({ onSubmit }) {
 
         setTouched((current) => ({ ...current, ...allTouched }));
         setErrors(validation);
+        setFormError("");
 
         if (Object.values(validation).some(Boolean)) {
-            setSubmitMessage("Revise os campos destacados para continuar.");
+            setValidationHint("Revise os campos destacados para continuar.");
+            focusFirstError(validation);
             return;
         }
 
+        setValidationHint("");
         const payload = buildRegistrationPayload(values);
 
         try {
             setIsSubmitting(true);
 
             if (onSubmit) {
-                await onSubmit(payload);
+                const result = await onSubmit(payload);
+
+                if (result?.fieldErrors) {
+                    setErrors((current) => ({ ...current, ...result.fieldErrors }));
+                    setTouched((current) => {
+                        const next = { ...current };
+                        Object.keys(result.fieldErrors).forEach((key) => {
+                            next[key] = true;
+                        });
+                        return next;
+                    });
+                    setValidationHint("Revise os campos destacados para continuar.");
+                    focusFirstError(result.fieldErrors);
+                    return;
+                }
+
+                if (result?.error) {
+                    setFormError(result.error);
+                    return;
+                }
             } else {
                 await new Promise((resolve) => window.setTimeout(resolve, 650));
+                setValidationHint("Cadastro validado no front e pronto para integrar com a API.");
             }
-
-            setSubmitMessage("Cadastro validado no front e pronto para integrar com a API.");
-        } catch {
-            setSubmitMessage("Nao foi possivel concluir o cadastro agora.");
+        } catch (error) {
+            const message = error?.message ?? "";
+            if (message.includes("NEXT_REDIRECT")) {
+                throw error;
+            }
+            setFormError("Nao foi possivel concluir o cadastro agora.");
         } finally {
             setIsSubmitting(false);
         }
@@ -133,6 +203,8 @@ export default function RegistrationForm({ onSubmit }) {
     return (
         <section className={styles.panel}>
             <form className={styles.form} onSubmit={handleSubmit} noValidate>
+                {formError ? <FormAlert variant="error">{formError}</FormAlert> : null}
+
                 <AuthField
                     label="Nome e sobrenome"
                     name="fullName"
@@ -157,6 +229,34 @@ export default function RegistrationForm({ onSubmit }) {
                     error={visibleErrors.phone}
                     isValid={touched.phone && !errors.phone && values.phone.length > 0}
                     autoComplete="tel"
+                />
+
+                <AuthField
+                    label="CPF"
+                    name="cpf"
+                    value={values.cpf}
+                    placeholder="000.000.000-00"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    icon={fieldIcons.cpf}
+                    error={visibleErrors.cpf}
+                    isValid={touched.cpf && !errors.cpf && values.cpf.length > 0}
+                    autoComplete="off"
+                    inputMode="numeric"
+                />
+
+                <AuthField
+                    label="Data de nascimento"
+                    name="dataNascimento"
+                    type="date"
+                    value={values.dataNascimento}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    icon={fieldIcons.dataNascimento}
+                    error={visibleErrors.dataNascimento}
+                    isValid={touched.dataNascimento && !errors.dataNascimento && values.dataNascimento.length > 0}
+                    autoComplete="bday"
+                    max={todayISO}
                 />
 
                 <AuthField
@@ -233,11 +333,17 @@ export default function RegistrationForm({ onSubmit }) {
                     />
                 </div>
 
-                <button type="submit" className={styles.submitButton} disabled={isSubmitting}>
+                <button
+                    type="submit"
+                    className={styles.submitButton}
+                    disabled={isSubmitting}
+                    aria-busy={isSubmitting}
+                >
+                    {isSubmitting ? <FormSpinner /> : null}
                     {isSubmitting ? "Validando..." : "Cadastrar-se"}
                 </button>
 
-                {submitMessage ? <p className={styles.submitMessage}>{submitMessage}</p> : null}
+                {validationHint ? <p className={styles.submitMessage}>{validationHint}</p> : null}
 
                 <div className={styles.separator}>
                     <span />

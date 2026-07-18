@@ -1,8 +1,10 @@
+import path from "node:path";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
   sassOptions: {
-    includePaths: ["./src/styles"],
+    includePaths: [path.join(process.cwd(), "src", "styles")],
+    loadPaths: [path.join(process.cwd(), "src", "styles")],
   }
 };
 

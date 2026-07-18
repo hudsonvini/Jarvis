@@ -308,9 +308,9 @@ export default function Hero({
 					</div>
 				</div>
 
-				<button className={styles.button} ref={buttonRef}>
+				<a href="/sobre" className={styles.button} ref={buttonRef}>
 					{ctaLabel} →
-				</button>
+				</a>
 			</div>
 		</section>
 	);

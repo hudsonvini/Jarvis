@@ -9,3 +9,18 @@
     background-color: #050209;
     z-index: 99;
 }
+
+.areaImage {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+
+	img {
+		@media (max-width: 1000px) {
+			max-width: 500px;
+			width: 90%;
+			height: auto;
+		}
+	}
+}

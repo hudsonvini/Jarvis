@@ -10,7 +10,7 @@
 .shell {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 1.35fr) minmax(380px, 0.9fr);
+    grid-template-columns: 1fr;
     gap: clamp(1.5rem, 3vw, 3rem);
     max-width: 1740px;
     min-height: calc(100svh - 8.8rem);

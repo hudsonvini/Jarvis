@@ -17,6 +17,23 @@
     margin-top: 0.35rem;
 }
 
+.topBanner {
+    margin-bottom: 0.25rem;
+}
+
+.forgotLink {
+    display: inline-block;
+    margin-top: 0.25rem;
+    color: rgba(255, 207, 64, 0.92);
+    font-size: 0.9rem;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    &:hover {
+        color: #ffcf40;
+    }
+}
+
 .submitButton {
     min-height: 52px;
     margin-top: 0.6rem;
@@ -26,6 +43,10 @@
     font-family: "Syne", Helvetica, sans-serif;
     font-size: 16px;
     font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
     transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
 
     &:hover:not(:disabled) {
